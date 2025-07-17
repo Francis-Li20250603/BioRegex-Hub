@@ -18,6 +18,7 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db  # 添加明确的测试数据库名称
         ports:
           - 5432:5432
         options: >-
@@ -42,14 +43,25 @@ jobs:
 
     - name: Install backend dependencies
       working-directory: backend
-      run: pip install -r requirements.txt
+      run: |
+        pip install -r requirements.txt
+        pip install pytest  # 确保安装 pytest
+        
+    # 等待数据库就绪
+    - name: Wait for PostgreSQL
+      run: sleep 10  # 给数据库启动时间
+
+    - name: Initialize test database
+      run: |
+        psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
+        psql -U postgres -h localhost -d test_db -c "CREATE TABLE IF NOT EXISTS test_table (id SERIAL PRIMARY KEY, name TEXT);"
 
     - name: Run backend tests
       working-directory: backend
       env:
         DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
       run: |
-        pytest -v tests/
+        python -m pytest -v tests/  # 使用 Python 模块方式运行 pytest
 
     - name: Install frontend dependencies
       working-directory: frontend
