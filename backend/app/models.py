@@ -1,8 +1,13 @@
 from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
-from pydantic import validator
+from pydantic import validator, EmailStr, root_validator
 import re
+import bcrypt
+
+# 避免循环导入
+if TYPE_CHECKING:
+    from .rule_submissions import RuleSubmission
 
 # ---------------
 # 基础模型
@@ -23,18 +28,9 @@ class RuleBase(SQLModel):
         return v
 
 class UserBase(SQLModel):
-    email: str = Field(unique=True, index=True, description="用户邮箱")
+    email: EmailStr = Field(unique=True, index=True, description="用户邮箱")
     full_name: str = Field(description="用户全名")
     is_admin: bool = Field(default=False, description="是否为管理员")
-
-class RuleSubmissionBase(SQLModel):
-    pattern: str = Field(description="提交的正则表达式模式")
-    description: str = Field(description="提交的规则描述")
-    data_type: str = Field(description="提交的数据类型")
-    region: str = Field(description="提交的适用区域")
-    reference_path: Optional[str] = Field(default=None, description="参考文件路径")
-    submitted_by_id: int = Field(foreign_key="user.id", description="提交用户ID")
-    rule_id: Optional[int] = Field(foreign_key="rule.id", default=None, description="关联规则ID")
 
 # ---------------
 # 数据库表模型
@@ -47,13 +43,26 @@ class Rule(RuleBase, table=True):
         sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},
         description="创建时间"
     )
+    # 关联字段
     submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
 
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     hashed_password: str = Field(description="加密后的密码")
+    
+    # 关联字段
     submissions: List["RuleSubmission"] = Relationship(back_populates="submitter")
     reviews: List["RuleSubmission"] = Relationship(back_populates="reviewer")
+
+    @classmethod
+    def create_password_hash(cls, password: str) -> str:
+        """创建密码哈希"""
+        salt = bcrypt.gensalt()
+        return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+
+    def verify_password(self, password: str) -> bool:
+        """验证密码"""
+        return bcrypt.checkpw(password.encode('utf-8'), self.hashed_password.encode('utf-8'))
 
 class RuleSubmission(RuleSubmissionBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -67,6 +76,7 @@ class RuleSubmission(RuleSubmissionBase, table=True):
     reviewed_at: Optional[datetime] = Field(default=None, description="审核时间")
     review_notes: Optional[str] = Field(default=None, description="审核备注")
     
+    # 关联字段
     submitter: "User" = Relationship(back_populates="submissions")
     reviewer: Optional["User"] = Relationship(back_populates="reviews")
     rule: Optional["Rule"] = Relationship(back_populates="submissions")
@@ -95,6 +105,13 @@ class RuleUpdate(SQLModel):
 
 class UserCreate(UserBase):
     password: str
+    
+    @root_validator
+    def hash_password(cls, values):
+        if 'password' in values:
+            values['hashed_password'] = User.create_password_hash(values['password'])
+            del values['password']
+        return values
 
 class UserRead(UserBase):
     id: int
