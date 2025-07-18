@@ -1,13 +1,14 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.models import Rule
+from app.models import SQLModel, Rule, User  # 导入所有模型
 from app.database import get_db
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import pytest
+from datetime import datetime
 
-# 使用内存数据库进行测试
-TEST_DATABASE_URL = "sqlite:///./test.db"
+# 使用 PostgreSQL 进行测试（更接近生产环境）
+TEST_DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/test_db"
 engine = create_engine(TEST_DATABASE_URL)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -26,35 +27,71 @@ client = TestClient(app)
 # 在每个测试前创建表，测试后删除表
 @pytest.fixture(autouse=True)
 def setup_and_teardown():
-    Rule.metadata.create_all(bind=engine)
+    SQLModel.metadata.create_all(bind=engine)
     yield
-    Rule.metadata.drop_all(bind=engine)
+    SQLModel.metadata.drop_all(bind=engine)
+
+# 创建测试用户辅助函数
+def create_test_user(session):
+    user = User(
+        email="test@example.com",
+        full_name="Test User",
+        hashed_password="testpassword",
+        is_admin=True
+    )
+    session.add(user)
+    session.commit()
+    return user
+
+# 获取测试 token 辅助函数
+def get_test_token():
+    # 模拟 JWT token
+    return "fake_token"
 
 def test_list_rules():
-    # 先创建一个规则以便测试列表
-    test_rule = {
-        "pattern": "^[A-Z]{3}\\d{5}$",
-        "description": "Test rule",
-        "data_type": "Test",
-        "region": "Test"
-    }
-    client.post("/rules", json=test_rule)
+    # 创建测试用户和规则
+    with TestingSessionLocal() as session:
+        user = create_test_user(session)
+        
+        rule = Rule(
+            pattern="^[A-Z]{3}\\d{5}$",
+            description="Test rule",
+            data_type="Test",
+            region="Test",
+            created_at=datetime.now(),
+            # 添加用户关联（如果需要）
+        )
+        session.add(rule)
+        session.commit()
     
-    response = client.get("/rules")
+    # 添加认证头
+    response = client.get(
+        "/rules",
+        headers={"Authorization": f"Bearer {get_test_token()}"}
+    )
+    
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
     assert len(data) > 0
 
 def test_create_rule():
+    # 使用唯一的测试数据
     test_rule = {
-        "pattern": "^[A-Z]{3}\\d{5}$",
-        "description": "Test rule",
+        "pattern": "^[A-Z]{4}\\d{6}$",
+        "description": "Unique Test Rule",
         "data_type": "Test",
         "region": "Test"
     }
-    response = client.post("/rules", json=test_rule)
-    assert response.status_code == 201  # 创建成功应该返回201
+    
+    # 添加认证头
+    response = client.post(
+        "/rules",
+        json=test_rule,
+        headers={"Authorization": f"Bearer {get_test_token()}"}
+    )
+    
+    assert response.status_code == 201
     data = response.json()
     assert data["pattern"] == test_rule["pattern"]
     assert "id" in data
