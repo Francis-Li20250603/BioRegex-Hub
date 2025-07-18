@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import pytest
 from datetime import datetime
+from .utils import create_test_user, create_test_token
 
 # 使用 PostgreSQL 进行测试（更接近生产环境）
 TEST_DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/test_db"
@@ -63,6 +64,8 @@ def test_list_rules():
         )
         session.add(rule)
         session.commit()
+
+    token = create_test_token(user)
     
     # 添加认证头
     response = client.get(
@@ -76,6 +79,8 @@ def test_list_rules():
     assert len(data) > 0
 
 def test_create_rule():
+    with TestingSessionLocal() as session:
+        user = create_test_user(session)
     # 使用唯一的测试数据
     test_rule = {
         "pattern": "^[A-Z]{4}\\d{6}$",
@@ -83,7 +88,7 @@ def test_create_rule():
         "data_type": "Test",
         "region": "Test"
     }
-    
+    token = create_test_token(user)
     # 添加认证头
     response = client.post(
         "/rules",
