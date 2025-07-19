@@ -46,7 +46,8 @@ jobs:
       working-directory: backend
       run: |
         pip install -r requirements.txt
-        pip install pytest
+        pip install "pydantic[email]" pytest
+
 
     - name: Wait for PostgreSQL
       run: sleep 10  # 给数据库启动时间
