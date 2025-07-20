@@ -18,7 +18,7 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}  # 使用环境变量
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
           POSTGRES_DB: test_db
         ports:
           - 5432:5432
@@ -27,7 +27,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -46,24 +46,29 @@ jobs:
       working-directory: backend
       run: |
         pip install -r requirements.txt
-        pip install "pydantic[email]" pytest
-
+        pip install "pydantic[email]" pytest pytest-cov
 
     - name: Wait for PostgreSQL
-      run: sleep 10  # 给数据库启动时间
+      run: sleep 10
 
     - name: Initialize test database
       run: |
-        export PGPASSWORD=${{ env.POSTGRES_PASSWORD }}  # 通过环境变量传递密码
+        export PGPASSWORD=${{ env.POSTGRES_PASSWORD }}
         psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
         psql -U postgres -h localhost -d test_db -c "CREATE TABLE IF NOT EXISTS test_table (id SERIAL PRIMARY KEY, name TEXT);"
+
+    - name: Run database migrations
+      working-directory: backend
+      env:
+        DATABASE_URL: postgresql://postgres:${{ env.POSTGRES_PASSWORD }}@localhost:5432/test_db
+      run: python scripts/init_db.py
 
     - name: Run backend tests
       working-directory: backend
       env:
         DATABASE_URL: postgresql://postgres:${{ env.POSTGRES_PASSWORD }}@localhost:5432/test_db
       run: |
-        python -m pytest -v tests/
+        pytest -v tests/ --cov=app --cov-report=xml
 
     - name: Install frontend dependencies
       working-directory: frontend
