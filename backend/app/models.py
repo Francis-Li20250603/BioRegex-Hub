@@ -20,7 +20,10 @@ class RuleBase(SQLModel):
     region: str = Field(index=True, min_length=1, description="适用区域（FDA, EMA, HIPAA等）")
     reference_url: Optional[str] = Field(default=None, max_length=2000, description="参考链接")
 
-    @validator("pattern")
+    from pydantic import field_validator
+
+    @field_validator("pattern")
+    @classmethod
     def validate_pattern(cls, v):
         """验证正则表达式格式"""
         if not re.match(r'^[\w\s\d\^\$\*\+\?\.\(\)\[\]\{\}\|\\]+$', v):
