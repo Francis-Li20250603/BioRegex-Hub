@@ -1,4 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Text } from '@chakra-ui/react';
+import React, { useMemo } from 'react';
 import { Rule } from '../types/types';
 
 interface RuleTableProps {
@@ -7,11 +8,13 @@ interface RuleTableProps {
 }
 
 export default function RuleTable({ rules, isLoading }: RuleTableProps) {
+  const memoizedRules = useMemo(() => rules, [rules]);
+
   if (isLoading) {
     return <Box p={4}>Loading rules...</Box>;
   }
 
-  if (rules.length === 0) {
+  if (memoizedRules.length === 0) {
     return <Text p={4}>No rules found</Text>;
   }
 
@@ -27,7 +30,7 @@ export default function RuleTable({ rules, isLoading }: RuleTableProps) {
           </Tr>
         </Thead>
         <Tbody>
-          {rules.map((rule) => (
+          {memoizedRules.map((rule) => (
             <Tr key={rule.id}>
               <Td fontFamily="monospace">{rule.pattern}</Td>
               <Td>{rule.description}</Td>
