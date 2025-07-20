@@ -1,7 +1,7 @@
 from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
 from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
-from pydantic import validator, root_validator
+from pydantic import validator, model_validator  # 替换了root_validator的导入
 import re
 import bcrypt
 
@@ -89,10 +89,12 @@ class RuleUpdate(SQLModel):
 class UserCreate(UserBase):
     password: str
 
-    @root_validator
+    @model_validator(mode='before')  # 替换了root_validator
     def hash_password(cls, values):
         if 'password' in values:
+            # 生成哈希密码并添加到values字典
             values['hashed_password'] = User.create_password_hash(values['password'])
+            # 删除原始密码
             del values['password']
         return values
 
