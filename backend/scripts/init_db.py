@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+# 关键：将 backend 目录添加到 Python 搜索路径
+# 因为 init_db.py 位于 backend/scripts/ 下，其 parent.parent 即为 backend 目录
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BACKEND_DIR))
 from app.database import create_db_and_tables, engine
 from sqlmodel import Session
 from app.models import User
