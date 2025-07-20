@@ -7,8 +7,14 @@ def init_db():
     print("Initializing database...")
     create_db_and_tables()
     
-    # Create admin user if not exists
     with Session(engine) as session:
+        session.execute("""
+            CREATE INDEX IF NOT EXISTS idx_rule_data_type ON rule (data_type);
+            CREATE INDEX IF NOT EXISTS idx_rule_region ON rule (region);
+            CREATE INDEX IF NOT EXISTS idx_submission_status ON rule_submission (status);
+        """)
+        session.commit()
+
         admin_email = "admin@bioregex.com"
         admin_user = session.exec(
             select(User).where(User.email == admin_email)
