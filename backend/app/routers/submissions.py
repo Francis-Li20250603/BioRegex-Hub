@@ -9,6 +9,7 @@ from uuid import uuid4
 from app.config import settings
 from app.utils.security import get_current_user
 from app import crud
+from typing import List
 
 router = APIRouter()
 
