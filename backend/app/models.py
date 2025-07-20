@@ -1,12 +1,14 @@
-from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
+from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
-from pydantic import validator, model_validator  # 替换了root_validator的导入
+from pydantic import validator, model_validator
 import re
 import bcrypt
 
+
 if TYPE_CHECKING:
     from .rule_submissions import RuleSubmission
+
 
 class RuleBase(SQLModel):
     pattern: str = Field(index=True, min_length=1, description="正则表达式模式")
@@ -21,6 +23,7 @@ class RuleBase(SQLModel):
             raise ValueError("无效的正则表达式模式")
         return v
 
+
 class UserBase(SQLModel):
     email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
@@ -33,6 +36,7 @@ class UserBase(SQLModel):
             raise ValueError('Invalid email format')
         return v
 
+
 class Rule(RuleBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: datetime = Field(
@@ -41,6 +45,7 @@ class Rule(RuleBase, table=True):
         description="创建时间"
     )
     submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
+
 
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -55,6 +60,7 @@ class User(UserBase, table=True):
 
     def verify_password(self, password: str) -> bool:
         return bcrypt.checkpw(password.encode('utf-8'), self.hashed_password.encode('utf-8'))
+
 
 class RuleSubmission(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -72,12 +78,15 @@ class RuleSubmission(SQLModel, table=True):
     reviewer: Optional["User"] = Relationship(back_populates="reviews")
     rule: Optional["Rule"] = Relationship(back_populates="submissions")
 
+
 class RuleCreate(RuleBase):
     pass
+
 
 class RuleRead(RuleBase):
     id: int
     created_at: datetime
+
 
 class RuleUpdate(SQLModel):
     pattern: Optional[str] = None
@@ -86,20 +95,21 @@ class RuleUpdate(SQLModel):
     region: Optional[str] = None
     reference_url: Optional[str] = None
 
+
 class UserCreate(UserBase):
     password: str
 
-    @model_validator(mode='before')  # 替换了root_validator
+    @model_validator(mode='before')
     def hash_password(cls, values):
         if 'password' in values:
-            # 生成哈希密码并添加到values字典
             values['hashed_password'] = User.create_password_hash(values['password'])
-            # 删除原始密码
             del values['password']
         return values
 
+
 class UserRead(UserBase):
     id: int
+
 
 class RuleSubmissionCreate(SQLModel):
     pattern: str
@@ -108,6 +118,20 @@ class RuleSubmissionCreate(SQLModel):
     region: str
     reference_path: Optional[str] = None
     submitted_by_id: int
+
+
+# 新增RuleSubmissionUpdate类，用于更新提交信息
+class RuleSubmissionUpdate(SQLModel):
+    pattern: Optional[str] = None
+    description: Optional[str] = None
+    data_type: Optional[str] = None
+    region: Optional[str] = None
+    reference_path: Optional[str] = None
+    status: Optional[str] = None
+    reviewed_by_id: Optional[int] = None
+    reviewed_at: Optional[datetime] = None
+    review_notes: Optional[str] = None
+
 
 class RuleSubmissionRead(RuleSubmissionCreate):
     id: int
@@ -118,9 +142,11 @@ class RuleSubmissionRead(RuleSubmissionCreate):
     reviewed_at: Optional[datetime] = None
     review_notes: Optional[str] = None
 
+
 class Token(SQLModel):
     access_token: str
     token_type: str
+
 
 class TokenData(SQLModel):
     email: Optional[str] = None
