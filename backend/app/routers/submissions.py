@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, status
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, status, Query
 from sqlmodel import Session, select
 from app.database import get_db
 from app.models import RuleSubmission, RuleSubmissionRead, RuleSubmissionCreate, User
@@ -9,7 +9,7 @@ from uuid import uuid4
 from app.config import settings
 from app.utils.security import get_current_user
 from app import crud
-from typing import List
+from typing import List, Optional
 
 router = APIRouter()
 
