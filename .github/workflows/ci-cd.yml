@@ -9,11 +9,16 @@ on:
 env:
   DOCKER_IMAGE: ghcr.io/${{ github.repository_owner }}/bioregex-hub
   VERSION: latest
-  POSTGRES_PASSWORD: postgres  # 统一定义 PostgreSQL 密码
+  POSTGRES_PASSWORD: postgres
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://postgres:${{ env.POSTGRES_PASSWORD }}@localhost:5432/test_db
+      SECRET_KEY: test-secret-key
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
     services:
       postgres:
         image: postgres:15-alpine
@@ -27,7 +32,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -55,18 +59,21 @@ jobs:
       run: |
         export PGPASSWORD=${{ env.POSTGRES_PASSWORD }}
         psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
-        psql -U postgres -h localhost -d test_db -c "CREATE TABLE IF NOT EXISTS test_table (id SERIAL PRIMARY KEY, name TEXT);"
 
     - name: Run database migrations
       working-directory: backend
       env:
-        DATABASE_URL: postgresql://postgres:${{ env.POSTGRES_PASSWORD }}@localhost:5432/test_db
-      run: python scripts/init_db.py
+        DATABASE_URL: ${{ env.DATABASE_URL }}
+      run: |
+        python scripts/init_db.py
 
     - name: Run backend tests
       working-directory: backend
       env:
-        DATABASE_URL: postgresql://postgres:${{ env.POSTGRES_PASSWORD }}@localhost:5432/test_db
+        DATABASE_URL: ${{ env.DATABASE_URL }}
+        SECRET_KEY: ${{ env.SECRET_KEY }}
+        ALGORITHM: ${{ env.ALGORITHM }}
+        ACCESS_TOKEN_EXPIRE_MINUTES: ${{ env.ACCESS_TOKEN_EXPIRE_MINUTES }}
       run: |
         pytest -v tests/ --cov=app --cov-report=xml
 
