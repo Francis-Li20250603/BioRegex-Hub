@@ -1,4 +1,3 @@
-# backend/app/routers/auth.py
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
@@ -10,13 +9,10 @@ from app import models
 from app.database import get_db
 from app.config import settings
 
-# 创建路由
 router = APIRouter(tags=['Authentication'])
 
-# 密码哈希
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# OAuth2设置 - 修正为小写属性名
 SECRET_KEY = settings.SECRET_KEY
 ALGORITHM = settings.ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES
@@ -30,9 +26,6 @@ def create_access_token(data: dict):
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
 
 def get_user(db: Session, email: str):
     return db.query(models.User).filter(models.User.email == email).first()
@@ -54,7 +47,5 @@ def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session =
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
-    # 创建访问令牌
     access_token = create_access_token(data={"sub": user.email})
     return {"access_token": access_token, "token_type": "bearer"}
