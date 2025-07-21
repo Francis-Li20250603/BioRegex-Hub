@@ -17,6 +17,7 @@ class RuleBase(SQLModel):
     region: str = Field(index=True, min_length=1, description="适用区域（FDA, EMA, HIPAA等）")
     reference_url: Optional[str] = Field(default=None, max_length=2000, description="参考链接")
 
+
     @validator("pattern")
     def validate_pattern(cls, v):
         if not re.match(r'^[\w\s\d\^\$\*\+\?\.\(\)\[\]\{\}\|\\]+$', v):
@@ -28,6 +29,7 @@ class UserBase(SQLModel):
     email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
     is_admin: bool = Field(default=False, description="是否为管理员")
+
 
     @validator('email')
     def validate_email(cls, v):
@@ -41,8 +43,8 @@ class Rule(RuleBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: datetime = Field(
         default_factory=datetime.utcnow,
-        # 关键修正：移除 'CURRENT_TIMESTAMP' 两侧的单引号
-        sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},  # 正确：无单引号
+        # 关键修正：使用 text() 函数包装，确保生成无引号的 SQL 表达式
+        sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},
         description="创建时间"
     )
     submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
@@ -54,10 +56,12 @@ class User(UserBase, table=True):
     submissions: List["RuleSubmission"] = Relationship(back_populates="submitter")
     reviews: List["RuleSubmission"] = Relationship(back_populates="reviewer")
 
+
     @classmethod
     def create_password_hash(cls, password: str) -> str:
         salt = bcrypt.gensalt()
         return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+
 
     def verify_password(self, password: str) -> bool:
         return bcrypt.checkpw(password.encode('utf-8'), self.hashed_password.encode('utf-8'))
@@ -99,6 +103,7 @@ class RuleUpdate(SQLModel):
 
 class UserCreate(UserBase):
     password: str
+
 
     @model_validator(mode='before')
     def hash_password(cls, values):
