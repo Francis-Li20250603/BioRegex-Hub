@@ -1,11 +1,10 @@
 from app.models import User
-from app.database import get_session
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 import jwt
 from typing import Optional
 
-SECRET_KEY = "test-secret-key"  # 测试用密钥
+SECRET_KEY = "test-secret-key"
 ALGORITHM = "HS256"
 
 def create_test_user(session: Session, email="test@example.com", password="test123", is_admin=True) -> User:
@@ -13,7 +12,7 @@ def create_test_user(session: Session, email="test@example.com", password="test1
     user = User(
         email=email,
         full_name="Test User",
-        hashed_password=User.create_password_hash(password),  # 使用 models.py 中的方法
+        hashed_password=User.create_password_hash(password),
         is_admin=is_admin
     )
     session.add(user)
