@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-# 从 pydantic-settings 导入 BaseSettings（关键修改）
+# 从 pydantic-settings 导入 BaseSettings
 from pydantic_settings import BaseSettings
-from pydantic import DirectoryPath  # 其他类型仍从 pydantic 导入
+from pydantic import DirectoryPath
 
 
 load_dotenv()
