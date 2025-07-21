@@ -1,11 +1,11 @@
 import sys
 from pathlib import Path
-# 关键：将 backend 目录添加到 Python 搜索路径
-# 因为 init_db.py 位于 backend/scripts/ 下，其 parent.parent 即为 backend 目录
+
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND_DIR))
+
 from app.database import create_db_and_tables, engine
-from sqlmodel import Session
+from sqlmodel import Session, select
 from app.models import User
 from app.utils.security import get_password_hash
 
@@ -14,7 +14,6 @@ def init_db():
     create_db_and_tables()
     
     with Session(engine) as session:
-        # 删除手动索引创建，已在模型中定义
         admin_email = "admin@bioregex.com"
         admin_user = session.exec(
             select(User).where(User.email == admin_email)
