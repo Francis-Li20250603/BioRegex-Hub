@@ -41,7 +41,8 @@ class Rule(RuleBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: datetime = Field(
         default_factory=datetime.utcnow,
-        sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},
+        # 关键修正：移除 'CURRENT_TIMESTAMP' 两侧的单引号
+        sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},  # 正确：无单引号
         description="创建时间"
     )
     submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
