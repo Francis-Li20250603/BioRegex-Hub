@@ -14,13 +14,7 @@ def init_db():
     create_db_and_tables()
     
     with Session(engine) as session:
-        session.execute("""
-            CREATE INDEX IF NOT EXISTS idx_rule_data_type ON rule (data_type);
-            CREATE INDEX IF NOT EXISTS idx_rule_region ON rule (region);
-            CREATE INDEX IF NOT EXISTS idx_submission_status ON rule_submission (status);
-        """)
-        session.commit()
-
+        # 删除手动索引创建，已在模型中定义
         admin_email = "admin@bioregex.com"
         admin_user = session.exec(
             select(User).where(User.email == admin_email)
