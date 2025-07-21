@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
 from app.database import get_db
-from app.models import RuleSubmission, Rule, User, RuleSubmissionRead
+from app.models import RuleSubmission, Rule, User, RuleSubmissionRead, RuleCreate
 from datetime import datetime
 from app.utils.security import get_current_admin
 from app import crud
@@ -18,17 +18,17 @@ def approve_submission(
     if not submission:
         raise HTTPException(status_code=404, detail="Submission not found")
     
-    # Create a new rule from submission
-    rule_data = {
-        "pattern": submission.pattern,
-        "description": submission.description,
-        "data_type": submission.data_type,
-        "region": submission.region,
-        "reference_url": submission.reference_path
-    }
+    # 使用 RuleCreate 模型创建规则
+    rule_data = RuleCreate(
+        pattern=submission.pattern,
+        description=submission.description,
+        data_type=submission.data_type,
+        region=submission.region,
+        reference_url=submission.reference_path
+    )
     rule = crud.create_rule(db, rule_data)
     
-    # Update submission
+    # 更新提交
     submission = crud.update_submission(
         db, 
         submission_id, 
@@ -47,7 +47,6 @@ def reject_submission(
     if not submission:
         raise HTTPException(status_code=404, detail="Submission not found")
     
-    # Update submission
     submission = crud.update_submission(
         db, 
         submission_id, 
