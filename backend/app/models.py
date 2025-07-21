@@ -25,18 +25,6 @@ class RuleBase(SQLModel):
         return v
 
 
-class Rule(RuleBase, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    # 关键修正：使用 text() 函数明确标记为 SQL 表达式
-    created_at: datetime = Field(
-        default_factory=datetime.utcnow,
-        sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")},  # 使用 text() 包装
-        description="创建时间"
-    )
-    submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
-
-
-# 其他模型保持不变（User、RuleSubmission等）
 class UserBase(SQLModel):
     email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
@@ -49,6 +37,17 @@ class UserBase(SQLModel):
         if not re.match(pattern, v):
             raise ValueError('Invalid email format')
         return v
+
+
+class Rule(RuleBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    created_at: datetime = Field(
+        default_factory=datetime.utcnow,
+        sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")},
+        description="创建时间"
+    )
+    # 与RuleSubmission的关系
+    submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
 
 
 class User(UserBase, table=True):
@@ -77,9 +76,17 @@ class RuleSubmission(SQLModel, table=True):
     reference_path: Optional[str] = Field(default=None)
     status: str = Field(default="pending", description="提交状态")
     submitted_at: datetime = Field(default_factory=datetime.utcnow)
+    
+    # 添加外键关系（关键修正）
+    submitted_by_id: int = Field(foreign_key="user.id")
     reviewed_by_id: Optional[int] = Field(foreign_key="user.id", default=None)
+    # 添加指向Rule的外键（解决当前错误）
+    rule_id: Optional[int] = Field(foreign_key="rule.id", default=None)
+    
     reviewed_at: Optional[datetime] = Field(default=None)
     review_notes: Optional[str] = Field(default=None)
+    
+    # 关系定义
     submitter: "User" = Relationship(back_populates="submissions")
     reviewer: Optional["User"] = Relationship(back_populates="reviews")
     rule: Optional["Rule"] = Relationship(back_populates="submissions")
@@ -137,6 +144,7 @@ class RuleSubmissionUpdate(SQLModel):
     reviewed_by_id: Optional[int] = None
     reviewed_at: Optional[datetime] = None
     review_notes: Optional[str] = None
+    rule_id: Optional[int] = None
 
 
 class RuleSubmissionRead(RuleSubmissionCreate):
@@ -147,6 +155,7 @@ class RuleSubmissionRead(RuleSubmissionCreate):
     reviewed_by: Optional[UserRead] = None
     reviewed_at: Optional[datetime] = None
     review_notes: Optional[str] = None
+    rule_id: Optional[int] = None
 
 
 class Token(SQLModel):
