@@ -17,8 +17,6 @@ def approve_submission(
     submission = crud.get_submission(db, submission_id)
     if not submission:
         raise HTTPException(status_code=404, detail="Submission not found")
-    
-    # 使用 RuleCreate 模型创建规则
     rule_data = RuleCreate(
         pattern=submission.pattern,
         description=submission.description,
@@ -27,11 +25,9 @@ def approve_submission(
         reference_url=submission.reference_path
     )
     rule = crud.create_rule(db, rule_data)
-    
-    # 更新提交
     submission = crud.update_submission(
-        db, 
-        submission_id, 
+        db,
+        submission_id,
         {"status": "approved", "reviewed_by_id": current_user.id, "reviewed_at": datetime.utcnow()}
     )
     return submission
@@ -46,13 +42,12 @@ def reject_submission(
     submission = crud.get_submission(db, submission_id)
     if not submission:
         raise HTTPException(status_code=404, detail="Submission not found")
-    
     submission = crud.update_submission(
-        db, 
-        submission_id, 
+        db,
+        submission_id,
         {
-            "status": "rejected", 
-            "reviewed_by_id": current_user.id, 
+            "status": "rejected",
+            "reviewed_by_id": current_user.id,
             "reviewed_at": datetime.utcnow(),
             "review_notes": reason
         }
