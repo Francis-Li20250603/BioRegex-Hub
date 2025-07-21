@@ -1,4 +1,4 @@
-name: 全云端 CI/CD 流程
+name: 纯云端构建与测试流程
 
 on:
   push:
@@ -7,9 +7,11 @@ on:
     branches: [ main ]
 
 jobs:
+  # 仅保留构建和测试步骤，所有操作在 GitHub 云端执行
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # GitHub 提供的云端服务器
     services:
+      # 云端临时启动 PostgreSQL 服务（无需本地数据库）
       postgres:
         image: postgres:15-alpine
         env:
@@ -24,79 +26,98 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: 拉取代码
+        uses: actions/checkout@v4  # 从 GitHub 仓库拉取代码到云端
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+      - name: 安装 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: 安装 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    # 添加系统依赖（关键：解决 bcrypt 编译问题）
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update && sudo apt-get install -y \
-          build-essential \
-          libssl-dev \
-          libffi-dev \
-          python3-dev \
-          libpq-dev \
-          libmagic-dev
+      - name: 安装系统依赖（含 bcrypt 编译工具）
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+            build-essential \
+            libssl-dev \
+            libffi-dev \
+            python3-dev \
+            libpq-dev \
+            libmagic-dev \
+            postgresql-client
 
-    - name: Install backend dependencies
-      working-directory: backend
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install "pydantic[email]" pytest pytest-cov
+      - name: 安装后端依赖
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install "pydantic[email]" pytest pytest-cov
 
-    - name: Install PostgreSQL client
-      run: sudo apt-get -yqq install postgresql-client
+      - name: 等待 PostgreSQL 就绪
+        run: |
+          for i in {1..10}; do
+            pg_isready -U postgres -h localhost && break
+            sleep 2
+          done
 
-    - name: Wait for PostgreSQL
-      run: |
-        for i in {1..10}; do
-          pg_isready -U postgres -h localhost && break
-          sleep 2
-        done
+      - name: 初始化测试数据库
+        run: |
+          export PGPASSWORD=postgres
+          psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
 
-    - name: Initialize test database
-      run: |
-        export PGPASSWORD=postgres
-        psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
+      - name: 执行数据库迁移（云端创建表结构）
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+        run: python scripts/init_db.py
 
-    - name: Run database migrations
-      working-directory: backend
-      env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
-      run: python scripts/init_db.py
+      - name: 运行后端测试（云端执行）
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+          SECRET_KEY: test-secret-key
+          ALGORITHM: HS256
+          ACCESS_TOKEN_EXPIRE_MINUTES: 30
+        run: pytest -v tests/ --cov=app
 
-    - name: Run backend tests
-      working-directory: backend
-      env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
-        SECRET_KEY: test-secret-key
-        ALGORITHM: HS256
-        ACCESS_TOKEN_EXPIRE_MINUTES: 30
-      run: pytest -v tests/ --cov=app
+      - name: 安装前端依赖
+        working-directory: frontend
+        run: npm ci
 
-    - name: Install frontend dependencies
-      working-directory: frontend
-      run: npm ci
+      - name: 运行前端测试（云端执行）
+        working-directory: frontend
+        run: npm run test
 
-    - name: Run frontend tests
-      working-directory: frontend
-      run: npm run test
-
+  # 构建并推送镜像到 GitHub 容器仓库（云端存储）
   build-and-push:
-    needs: build-and-test
+    needs: build-and-test  # 依赖测试通过后执行
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'  # 仅主分支推送镜像
     steps:
-    - name: Checkout code
-      uses: actions/checkout@
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 登录 GitHub 容器仓库（云端仓库）
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}  # GitHub 自动生成的云端令牌
+
+      - name: 构建并推送后端镜像（云端构建+存储）
+        uses: docker/build-push-action@v5
+        with:
+          context: backend
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/bioregex-hub-backend:latest
+
+      - name: 构建并推送前端镜像（云端构建+存储）
+        uses: docker/build-push-action@v5
+        with:
+          context: frontend
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/bioregex-hub-frontend:latest
