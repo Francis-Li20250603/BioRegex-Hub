@@ -8,6 +8,8 @@ celery==5.3.6
 redis==5.0.0
 python-dotenv==1.0.0
 pydantic[email]
+# 关键：添加 pydantic-settings 依赖
+pydantic-settings==2.3.0
 pandas==2.2.1
 pyreadstat==1.2.7
 lxml==5.1.0
@@ -16,7 +18,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-magic==0.4.27
 python-dateutil==2.8.2
-# 修正 bcrypt 版本为兼容版本
+# 使用兼容版本的 bcrypt
 bcrypt==3.2.2
 
 # 测试依赖
