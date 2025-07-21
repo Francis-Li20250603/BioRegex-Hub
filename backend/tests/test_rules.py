@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.models import SQLModel, Rule, User  # 导入所有模型
-from app.database import get_db
+from app.models import SQLModel, Rule, User
+from app.database import get_db, create_db_and_tables
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import pytest
@@ -32,23 +32,6 @@ def setup_and_teardown():
     yield
     SQLModel.metadata.drop_all(bind=engine)
 
-# 创建测试用户辅助函数
-def create_test_user(session):
-    user = User(
-        email="test@example.com",
-        full_name="Test User",
-        hashed_password="testpassword",
-        is_admin=True
-    )
-    session.add(user)
-    session.commit()
-    return user
-
-# 获取测试 token 辅助函数
-def get_test_token():
-    # 模拟 JWT token
-    return "fake_token"
-
 def test_list_rules():
     # 创建测试用户和规则
     with TestingSessionLocal() as session:
@@ -59,18 +42,16 @@ def test_list_rules():
             description="Test rule",
             data_type="Test",
             region="Test",
-            created_at=datetime.now(),
-            # 添加用户关联（如果需要）
+            created_at=datetime.now()
         )
         session.add(rule)
         session.commit()
 
     token = create_test_token(user)
     
-    # 添加认证头
     response = client.get(
         "/rules",
-        headers={"Authorization": f"Bearer {get_test_token()}"}
+        headers={"Authorization": f"Bearer {token}"}
     )
     
     assert response.status_code == 200
@@ -81,7 +62,7 @@ def test_list_rules():
 def test_create_rule():
     with TestingSessionLocal() as session:
         user = create_test_user(session)
-    # 使用唯一的测试数据
+    
     test_rule = {
         "pattern": "^[A-Z]{4}\\d{6}$",
         "description": "Unique Test Rule",
@@ -89,11 +70,11 @@ def test_create_rule():
         "region": "Test"
     }
     token = create_test_token(user)
-    # 添加认证头
+    
     response = client.post(
         "/rules",
         json=test_rule,
-        headers={"Authorization": f"Bearer {get_test_token()}"}
+        headers={"Authorization": f"Bearer {token}"}
     )
     
     assert response.status_code == 201
