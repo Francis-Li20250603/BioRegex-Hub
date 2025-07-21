@@ -9,7 +9,7 @@ on:
 env:
   DOCKER_IMAGE: ghcr.io/${{ github.repository_owner }}/bioregex-hub
   VERSION: latest
-  POSTGRES_PASSWORD: postgres  # 修正：移除多余的空格
+  POSTGRES_PASSWORD: postgres
 
 jobs:
   build-and-test:
@@ -52,7 +52,6 @@ jobs:
         pip install -r requirements.txt
         pip install "pydantic[email]" pytest pytest-cov
 
-    # 添加 PostgreSQL 客户端安装
     - name: Install PostgreSQL client
       run: sudo apt-get -yqq install postgresql-client
 
@@ -65,7 +64,7 @@ jobs:
 
     - name: Initialize test database
       env:
-        PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}  # 使用环境变量更安全
+        PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
       run: |
         psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
 
@@ -126,14 +125,15 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-    - name: SSH Deploy
+    - name: Password-based SSH Deploy
       uses: appleboy/ssh-action@v1
       with:
         host: ${{ secrets.PROD_SERVER_HOST }}
         username: ${{ secrets.PROD_SERVER_USER }}
-        key: ${{ secrets.PROD_SERVER_SSH_KEY }}
+        password: ${{ secrets.PROD_SERVER_PASSWORD }}  # 使用密码认证
         script: |
           cd /opt/bioregex-hub
           docker compose pull
           docker compose up -d --build
           docker system prune -f
+
