@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import SQLModel, Field, Relationship, text
 from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
 from pydantic import validator, model_validator
@@ -25,6 +25,18 @@ class RuleBase(SQLModel):
         return v
 
 
+class Rule(RuleBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    # 关键修正：使用 text() 函数明确标记为 SQL 表达式
+    created_at: datetime = Field(
+        default_factory=datetime.utcnow,
+        sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")},  # 使用 text() 包装
+        description="创建时间"
+    )
+    submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
+
+
+# 其他模型保持不变（User、RuleSubmission等）
 class UserBase(SQLModel):
     email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
@@ -37,17 +49,6 @@ class UserBase(SQLModel):
         if not re.match(pattern, v):
             raise ValueError('Invalid email format')
         return v
-
-
-class Rule(RuleBase, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: datetime = Field(
-        default_factory=datetime.utcnow,
-        # 关键修正：使用 text() 函数包装，确保生成无引号的 SQL 表达式
-        sa_column_kwargs={"server_default": "CURRENT_TIMESTAMP"},
-        description="创建时间"
-    )
-    submissions: List["RuleSubmission"] = Relationship(back_populates="rule")
 
 
 class User(UserBase, table=True):
@@ -126,7 +127,6 @@ class RuleSubmissionCreate(SQLModel):
     submitted_by_id: int
 
 
-# 新增RuleSubmissionUpdate类，用于更新提交信息
 class RuleSubmissionUpdate(SQLModel):
     pattern: Optional[str] = None
     description: Optional[str] = None
