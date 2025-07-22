@@ -1,30 +1,47 @@
 from pydantic_settings import BaseSettings
-from pydantic import DirectoryPath, field_validator
+from pydantic import field_validator, ConfigDict
 from pathlib import Path
 import os
 
-# 修正 Pydantic 配置为 V2 风格
 class Settings(BaseSettings):
+    # 数据库配置（从云端环境变量获取）
     DATABASE_URL: str
-    SECRET_KEY: str
+
+    # 安全配置
+    SECRET_KEY: str = "cloud-default-secret-key"  # 云端使用环境变量覆盖
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+
+    # 任务队列配置
     CELERY_BROKER_URL: str = "redis://redis:6379/0"
     CELERY_RESULT_BACKEND: str = "redis://redis:6379/0"
-    UPLOAD_DIR: DirectoryPath = Path("uploads")
+
+    # 存储配置（云端使用临时目录）
+    UPLOAD_DIR: Path = Path("/tmp/bioregex-uploads")  # 云端临时目录
     MAX_UPLOAD_SIZE: int = 10485760  # 10MB
+
+    # 外部API配置
     FDA_GUIDANCE_URL: str | None = None
     EMA_GUIDANCE_URL: str | None = None
 
-    # 确保上传目录存在
+    model_config = ConfigDict(
+        env_file=".env",
+        case_sensitive=True,
+        extra="ignore"
+    )
+
     @field_validator("UPLOAD_DIR")
-    def ensure_upload_dir_exists(cls, v):
-        v.mkdir(exist_ok=True, parents=True)
+    def ensure_upload_dir_exists(cls, v: Path) -> Path:
+        """确保上传目录存在（云端自动创建）"""
+        v.mkdir(parents=True, exist_ok=True)
         return v
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True  # 环境变量区分大小写
+    @field_validator("SECRET_KEY")
+    def validate_secret_key(cls, v: str) -> str:
+        """验证密钥（云端环境强制安全密钥）"""
+        if os.getenv("GITHUB_ACTIONS") == "true" and len(v) < 16:
+            raise ValueError("云端环境SECRET_KEY长度必须至少16位")
+        return v
 
 
 # 实例化配置
