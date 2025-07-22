@@ -1,18 +1,20 @@
 import sys
+import os
 import logging
-from pathlib import Path
 from sqlmodel import Session, select
+from dotenv import load_dotenv
+
+# 强制获取 backend 目录的绝对路径（关键修复）
+BACKEND_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, BACKEND_DIR)  # 将 backend 目录加入 Python 路径
+
+# 现在可以正确导入 app 模块
 from app.database import create_db_and_tables, engine
 from app.models import User, UserCreate
-from dotenv import load_dotenv
-import os
-
-# 将项目根目录添加到Python路径，解决模块导入问题
-sys.path.append(str(Path(__file__).parent.parent))
 
 # 云端环境适配：加载环境变量
-if os.path.exists(".env"):
-    load_dotenv()  # 本地开发时加载，云端通过环境变量注入
+if os.path.exists(os.path.join(BACKEND_DIR, ".env")):
+    load_dotenv(os.path.join(BACKEND_DIR, ".env"))
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -31,7 +33,7 @@ def init_db():
         admin_user = session.exec(select(User).where(User.is_admin == True)).first()
         
         if not admin_user:
-            # 云端环境使用随机密码，本地开发使用默认密码
+            # 云端环境使用环境变量密码，本地用默认
             admin_password = os.getenv("ADMIN_PASSWORD", "admin123")
             
             admin_data = UserCreate(
