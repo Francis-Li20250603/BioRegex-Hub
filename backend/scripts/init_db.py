@@ -1,9 +1,14 @@
+import sys
 import logging
+from pathlib import Path
 from sqlmodel import Session, select
 from app.database import create_db_and_tables, engine
 from app.models import User, UserCreate
 from dotenv import load_dotenv
 import os
+
+# 将项目根目录添加到Python路径，解决模块导入问题
+sys.path.append(str(Path(__file__).parent.parent))
 
 # 云端环境适配：加载环境变量
 if os.path.exists(".env"):
