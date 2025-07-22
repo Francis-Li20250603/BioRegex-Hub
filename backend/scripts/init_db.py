@@ -1,36 +1,49 @@
-import sys
-from pathlib import Path
-
-BACKEND_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BACKEND_DIR))
-
-from app.database import create_db_and_tables, engine
+import logging
 from sqlmodel import Session, select
-from app.models import User
-from app.utils.security import get_password_hash
+from app.database import create_db_and_tables, engine
+from app.models import User, UserCreate
+from dotenv import load_dotenv
+import os
+
+# 云端环境适配：加载环境变量
+if os.path.exists(".env"):
+    load_dotenv()  # 本地开发时加载，云端通过环境变量注入
+
+# 配置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def init_db():
-    print("Initializing database...")
+    """初始化数据库：创建表结构和默认数据"""
+    logger.info("Starting database initialization...")
+    
+    # 创建表结构
     create_db_and_tables()
     
+    # 创建默认管理员（仅首次运行时）
     with Session(engine) as session:
-        admin_email = "admin@bioregex.com"
-        admin_user = session.exec(
-            select(User).where(User.email == admin_email)
-        ).first()
+        # 检查是否已有管理员
+        admin_user = session.exec(select(User).where(User.is_admin == True)).first()
         
         if not admin_user:
-            admin_user = User(
-                email=admin_email,
-                full_name="Admin User",
+            # 云端环境使用随机密码，本地开发使用默认密码
+            admin_password = os.getenv("ADMIN_PASSWORD", "admin123")
+            
+            admin_data = UserCreate(
+                email="admin@bioregex.example",
+                full_name="System Admin",
                 is_admin=True,
-                hashed_password=get_password_hash("adminpassword")
+                password=admin_password
             )
+            
+            admin_user = User.from_orm(admin_data)
             session.add(admin_user)
             session.commit()
-            print("Admin user created")
+            session.refresh(admin_user)
+            
+            logger.info(f"Created default admin user: {admin_user.email}")
         else:
-            print("Admin user already exists")
+            logger.info("Admin user already exists")
 
 if __name__ == "__main__":
     init_db()
