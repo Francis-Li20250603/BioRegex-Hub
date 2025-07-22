@@ -1,20 +1,11 @@
 from sqlmodel import SQLModel, Field, Relationship, text
-from typing import Optional, List, TYPE_CHECKING
+from typing import Optional, List
 from datetime import datetime
 from pydantic import field_validator, model_validator, ConfigDict
 import re
 import bcrypt
 
 
-# 解决同一文件内的类型提示问题（无需导入自身，直接使用字符串引用）
-if TYPE_CHECKING:
-    # 移除从自身导入的语句，改用字符串类型提示
-    pass
-
-
-# ------------------------------
-# 基础模型（先定义基础模型，避免依赖问题）
-# ------------------------------
 class RuleBase(SQLModel):
     model_config = ConfigDict(extra='forbid')
     
@@ -63,14 +54,10 @@ class RuleSubmissionBase(SQLModel):
     review_notes: Optional[str] = Field(default=None)
 
 
-# ------------------------------
-# 数据库表模型（核心模型）
-# ------------------------------
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     hashed_password: str = Field(description="加密后的密码")
     
-    # 关系定义：使用字符串引用避免同一文件内的依赖问题
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="submitter",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.submitted_by_id]"}
@@ -97,7 +84,6 @@ class Rule(RuleBase, table=True):
         description="创建时间"
     )
     
-    # 关系定义：使用字符串引用
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="rule",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.rule_id]"}
@@ -107,7 +93,6 @@ class Rule(RuleBase, table=True):
 class RuleSubmission(RuleSubmissionBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     
-    # 关系定义：使用字符串引用
     submitter: "User" = Relationship(
         back_populates="submissions",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.submitted_by_id]"}
@@ -116,15 +101,12 @@ class RuleSubmission(RuleSubmissionBase, table=True):
         back_populates="reviews",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.reviewed_by_id]"}
     )
-    rule: Optional["Rule"] = Relationship(
+    rule: Optional[Rule] = Relationship(
         back_populates="submissions",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.rule_id]"}
     )
 
 
-# ------------------------------
-# 数据传输模型（CRUD操作使用）
-# ------------------------------
 class RuleCreate(RuleBase):
     pass
 
@@ -159,7 +141,6 @@ class UserRead(UserBase):
 
 
 class RuleSubmissionCreate(RuleSubmissionBase):
-    # 创建时不需要ID和自动生成的字段
     id: Optional[int] = None
     status: Optional[str] = None
     submitted_at: Optional[datetime] = None
@@ -184,7 +165,6 @@ class RuleSubmissionUpdate(SQLModel):
 
 
 class RuleSubmissionRead(RuleSubmissionBase):
-    # 读取时需要包含ID和关联信息
     id: int
     submitted_by: UserRead
     reviewed_by: Optional[UserRead] = None
