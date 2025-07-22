@@ -1,25 +1,37 @@
-# 添加 jwt 相关依赖（python-jose 包含 jwt 功能）
-python-jose[cryptography]==3.3.0  # 已包含 jwt 实现，无需单独安装 jwt
+# 核心框架
 fastapi==0.109.0
 uvicorn[standard]==0.27.0
 sqlmodel==0.0.14
-psycopg2-binary==2.9.9
-httpx==0.27.0
-selectolax==0.3.12
-celery==5.3.6
-redis==5.0.0
+pydantic-settings==2.3.0
+
+# 数据库
+psycopg2-binary==2.9.9  # 云端PostgreSQL适配
+sqlalchemy==2.0.25
+
+# 安全
+python-jose[cryptography]==3.3.0  # JWT支持
+bcrypt==3.2.2
+passlib[bcrypt]==1.7.4
+
+# 工具
 python-dotenv==1.0.0
-pydantic-settings==2.3.0  # 确保包含此依赖
+httpx==0.27.0
+python-multipart==0.0.9
+python-magic==0.4.27
+python-dateutil==2.8.2
+
+# 数据处理
 pandas==2.2.1
 pyreadstat==1.2.7
 lxml==5.1.0
-python-multipart==0.0.9
-passlib[bcrypt]==1.7.4
-python-magic==0.4.27
-python-dateutil==2.8.2
-bcrypt==3.2.2  # 兼容版本
+selectolax==0.3.12
+
+# 任务队列
+celery==5.3.6
+redis==5.0.0
 
 # 测试依赖
 pytest==7.4.0
 pytest-asyncio==0.21.1
 pytest-cov==4.1.0
+fastapi-testclient==0.0.1
