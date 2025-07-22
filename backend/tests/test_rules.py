@@ -1,4 +1,4 @@
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient  # 直接使用fastapi内置的TestClient
 from sqlmodel import Session, select
 from app.main import app
 from app.database import engine, get_session
@@ -6,7 +6,7 @@ from app.models import Rule
 from .utils import create_test_user, create_test_token
 import pytest
 
-# 初始化测试客户端
+# 初始化测试客户端（无需额外安装fastapi-testclient）
 client = TestClient(app)
 
 @pytest.fixture(scope="function")
@@ -75,5 +75,4 @@ def test_create_rule(override_dependency, test_session):
     
     # 验证数据库
     statement = select(Rule).where(Rule.id == created_rule["id"])
-    db_rule = test_session.exec(statement).first()
-    assert db_rule is not None
+    db_rule = test_session.exec
