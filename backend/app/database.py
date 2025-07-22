@@ -26,6 +26,6 @@ def get_session() -> Generator[Session, None, None]:
 
 def create_db_and_tables():
     """创建数据库表结构（云端初始化使用）"""
-    # 显式导入模型确保被加载
-    import app.models
+    # 显式导入所有模型确保被加载
+    import app.models  # 关键：确保所有模型被SQLAlchemy识别
     SQLModel.metadata.create_all(engine)
