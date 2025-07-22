@@ -2,35 +2,38 @@ from sqlmodel import Session, select
 from jose import jwt
 from datetime import datetime, timedelta
 from app.models import User, UserCreate
-from app.database import engine  # 直接使用engine
+from app.config import settings
 
 def create_test_user(session: Session, email: str = "test@example.com", is_admin: bool = False) -> User:
+    """创建测试用户，用于测试用例"""
+    # 检查用户是否已存在
     statement = select(User).where(User.email == email)
     user = session.exec(statement).first()
     
     if not user:
+        # 创建新用户
         user_data = UserCreate(
             email=email,
             full_name="Test User",
             is_admin=is_admin,
-            password="testpassword123"
+            password="test-pass-123"  # 测试用密码
         )
         user = User.from_orm(user_data)
         session.add(user)
         session.commit()
         session.refresh(user)
+    
     return user
 
-def create_test_token(
-    user_id: int, 
-    secret_key: str = "test-secret-key", 
-    algorithm: str = "HS256",
-    expires_minutes: int = 30
-) -> str:
+def create_test_token(user_id: int, expires_minutes: int = 30) -> str:
+    """生成测试用JWT令牌，使用配置中的密钥"""
     to_encode = {"sub": str(user_id)}
     expire = datetime.utcnow() + timedelta(minutes=expires_minutes)
     to_encode.update({"exp": expire})
-    try:
-        return jwt.encode(to_encode, secret_key, algorithm=algorithm)
-    except Exception as e:
-        raise ValueError(f"令牌生成失败: {str(e)}") from e
+    
+    # 使用项目配置中的密钥和算法
+    return jwt.encode(
+        to_encode,
+        settings.SECRET_KEY,
+        algorithm=settings.ALGORITHM
+    )
