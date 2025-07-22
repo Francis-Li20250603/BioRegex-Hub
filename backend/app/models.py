@@ -1,27 +1,29 @@
 from sqlmodel import SQLModel, Field, Relationship, text
 from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
-# 替换 Pydantic 导入（关键修正）
 from pydantic import field_validator, model_validator, ConfigDict
 import re
 import bcrypt
 
 
+# 解决同一文件内的类型提示问题（无需导入自身，直接使用字符串引用）
 if TYPE_CHECKING:
-    from .models import RuleSubmission
+    # 移除从自身导入的语句，改用字符串类型提示
+    pass
 
 
+# ------------------------------
+# 基础模型（先定义基础模型，避免依赖问题）
+# ------------------------------
 class RuleBase(SQLModel):
-    # 替换旧的 class Config 为 ConfigDict（Pydantic v2 兼容）
     model_config = ConfigDict(extra='forbid')
     
     pattern: str = Field(index=True, min_length=1, description="正则表达式模式")
     description: str = Field(min_length=1, description="规则描述")
     data_type: str = Field(index=True, min_length=1, description="数据类型")
-    region: str = Field(index=True, min_length=1, description="适用区域")
-    reference_url: Optional[str] = Field(default=None, max_length=2000)
+    region: str = Field(index=True, min_length=1, description="适用区域（FDA, EMA, HIPAA等）")
+    reference_url: Optional[str] = Field(default=None, max_length=2000, description="参考链接")
 
-    # 替换 @validator 为 @field_validator（Pydantic v2 语法）
     @field_validator("pattern")
     def validate_pattern(cls, v):
         if not re.match(r'^[\w\s\d\^\$\*\+\?\.\(\)\[\]\{\}\|\\]+$', v):
@@ -32,11 +34,10 @@ class RuleBase(SQLModel):
 class UserBase(SQLModel):
     model_config = ConfigDict(extra='forbid')
     
-    email: str = Field(unique=True, index=True, max_length=255)
+    email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
-    is_admin: bool = Field(default=False)
+    is_admin: bool = Field(default=False, description="是否为管理员")
 
-    # 替换 @validator 为 @field_validator
     @field_validator('email')
     def validate_email(cls, v):
         pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
@@ -45,23 +46,31 @@ class UserBase(SQLModel):
         return v
 
 
-# 以下模型定义保持不变，但确保使用 model_config 替代 class Config
-class Rule(RuleBase, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: datetime = Field(
-        default_factory=datetime.utcnow,
-        sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")}
-    )
-    submissions: List["RuleSubmission"] = Relationship(
-        back_populates="rule",
-        sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.rule_id]"}
-    )
+class RuleSubmissionBase(SQLModel):
+    model_config = ConfigDict(extra='forbid')
+    
+    pattern: str = Field(description="正则表达式模式")
+    description: str = Field(description="规则描述")
+    data_type: str = Field(description="数据类型")
+    region: str = Field(description="适用区域")
+    reference_path: Optional[str] = Field(default=None)
+    status: str = Field(default="pending", description="提交状态")
+    submitted_at: datetime = Field(default_factory=datetime.utcnow)
+    submitted_by_id: int = Field(foreign_key="user.id")
+    reviewed_by_id: Optional[int] = Field(foreign_key="user.id", default=None)
+    rule_id: Optional[int] = Field(foreign_key="rule.id", default=None)
+    reviewed_at: Optional[datetime] = Field(default=None)
+    review_notes: Optional[str] = Field(default=None)
 
 
+# ------------------------------
+# 数据库表模型（核心模型）
+# ------------------------------
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    hashed_password: str = Field()
+    hashed_password: str = Field(description="加密后的密码")
     
+    # 关系定义：使用字符串引用避免同一文件内的依赖问题
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="submitter",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.submitted_by_id]"}
@@ -80,24 +89,25 @@ class User(UserBase, table=True):
         return bcrypt.checkpw(password.encode('utf-8'), self.hashed_password.encode('utf-8'))
 
 
-# 其余模型（RuleSubmission、各种Create/Read/Update类）保持不变，但确保添加 model_config
-class RuleSubmission(SQLModel, table=True):
-    model_config = ConfigDict(extra='forbid')
-    
+class Rule(RuleBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    pattern: str = Field()
-    description: str = Field()
-    data_type: str = Field()
-    region: str = Field()
-    reference_path: Optional[str] = Field(default=None)
-    status: str = Field(default="pending")
-    submitted_at: datetime = Field(default_factory=datetime.utcnow)
-    submitted_by_id: int = Field(foreign_key="user.id")
-    reviewed_by_id: Optional[int] = Field(foreign_key="user.id", default=None)
-    rule_id: Optional[int] = Field(foreign_key="rule.id", default=None)
-    reviewed_at: Optional[datetime] = Field(default=None)
-    review_notes: Optional[str] = Field(default=None)
+    created_at: datetime = Field(
+        default_factory=datetime.utcnow,
+        sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")},
+        description="创建时间"
+    )
     
+    # 关系定义：使用字符串引用
+    submissions: List["RuleSubmission"] = Relationship(
+        back_populates="rule",
+        sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.rule_id]"}
+    )
+
+
+class RuleSubmission(RuleSubmissionBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    
+    # 关系定义：使用字符串引用
     submitter: "User" = Relationship(
         back_populates="submissions",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.submitted_by_id]"}
@@ -106,18 +116,20 @@ class RuleSubmission(SQLModel, table=True):
         back_populates="reviews",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.reviewed_by_id]"}
     )
-    rule: Optional[Rule] = Relationship(
+    rule: Optional["Rule"] = Relationship(
         back_populates="submissions",
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.rule_id]"}
     )
 
 
+# ------------------------------
+# 数据传输模型（CRUD操作使用）
+# ------------------------------
 class RuleCreate(RuleBase):
-    model_config = ConfigDict(extra='forbid')
+    pass
 
 
 class RuleRead(RuleBase):
-    model_config = ConfigDict(extra='forbid')
     id: int
     created_at: datetime
 
@@ -132,7 +144,6 @@ class RuleUpdate(SQLModel):
 
 
 class UserCreate(UserBase):
-    model_config = ConfigDict(extra='forbid')
     password: str
 
     @model_validator(mode='before')
@@ -144,18 +155,18 @@ class UserCreate(UserBase):
 
 
 class UserRead(UserBase):
-    model_config = ConfigDict(extra='forbid')
     id: int
 
 
-class RuleSubmissionCreate(SQLModel):
-    model_config = ConfigDict(extra='forbid')
-    pattern: str
-    description: str
-    data_type: str
-    region: str
-    reference_path: Optional[str] = None
-    submitted_by_id: int
+class RuleSubmissionCreate(RuleSubmissionBase):
+    # 创建时不需要ID和自动生成的字段
+    id: Optional[int] = None
+    status: Optional[str] = None
+    submitted_at: Optional[datetime] = None
+    reviewed_by_id: Optional[int] = None
+    reviewed_at: Optional[datetime] = None
+    review_notes: Optional[str] = None
+    rule_id: Optional[int] = None
 
 
 class RuleSubmissionUpdate(SQLModel):
@@ -172,6 +183,13 @@ class RuleSubmissionUpdate(SQLModel):
     rule_id: Optional[int] = None
 
 
+class RuleSubmissionRead(RuleSubmissionBase):
+    # 读取时需要包含ID和关联信息
+    id: int
+    submitted_by: UserRead
+    reviewed_by: Optional[UserRead] = None
+
+
 class Token(SQLModel):
     model_config = ConfigDict(extra='forbid')
     access_token: str
@@ -181,3 +199,4 @@ class Token(SQLModel):
 class TokenData(SQLModel):
     model_config = ConfigDict(extra='forbid')
     email: Optional[str] = None
+
