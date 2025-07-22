@@ -8,7 +8,7 @@ import bcrypt
 
 # 解决循环导入问题
 if TYPE_CHECKING:
-    from .user import User  # 调整导入路径
+    from .models import RuleSubmission  # 调整为正确的导入路径
 
 
 class RuleBase(SQLModel):
@@ -33,10 +33,12 @@ class Rule(RuleBase, table=True):
         sa_column_kwargs={"server_default": text("CURRENT_TIMESTAMP")},
         description="创建时间"
     )
-    # 与RuleSubmission的关系
+    # 使用 sa_relationship_kwargs 传递原生SQLAlchemy参数
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="rule",
-        foreign_keys="[RuleSubmission.rule_id]"  # 明确外键
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.rule_id]"
+        }
     )
 
 
@@ -58,14 +60,18 @@ class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     hashed_password: str = Field(description="加密后的密码")
     
-    # 明确两个关系对应的外键（关键修正）
+    # 明确两个关系对应的外键（使用SQLAlchemy原生参数）
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="submitter",
-        foreign_keys="[RuleSubmission.submitted_by_id]"  # 指定使用submitted_by_id外键
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.submitted_by_id]"
+        }
     )
     reviews: List["RuleSubmission"] = Relationship(
         back_populates="reviewer",
-        foreign_keys="[RuleSubmission.reviewed_by_id]"  # 指定使用reviewed_by_id外键
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.reviewed_by_id]"
+        }
     )
 
 
@@ -97,22 +103,27 @@ class RuleSubmission(SQLModel, table=True):
     reviewed_at: Optional[datetime] = Field(default=None)
     review_notes: Optional[str] = Field(default=None)
     
-    # 明确关系对应的外键（关键修正）
+    # 明确关系对应的外键
     submitter: "User" = Relationship(
         back_populates="submissions",
-        foreign_keys=[submitted_by_id]
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.submitted_by_id]"
+        }
     )
     reviewer: Optional["User"] = Relationship(
         back_populates="reviews",
-        foreign_keys=[reviewed_by_id]
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.reviewed_by_id]"
+        }
     )
     rule: Optional[Rule] = Relationship(
         back_populates="submissions",
-        foreign_keys=[rule_id]
+        sa_relationship_kwargs={
+            "foreign_keys": "[RuleSubmission.rule_id]"
+        }
     )
 
 
-# 以下为数据模型的创建、读取、更新类（保持不变）
 class RuleCreate(RuleBase):
     pass
 
@@ -186,3 +197,4 @@ class Token(SQLModel):
 
 class TokenData(SQLModel):
     email: Optional[str] = None
+    
