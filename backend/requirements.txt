@@ -30,8 +30,7 @@ selectolax==0.3.12
 celery==5.3.6
 redis==5.0.0
 
-# 测试依赖
+# 测试依赖（删除fastapi-testclient，使用fastapi自带的TestClient）
 pytest==7.4.0
 pytest-asyncio==0.21.1
 pytest-cov==4.1.0
-fastapi-testclient==0.0.1
