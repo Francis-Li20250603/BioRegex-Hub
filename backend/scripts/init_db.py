@@ -1,9 +1,16 @@
 # backend/scripts/init_db.py
 
-from sqlmodel import Session, SQLModel, create_engine
+import sys
+from pathlib import Path
+
+# 将项目根目录添加到Python路径
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 from app.models import User, UserCreate
 from app.security import get_password_hash
 from app.db import get_db_engine
+from sqlmodel import Session, SQLModel, create_engine
+
 
 def init_db():
     engine = get_db_engine()
