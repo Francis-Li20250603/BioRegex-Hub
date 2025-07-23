@@ -8,12 +8,12 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from app.models import User, UserCreate
 from app.security import get_password_hash
-from app.database import get_db_engine
+from app.database import get_engine
 from sqlmodel import Session, SQLModel, create_engine
 
 
 def init_db():
-    engine = get_db_engine()
+    engine = get_engine()
     
     # 创建所有表
     SQLModel.metadata.create_all(engine)
