@@ -127,8 +127,11 @@ class RuleUpdate(SQLModel):
     reference_url: Optional[str] = None
 
 
+# app/models.py
+
 class UserCreate(UserBase):
     password: str  # 仅用于创建时接收原始密码，不存储到数据库
+    is_admin: Optional[bool] = False  # 添加 is_admin 字段，可选
 
     @model_validator(mode='after')
     def hash_password(self):
