@@ -16,8 +16,8 @@ def get_engine():
     """提供引擎访问接口，供测试和迁移使用"""
     return engine
 
-def get_session() -> Generator[Session, None, None]:
-    """数据库会话依赖，自动管理连接生命周期"""
+def get_db() -> Generator[Session, None, None]:
+    """数据库会话依赖，自动管理连接生命周期（关键修复：明确命名为get_db）"""
     with Session(engine) as session:
         try:
             yield session
