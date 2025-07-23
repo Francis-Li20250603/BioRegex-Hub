@@ -76,7 +76,7 @@ jobs:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
           ADMIN_PASSWORD: ${{ secrets.TEST_ADMIN_PASSWORD }}
-        run: python scripts/init_db.py
+        run: python -m scripts.init_db
 
       - name: 运行测试
         working-directory: backend
