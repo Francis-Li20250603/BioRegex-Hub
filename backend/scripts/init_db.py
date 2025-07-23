@@ -8,7 +8,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from app.models import User, UserCreate
 from app.security import get_password_hash
-from app.db import get_db_engine
+from app.database import get_db_engine
 from sqlmodel import Session, SQLModel, create_engine
 
 
