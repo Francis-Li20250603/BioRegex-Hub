@@ -133,15 +133,7 @@ class UserCreate(UserBase):
     password: str  # 仅用于创建时接收原始密码，不存储到数据库
     is_admin: Optional[bool] = False  # 添加 is_admin 字段，可选
 
-    @model_validator(mode='after')
-    def hash_password(self):
-        """自动哈希密码，并删除原始密码字段（避免传递到User模型）"""
-        if 'password' in self.model_fields_set:
-            # 生成哈希并存储到临时变量
-            self.hashed_password = User.create_password_hash(self.password)
-            # 删除原始密码（防止作为额外字段传入）
-            del self.password
-        return self
+
 
 
 class UserRead(UserBase):
