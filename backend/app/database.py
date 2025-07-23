@@ -12,20 +12,22 @@ engine = create_engine(
     } if settings.DATABASE_URL.startswith("sqlite") else {}
 )
 
+
 def get_engine():
     """提供引擎访问接口，供测试和迁移使用"""
     return engine
 
+
 def get_db() -> Generator[Session, None, None]:
-    """数据库会话依赖，自动管理连接生命周期（关键修复：明确命名为get_db）"""
+    """数据库会话依赖，自动管理连接生命周期（修复命名错误）"""
     with Session(engine) as session:
         try:
             yield session
         finally:
             session.close()  # 确保会话正确关闭，释放资源
 
+
 def create_db_and_tables():
-    """创建数据库表结构（云端初始化使用）"""
-    # 显式导入所有模型确保被加载
-    import app.models  # 关键：确保所有模型被SQLAlchemy识别
+    """创建数据库表结构（显式导入所有模型）"""
+    import app.models  # 强制加载所有模型，确保表结构正确生成
     SQLModel.metadata.create_all(engine)
