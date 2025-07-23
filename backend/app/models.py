@@ -56,7 +56,7 @@ class RuleSubmissionBase(SQLModel):
 
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    hashed_password: str = Field(description="加密后的密码")
+    hashed_password: str = Field(description="加密后的密码")  # 数据库存储哈希密码
     
     submissions: List["RuleSubmission"] = Relationship(
         back_populates="submitter",
@@ -69,10 +69,12 @@ class User(UserBase, table=True):
 
     @classmethod
     def create_password_hash(cls, password: str) -> str:
+        """生成密码哈希（供UserCreate调用）"""
         salt = bcrypt.gensalt()
         return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
 
     def verify_password(self, password: str) -> bool:
+        """验证密码"""
         return bcrypt.checkpw(password.encode('utf-8'), self.hashed_password.encode('utf-8'))
 
 
@@ -126,14 +128,17 @@ class RuleUpdate(SQLModel):
 
 
 class UserCreate(UserBase):
-    password: str
+    password: str  # 仅用于创建时接收原始密码，不存储到数据库
 
-    @model_validator(mode='before')
-    def hash_password(cls, values):
-        if 'password' in values:
-            values['hashed_password'] = User.create_password_hash(values['password'])
-            del values['password']
-        return values
+    @model_validator(mode='after')
+    def hash_password(self):
+        """自动哈希密码，并删除原始密码字段（避免传递到User模型）"""
+        if 'password' in self.model_fields_set:
+            # 生成哈希并存储到临时变量
+            self.hashed_password = User.create_password_hash(self.password)
+            # 删除原始密码（防止作为额外字段传入）
+            del self.password
+        return self
 
 
 class UserRead(UserBase):
