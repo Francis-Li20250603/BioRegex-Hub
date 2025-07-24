@@ -105,4 +105,4 @@ jobs:
         with:
           context: backend
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/bioregex-hub-backend:latest
+          tags: ghcr.io/${{ github.repository_owner | lower }}/bioregex-hub-backend:latest
