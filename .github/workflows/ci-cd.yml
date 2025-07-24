@@ -89,6 +89,10 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+  # 添加权限配置
+    permissions:
+      packages: write  # 允许推送包
+      contents: read   # 允许拉取代码（已有的 checkout 步骤需要）
     steps:
       - name: 拉取代码
         uses: actions/checkout@v4
