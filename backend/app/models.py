@@ -15,9 +15,11 @@ class RuleBase(SQLModel):
     region: str = Field(index=True, min_length=1, description="适用区域（FDA, EMA, HIPAA等）")
     reference_url: Optional[str] = Field(default=None, max_length=2000, description="参考链接")
 
+
     @field_validator("pattern")
     def validate_pattern(cls, v):
-        if not re.match(r'^[\w\s\d\^\$\*\+\?\.\(\)\[\]\{\}\|\\]+$', v):
+        # 放宽正则表达式验证规则，允许更多合法的正则表达式元字符
+        if not re.match(r'^[\w\s\d\^\$\*\+\?\.\(\)\[\]\{\}\|\\\-]+$', v):
             raise ValueError("无效的正则表达式模式")
         return v
 
@@ -28,6 +30,7 @@ class UserBase(SQLModel):
     email: str = Field(unique=True, index=True, description="用户邮箱", max_length=255)
     full_name: str = Field(description="用户全名")
     is_admin: bool = Field(default=False, description="是否为管理员")
+
 
     @field_validator('email')
     def validate_email(cls, v):
@@ -67,11 +70,13 @@ class User(UserBase, table=True):
         sa_relationship_kwargs={"foreign_keys": "[RuleSubmission.reviewed_by_id]"}
     )
 
+
     @classmethod
     def create_password_hash(cls, password: str) -> str:
         """生成密码哈希（供UserCreate调用）"""
         salt = bcrypt.gensalt()
         return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+
 
     def verify_password(self, password: str) -> bool:
         """验证密码"""
@@ -129,11 +134,10 @@ class RuleUpdate(SQLModel):
 
 # app/models.py
 
+
 class UserCreate(UserBase):
     password: str  # 仅用于创建时接收原始密码，不存储到数据库
     is_admin: Optional[bool] = False  # 添加 is_admin 字段，可选
-
-
 
 
 class UserRead(UserBase):
