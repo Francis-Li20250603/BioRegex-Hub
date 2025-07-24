@@ -5,7 +5,7 @@
 
 
 ## 1. Project Overview  
-BioRegex-Hub, co-developed by [Your Name] and [Collaborator's Name], is a specialized tool for biostatistics research. It standardizes regex-based validation of biological data (e.g., FDA/EMA regulatory documents, genetic sequence identifiers) through a structured rule management system. This test report validates the core functionality, data processing efficiency, and deployment reliability of the system based on the execution logs and workflows detailed in *最终工作流文件+工作流输出.docx*.  
+BioRegex-Hub, co-developed by Francis-Li and MondscheinDativ, is a specialized tool for biostatistics research. It standardizes regex-based validation of biological data (e.g., FDA/EMA regulatory documents, genetic sequence identifiers) through a structured rule management system. This test report validates the core functionality, data processing efficiency, and deployment reliability of the system based on the execution logs and workflows detailed in both ".github/workflow/ci-cd.yml" and "ci-cd" in Actions.  
 
 
 ## 2. Testing Environment (Based on Workflow Configurations)  
