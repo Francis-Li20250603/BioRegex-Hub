@@ -19,6 +19,22 @@
     {
       "id": "regex:rule:1",
       "label": "\\b(Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure|Unauthorized\\ Access/Disclosure|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure)\\b"
+    },
+    {
+      "id": "rule:2",
+      "label": "Hospital Rule"
+    },
+    {
+      "id": "dtype:hospital_name",
+      "label": "Hospital Name"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
+    },
+    {
+      "id": "regex:rule:2",
+      "label": "\\b(SOUTHEAST\\ HEALTH\\ MEDICAL\\ CENTER|MARSHALL\\ MEDICAL\\ CENTERS|NORTH\\ ALABAMA\\ MEDICAL\\ CENTER|MIZELL\\ MEMORIAL\\ HOSPITAL|CRENSHAW\\ COMMUNITY\\ HOSPITAL|ST\\.\\ VINCENT'S\\ EAST|DEKALB\\ REGIONAL\\ MEDICAL\\ CENTER|SHELBY\\ BAPTIST\\ MEDICAL\\ CENTER|CALLAHAN\\ EYE\\ HOSPITAL|HELEN\\ KELLER\\ HOSPITAL|DALE\\ MEDICAL\\ CENTER|FLOYD\\ CHEROKEE\\ MEDICAL\\ CENTER|BAPTIST\\ MEDICAL\\ CENTER\\ SOUTH|JACKSON\\ HOSPITAL\\ \\&\\ CLINIC\\ INC|THE\\ EAST\\ ALABAMA\\ HEALTHCARE\\ AUTHORITY|UNIVERSITY\\ OF\\ ALABAMA\\ HOSPITAL|COMMUNITY\\ HOSPITAL\\ INC|CULLMAN\\ REGIONAL\\ MEDICAL\\ CENTER|ANDALUSIA\\ HEALTH|HUNTSVILLE\\ HOSPITAL)\\b"
     }
   ],
   "edges": [
@@ -35,6 +51,21 @@
     {
       "source": "rule:1",
       "target": "regex:rule:1",
+      "relation": "USES_REGEX"
+    },
+    {
+      "source": "rule:2",
+      "target": "dtype:hospital_name",
+      "relation": "TYPED_AS"
+    },
+    {
+      "source": "rule:2",
+      "target": "region:CMS",
+      "relation": "BELONGS_TO"
+    },
+    {
+      "source": "rule:2",
+      "target": "regex:rule:2",
       "relation": "USES_REGEX"
     }
   ]

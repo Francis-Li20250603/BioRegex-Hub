@@ -4,3 +4,7 @@ rule:1,HIPAA Breach Rule
 dtype:breach_type,Breach Type
 region:HIPAA,HIPAA
 regex:rule:1,\b(Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure|Unauthorized\ Access/Disclosure|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure)\b
+rule:2,Hospital Rule
+dtype:hospital_name,Hospital Name
+region:CMS,CMS
+regex:rule:2,\b(SOUTHEAST\ HEALTH\ MEDICAL\ CENTER|MARSHALL\ MEDICAL\ CENTERS|NORTH\ ALABAMA\ MEDICAL\ CENTER|MIZELL\ MEMORIAL\ HOSPITAL|CRENSHAW\ COMMUNITY\ HOSPITAL|ST\.\ VINCENT'S\ EAST|DEKALB\ REGIONAL\ MEDICAL\ CENTER|SHELBY\ BAPTIST\ MEDICAL\ CENTER|CALLAHAN\ EYE\ HOSPITAL|HELEN\ KELLER\ HOSPITAL|DALE\ MEDICAL\ CENTER|FLOYD\ CHEROKEE\ MEDICAL\ CENTER|BAPTIST\ MEDICAL\ CENTER\ SOUTH|JACKSON\ HOSPITAL\ \&\ CLINIC\ INC|THE\ EAST\ ALABAMA\ HEALTHCARE\ AUTHORITY|UNIVERSITY\ OF\ ALABAMA\ HOSPITAL|COMMUNITY\ HOSPITAL\ INC|CULLMAN\ REGIONAL\ MEDICAL\ CENTER|ANDALUSIA\ HEALTH|HUNTSVILLE\ HOSPITAL)\b
