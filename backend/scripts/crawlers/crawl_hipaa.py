@@ -1,21 +1,21 @@
-import requests, csv, os
-from bs4 import BeautifulSoup
-
-OUT = os.path.join("data", "hipaa_breaches.csv")
-os.makedirs("data", exist_ok=True)
+# backend/scripts/crawlers/crawl_hipaa.py
+import requests
+import os
 
 def crawl_hipaa():
-    url = "https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf"
-    r = requests.get(url)
+    url = "https://ocrportal.hhs.gov/ocr/breach/download?type=csv"
+    os.makedirs("backend/data", exist_ok=True)
+    out_path = "backend/data/hipaa_breaches.csv"
+
+    print(f"[HIPAA] Downloading HIPAA breaches dataset from {url}")
+    r = requests.get(url, timeout=60)
     r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
 
-    # Placeholder: HIPAA portal is JS-heavy; real scrape would need Selenium.
-    # For demo, just output the HTML snapshot.
-    with open(OUT, "w", newline="", encoding="utf-8") as f:
-        f.write(r.text)
+    with open(out_path, "wb") as f:
+        f.write(r.content)
 
-    print(f"[HIPAA] Snapshot saved to {OUT}")
+    print(f"[HIPAA] Saved dataset to {out_path}")
 
 if __name__ == "__main__":
     crawl_hipaa()
+
