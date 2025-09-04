@@ -1,6 +1,10 @@
 {
   "nodes": [
     {
+      "id": "DataSource",
+      "label": "Regulatory Data"
+    },
+    {
       "id": "fda_drugs",
       "label": "fda_drugs.csv"
     },
@@ -15,10 +19,6 @@
     {
       "id": "ema_human_medicines",
       "label": "ema_human_medicines.xlsx"
-    },
-    {
-      "id": "DataSource",
-      "label": "Regulatory Data"
     }
   ],
   "edges": [
