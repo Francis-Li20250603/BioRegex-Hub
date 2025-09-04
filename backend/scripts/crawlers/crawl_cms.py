@@ -11,6 +11,10 @@ def crawl_cms():
     r = requests.get(url, timeout=60)
     r.raise_for_status()
 
+    ct = r.headers.get("Content-Type", "")
+    if "text/csv" not in ct and "application/csv" not in ct:
+        raise RuntimeError(f"[CMS] Unexpected content type: {ct}")
+
     with open(out_path, "wb") as f:
         f.write(r.content)
 
@@ -18,4 +22,5 @@ def crawl_cms():
 
 if __name__ == "__main__":
     crawl_cms()
+
 
