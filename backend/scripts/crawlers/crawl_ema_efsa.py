@@ -12,7 +12,7 @@ def crawl_ema():
     r = requests.get(landing)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
-    link = soup.find("a", href=lambda href: href and href.endswith("xlsx"))
+    link = soup.find("a", href=lambda href: href and href.endswith(".xlsx"))
     if not link:
         raise ValueError("Could not find EMA download link on landing page")
     url = urllib.parse.urljoin(landing, link["href"])
@@ -23,6 +23,7 @@ def crawl_ema():
     print(f"[EMA] Saved medicines dataset from {url} to {EMA_OUT}")
 
 def crawl_efsa():
+    # Correct stable link on Zenodo
     url = "https://zenodo.org/record/4274656/files/OpenFoodTox_v2.xlsx?download=1"
     r = requests.get(url)
     r.raise_for_status()
@@ -33,5 +34,3 @@ def crawl_efsa():
 if __name__ == "__main__":
     crawl_ema()
     crawl_efsa()
-
-
