@@ -34,3 +34,7 @@ redis==5.0.0
 pytest==7.4.0
 pytest-asyncio==0.21.1
 pytest-cov==4.1.0
+
+#爬取
+requests>=2.31.0
+beautifulsoup4>=4.12.0
