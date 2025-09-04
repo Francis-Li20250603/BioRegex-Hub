@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # ✅ allow committing changes back to repo
     services:
       postgres:
         image: postgres:15-alpine
@@ -124,8 +126,16 @@ jobs:
           fi
           echo "✅ 知识图谱文件生成成功"
           ls -lh backend/bioregex_kg
-          head -n 20 backend/bioregex_kg/nodes.csv || true
-          head -n 20 backend/bioregex_kg/edges.csv || true
+
+      # === 自动提交知识图谱到仓库 ===
+      - name: 提交知识图谱文件到仓库
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update knowledge graph"
+          file_pattern: backend/bioregex_kg/*
+          branch: main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-images:
     needs: build-and-test
