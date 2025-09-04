@@ -1,3416 +1,5056 @@
 {
   "nodes": [
     {
-      "id": "DataSource",
-      "label": "Regulatory Data"
-    },
-    {
-      "id": "region:FDA",
-      "label": "FDA"
-    },
-    {
       "id": "fda_rule:1",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 1"
     },
     {
       "id": "regex:fda_rule:1",
       "label": "\\bSILICEA\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:2",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 2"
     },
     {
       "id": "regex:fda_rule:2",
       "label": "\\bBetadine\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:3",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 3"
     },
     {
       "id": "regex:fda_rule:3",
       "label": "\\bNaproxen\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:4",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 4"
     },
     {
       "id": "regex:fda_rule:4",
       "label": "\\bMoisturizing Antibacterial\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:5",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 5"
     },
     {
       "id": "regex:fda_rule:5",
       "label": "\\bQuick Action\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:6",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 6"
     },
     {
       "id": "regex:fda_rule:6",
       "label": "\\bCuprum aceticum Nicotiana\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:7",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 7"
     },
     {
       "id": "regex:fda_rule:7",
       "label": "\\bMekinist\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:8",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 8"
     },
     {
       "id": "regex:fda_rule:8",
       "label": "\\bGlimepiride\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:9",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 9"
     },
     {
       "id": "regex:fda_rule:9",
       "label": "\\bMethocarbamol\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:10",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 10"
     },
     {
       "id": "regex:fda_rule:10",
       "label": "\\banti itch\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:11",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 11"
     },
     {
       "id": "regex:fda_rule:11",
       "label": "\\bNP Thyroid 120\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:12",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 12"
     },
     {
       "id": "regex:fda_rule:12",
       "label": "\\bVarenicline\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:13",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 13"
     },
     {
       "id": "regex:fda_rule:13",
       "label": "\\bRescue Sleep\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:14",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 14"
     },
     {
       "id": "regex:fda_rule:14",
       "label": "\\bPain Reliever Extra Strength\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:15",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 15"
     },
     {
       "id": "regex:fda_rule:15",
       "label": "\\bOASIS Tears Lubricant Eye\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:16",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 16"
     },
     {
       "id": "regex:fda_rule:16",
       "label": "\\bThera Plus Maximum Strength Feminine Anti-Itch\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:17",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 17"
     },
     {
       "id": "regex:fda_rule:17",
       "label": "\\bSure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:18",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 18"
     },
     {
       "id": "regex:fda_rule:18",
       "label": "\\bBetamethasone Dipropionate\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:19",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 19"
     },
     {
       "id": "regex:fda_rule:19",
       "label": "\\bLights Povindone Iodine Scrub\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:20",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 20"
     },
     {
       "id": "regex:fda_rule:20",
       "label": "\\bCalcium Acetate\\b"
     },
     {
+      "id": "region:FDA",
+      "label": "FDA"
+    },
+    {
       "id": "fda_rule:21",
-      "label": "FDA Drug Rule"
+      "label": "FDA Drug Rule 21"
     },
     {
       "id": "regex:fda_rule:21",
       "label": "\\bENTRESTO\\b"
     },
     {
-      "id": "region:EMA",
-      "label": "EMA"
+      "id": "region:FDA",
+      "label": "FDA"
     },
     {
-      "id": "ema_rule:1",
-      "label": "EMA Medicine Rule"
+      "id": "cms_rule:1",
+      "label": "CMS Hospital Rule 1"
     },
     {
-      "id": "regex:ema_rule:1",
-      "label": "\\bCategory\\b"
-    },
-    {
-      "id": "ema_rule:2",
-      "label": "EMA Medicine Rule"
-    },
-    {
-      "id": "regex:ema_rule:2",
-      "label": "\\bVeterinary\\b"
-    },
-    {
-      "id": "ema_rule:3",
-      "label": "EMA Medicine Rule"
-    },
-    {
-      "id": "regex:ema_rule:3",
-      "label": "\\bHuman\\b"
+      "id": "regex:cms_rule:1",
+      "label": "\\bSOUTHEAST HEALTH MEDICAL CENTER\\b"
     },
     {
       "id": "region:CMS",
       "label": "CMS"
     },
     {
-      "id": "cms_rule:1",
-      "label": "CMS Hospital Rule"
-    },
-    {
-      "id": "regex:cms_rule:1",
-      "label": "\\b010001\\b"
-    },
-    {
       "id": "cms_rule:2",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 2"
     },
     {
       "id": "regex:cms_rule:2",
-      "label": "\\b010005\\b"
+      "label": "\\bMARSHALL MEDICAL CENTERS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:3",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 3"
     },
     {
       "id": "regex:cms_rule:3",
-      "label": "\\b010006\\b"
+      "label": "\\bNORTH ALABAMA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:4",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 4"
     },
     {
       "id": "regex:cms_rule:4",
-      "label": "\\b010007\\b"
+      "label": "\\bMIZELL MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:5",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 5"
     },
     {
       "id": "regex:cms_rule:5",
-      "label": "\\b010008\\b"
+      "label": "\\bCRENSHAW COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:6",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 6"
     },
     {
       "id": "regex:cms_rule:6",
-      "label": "\\b010011\\b"
+      "label": "\\bST. VINCENT'S EAST\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:7",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 7"
     },
     {
       "id": "regex:cms_rule:7",
-      "label": "\\b010012\\b"
+      "label": "\\bDEKALB REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:8",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 8"
     },
     {
       "id": "regex:cms_rule:8",
-      "label": "\\b010016\\b"
+      "label": "\\bSHELBY BAPTIST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:9",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 9"
     },
     {
       "id": "regex:cms_rule:9",
-      "label": "\\b010018\\b"
+      "label": "\\bCALLAHAN EYE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:10",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 10"
     },
     {
       "id": "regex:cms_rule:10",
-      "label": "\\b010019\\b"
+      "label": "\\bHELEN KELLER HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:11",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 11"
     },
     {
       "id": "regex:cms_rule:11",
-      "label": "\\b010021\\b"
+      "label": "\\bDALE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:12",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 12"
     },
     {
       "id": "regex:cms_rule:12",
-      "label": "\\b010022\\b"
+      "label": "\\bFLOYD CHEROKEE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:13",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 13"
     },
     {
       "id": "regex:cms_rule:13",
-      "label": "\\b010023\\b"
+      "label": "\\bBAPTIST MEDICAL CENTER SOUTH\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:14",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 14"
     },
     {
       "id": "regex:cms_rule:14",
-      "label": "\\b010024\\b"
+      "label": "\\bJACKSON HOSPITAL & CLINIC INC\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:15",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 15"
     },
     {
       "id": "regex:cms_rule:15",
-      "label": "\\b010029\\b"
+      "label": "\\bTHE EAST ALABAMA HEALTHCARE AUTHORITY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:16",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 16"
     },
     {
       "id": "regex:cms_rule:16",
-      "label": "\\b010033\\b"
+      "label": "\\bUNIVERSITY OF ALABAMA HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:17",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 17"
     },
     {
       "id": "regex:cms_rule:17",
-      "label": "\\b010034\\b"
+      "label": "\\bCOMMUNITY HOSPITAL INC\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:18",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 18"
     },
     {
       "id": "regex:cms_rule:18",
-      "label": "\\b010035\\b"
+      "label": "\\bCULLMAN REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:19",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 19"
     },
     {
       "id": "regex:cms_rule:19",
-      "label": "\\b010036\\b"
+      "label": "\\bANDALUSIA HEALTH\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:20",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 20"
     },
     {
       "id": "regex:cms_rule:20",
-      "label": "\\b010039\\b"
+      "label": "\\bHUNTSVILLE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:21",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 21"
     },
     {
       "id": "regex:cms_rule:21",
-      "label": "\\b010040\\b"
+      "label": "\\bGADSDEN REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:22",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 22"
     },
     {
       "id": "regex:cms_rule:22",
-      "label": "\\b010044\\b"
+      "label": "\\bMARION REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:23",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 23"
     },
     {
       "id": "regex:cms_rule:23",
-      "label": "\\b010045\\b"
+      "label": "\\bFAYETTE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:24",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 24"
     },
     {
       "id": "regex:cms_rule:24",
-      "label": "\\b010046\\b"
+      "label": "\\bRIVERVIEW REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:25",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 25"
     },
     {
       "id": "regex:cms_rule:25",
-      "label": "\\b010049\\b"
+      "label": "\\bMEDICAL CENTER ENTERPRISE\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:26",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 26"
     },
     {
       "id": "regex:cms_rule:26",
-      "label": "\\b010051\\b"
+      "label": "\\bGREENE COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:27",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 27"
     },
     {
       "id": "regex:cms_rule:27",
-      "label": "\\b010052\\b"
+      "label": "\\bLAKE MARTIN COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:28",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 28"
     },
     {
       "id": "regex:cms_rule:28",
-      "label": "\\b010055\\b"
+      "label": "\\bFLOWERS HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:29",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 29"
     },
     {
       "id": "regex:cms_rule:29",
-      "label": "\\b010056\\b"
+      "label": "\\bST VINCENT'S BIRMINGHAM\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:30",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 30"
     },
     {
       "id": "regex:cms_rule:30",
-      "label": "\\b010058\\b"
+      "label": "\\bBIBB MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:31",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 31"
     },
     {
       "id": "regex:cms_rule:31",
-      "label": "\\b010059\\b"
+      "label": "\\bLAWRENCE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:32",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 32"
     },
     {
       "id": "regex:cms_rule:32",
-      "label": "\\b010061\\b"
+      "label": "\\bHIGHLANDS MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:33",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 33"
     },
     {
       "id": "regex:cms_rule:33",
-      "label": "\\b010062\\b"
+      "label": "\\bWIREGRASS MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:34",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 34"
     },
     {
       "id": "regex:cms_rule:34",
-      "label": "\\b010065\\b"
+      "label": "\\bRUSSELL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:35",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 35"
     },
     {
       "id": "regex:cms_rule:35",
-      "label": "\\b010073\\b"
+      "label": "\\bCLAY COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:36",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 36"
     },
     {
       "id": "regex:cms_rule:36",
-      "label": "\\b010078\\b"
+      "label": "\\bNORTHEAST ALABAMA REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:37",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 37"
     },
     {
       "id": "regex:cms_rule:37",
-      "label": "\\b010079\\b"
+      "label": "\\bATHENS LIMESTONE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:38",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 38"
     },
     {
       "id": "regex:cms_rule:38",
-      "label": "\\b010083\\b"
+      "label": "\\bBALDWIN HEALTH\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:39",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 39"
     },
     {
       "id": "regex:cms_rule:39",
-      "label": "\\b010085\\b"
+      "label": "\\bDECATUR MORGAN HOSPITAL - DECATUR CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:40",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 40"
     },
     {
       "id": "regex:cms_rule:40",
-      "label": "\\b010086\\b"
+      "label": "\\bNORTHWEST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:41",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 41"
     },
     {
       "id": "regex:cms_rule:41",
-      "label": "\\b010087\\b"
+      "label": "\\bUSA HEALTH UNIVERSITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:42",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 42"
     },
     {
       "id": "regex:cms_rule:42",
-      "label": "\\b010089\\b"
+      "label": "\\bWALKER BAPTIST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:43",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 43"
     },
     {
       "id": "regex:cms_rule:43",
-      "label": "\\b010090\\b"
+      "label": "\\bUSA HEALTH HCA PROVIDENCE HOSPITAL, LLC\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:44",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 44"
     },
     {
       "id": "regex:cms_rule:44",
-      "label": "\\b010091\\b"
+      "label": "\\bGROVE HILL MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:45",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 45"
     },
     {
       "id": "regex:cms_rule:45",
-      "label": "\\b010092\\b"
+      "label": "\\bDCH REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:46",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 46"
     },
     {
       "id": "regex:cms_rule:46",
-      "label": "\\b010095\\b"
+      "label": "\\bHALE COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:47",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 47"
     },
     {
       "id": "regex:cms_rule:47",
-      "label": "\\b010097\\b"
+      "label": "\\bELMORE COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:48",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 48"
     },
     {
       "id": "regex:cms_rule:48",
-      "label": "\\b010099\\b"
+      "label": "\\bD W MCMILLAN MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:49",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 49"
     },
     {
       "id": "regex:cms_rule:49",
-      "label": "\\b010100\\b"
+      "label": "\\bTHOMAS HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:50",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 50"
     },
     {
       "id": "regex:cms_rule:50",
-      "label": "\\b010101\\b"
+      "label": "\\bCITIZENS BAPTIST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:51",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 51"
     },
     {
       "id": "regex:cms_rule:51",
-      "label": "\\b010102\\b"
+      "label": "\\bJ PAUL JONES HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:52",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 52"
     },
     {
       "id": "regex:cms_rule:52",
-      "label": "\\b010103\\b"
+      "label": "\\bPRINCETON BAPTIST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:53",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 53"
     },
     {
       "id": "regex:cms_rule:53",
-      "label": "\\b010104\\b"
+      "label": "\\bGRANDVIEW MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:54",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 54"
     },
     {
       "id": "regex:cms_rule:54",
-      "label": "\\b010108\\b"
+      "label": "\\bPRATTVILLE BAPTIST HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:55",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 55"
     },
     {
       "id": "regex:cms_rule:55",
-      "label": "\\b010110\\b"
+      "label": "\\bBULLOCK COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:56",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 56"
     },
     {
       "id": "regex:cms_rule:56",
-      "label": "\\b010112\\b"
+      "label": "\\bWHITFIELD REGIONAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:57",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 57"
     },
     {
       "id": "regex:cms_rule:57",
-      "label": "\\b010113\\b"
+      "label": "\\bMOBILE INFIRMARY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:58",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 58"
     },
     {
       "id": "regex:cms_rule:58",
-      "label": "\\b010114\\b"
+      "label": "\\bMEDICAL WEST, AN AFFILIATE OF UAB HEALTH SYSTEM\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:59",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 59"
     },
     {
       "id": "regex:cms_rule:59",
-      "label": "\\b010118\\b"
+      "label": "\\bVAUGHAN REGIONAL MEDICAL CENTER PARKWAY CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:60",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 60"
     },
     {
       "id": "regex:cms_rule:60",
-      "label": "\\b010120\\b"
+      "label": "\\bMONROE COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:61",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 61"
     },
     {
       "id": "regex:cms_rule:61",
-      "label": "\\b010125\\b"
+      "label": "\\bLAKELAND COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:62",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 62"
     },
     {
       "id": "regex:cms_rule:62",
-      "label": "\\b010126\\b"
+      "label": "\\bTROY REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:63",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 63"
     },
     {
       "id": "regex:cms_rule:63",
-      "label": "\\b010128\\b"
+      "label": "\\bJACKSON MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:64",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 64"
     },
     {
       "id": "regex:cms_rule:64",
-      "label": "\\b010129\\b"
+      "label": "\\bNORTH BALDWIN INFIRMARY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:65",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 65"
     },
     {
       "id": "regex:cms_rule:65",
-      "label": "\\b010130\\b"
+      "label": "\\bST VINCENT'S ST CLAIR\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:66",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 66"
     },
     {
       "id": "regex:cms_rule:66",
-      "label": "\\b010131\\b"
+      "label": "\\bCRESTWOOD MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:67",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 67"
     },
     {
       "id": "regex:cms_rule:67",
-      "label": "\\b010138\\b"
+      "label": "\\bHILL HOSPITAL OF SUMTER COUNTY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:68",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 68"
     },
     {
       "id": "regex:cms_rule:68",
-      "label": "\\b010139\\b"
+      "label": "\\bBROOKWOOD BAPTIST MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:69",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 69"
     },
     {
       "id": "regex:cms_rule:69",
-      "label": "\\b010144\\b"
+      "label": "\\bSPRINGHILL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:70",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 70"
     },
     {
       "id": "regex:cms_rule:70",
-      "label": "\\b010148\\b"
+      "label": "\\bEVERGREEN MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:71",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 71"
     },
     {
       "id": "regex:cms_rule:71",
-      "label": "\\b010149\\b"
+      "label": "\\bBAPTIST MEDICAL CENTER EAST\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:72",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 72"
     },
     {
       "id": "regex:cms_rule:72",
-      "label": "\\b01014F\\b"
+      "label": "\\bBIRMINGHAM VA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:73",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 73"
     },
     {
       "id": "regex:cms_rule:73",
-      "label": "\\b010150\\b"
+      "label": "\\bTHE HEALTH CARE AUTHORITY OF THE CITY OF GREENVILLE- LV STABLER HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:74",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 74"
     },
     {
       "id": "regex:cms_rule:74",
-      "label": "\\b010157\\b"
+      "label": "\\bNORTH ALABAMA SHOALS HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:75",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 75"
     },
     {
       "id": "regex:cms_rule:75",
-      "label": "\\b010158\\b"
+      "label": "\\bRUSSELLVILLE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:76",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 76"
     },
     {
       "id": "regex:cms_rule:76",
-      "label": "\\b010164\\b"
+      "label": "\\bCOOSA VALLEY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:77",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 77"
     },
     {
       "id": "regex:cms_rule:77",
-      "label": "\\b010168\\b"
+      "label": "\\bJACK HUGHSTON MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:78",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 78"
     },
     {
       "id": "regex:cms_rule:78",
-      "label": "\\b010169\\b"
+      "label": "\\bATMORE COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:79",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 79"
     },
     {
       "id": "regex:cms_rule:79",
-      "label": "\\b010173\\b"
+      "label": "\\bST VINCENT'S CHILTON\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:80",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 80"
     },
     {
       "id": "regex:cms_rule:80",
-      "label": "\\b010175\\b"
+      "label": "\\bEAMC - LANIER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:81",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 81"
     },
     {
       "id": "regex:cms_rule:81",
-      "label": "\\b01019F\\b"
+      "label": "\\bVA CENTRAL ALABAMA HEALTHCARE SYSTEM - MONTGOMERY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:82",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 82"
     },
     {
       "id": "regex:cms_rule:82",
-      "label": "\\b01021F\\b"
+      "label": "\\bTUSCALOOSA VA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:83",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 83"
     },
     {
       "id": "regex:cms_rule:83",
-      "label": "\\b011300\\b"
+      "label": "\\bWASHINGTON COUNTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:84",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 84"
     },
     {
       "id": "regex:cms_rule:84",
-      "label": "\\b011302\\b"
+      "label": "\\bRED BAY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:85",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 85"
     },
     {
       "id": "regex:cms_rule:85",
-      "label": "\\b011304\\b"
+      "label": "\\bOCHSNER CHOCTAW GENERAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:86",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 86"
     },
     {
       "id": "regex:cms_rule:86",
-      "label": "\\b011305\\b"
+      "label": "\\bST VINCENTS BLOUNT\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:87",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 87"
     },
     {
       "id": "regex:cms_rule:87",
-      "label": "\\b011306\\b"
+      "label": "\\bTANNER MEDICAL CENTER-EAST ALABAMA\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:88",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 88"
     },
     {
       "id": "regex:cms_rule:88",
-      "label": "\\b011307\\b"
+      "label": "\\bMEDICAL CENTER BARBOUR\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:89",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 89"
     },
     {
       "id": "regex:cms_rule:89",
-      "label": "\\b013300\\b"
+      "label": "\\bTHE CHILDREN'S HOSPITAL OF ALABAMA\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:90",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 90"
     },
     {
       "id": "regex:cms_rule:90",
-      "label": "\\b013301\\b"
+      "label": "\\bUSA HEALTH CHILDREN'S & WOMEN'S HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:91",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 91"
     },
     {
       "id": "regex:cms_rule:91",
-      "label": "\\b014000\\b"
+      "label": "\\bHILL CREST BEHAVIORAL HEALTH SERVICES\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:92",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 92"
     },
     {
       "id": "regex:cms_rule:92",
-      "label": "\\b014006\\b"
+      "label": "\\bMOUNTAIN VIEW HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:93",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 93"
     },
     {
       "id": "regex:cms_rule:93",
-      "label": "\\b014007\\b"
+      "label": "\\bBRYCE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:94",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 94"
     },
     {
       "id": "regex:cms_rule:94",
-      "label": "\\b014012\\b"
+      "label": "\\bMARY S HARPER GERIATRIC PSYCHIATRY CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:95",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 95"
     },
     {
       "id": "regex:cms_rule:95",
-      "label": "\\b014014\\b"
+      "label": "\\bBAYPOINTE BEHAVIORAL HEALTH\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:96",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 96"
     },
     {
       "id": "regex:cms_rule:96",
-      "label": "\\b014015\\b"
+      "label": "\\bBEACON CHILDREN'S HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:97",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 97"
     },
     {
       "id": "regex:cms_rule:97",
-      "label": "\\b014016\\b"
+      "label": "\\bSANCTUARY AT THE WOODLANDS, THE\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:98",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 98"
     },
     {
       "id": "regex:cms_rule:98",
-      "label": "\\b014017\\b"
+      "label": "\\bEASTPOINTE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:99",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 99"
     },
     {
       "id": "regex:cms_rule:99",
-      "label": "\\b014018\\b"
+      "label": "\\bUNITY PSYCHIATRIC CARE - HUNTSVILLE\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:100",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 100"
     },
     {
       "id": "regex:cms_rule:100",
-      "label": "\\b020001\\b"
+      "label": "\\bPROVIDENCE ALASKA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:101",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 101"
     },
     {
       "id": "regex:cms_rule:101",
-      "label": "\\b020006\\b"
+      "label": "\\bMAT-SU REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:102",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 102"
     },
     {
       "id": "regex:cms_rule:102",
-      "label": "\\b020008\\b"
+      "label": "\\bBARTLETT REGIONAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:103",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 103"
     },
     {
       "id": "regex:cms_rule:103",
-      "label": "\\b020012\\b"
+      "label": "\\bFAIRBANKS MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:104",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 104"
     },
     {
       "id": "regex:cms_rule:104",
-      "label": "\\b020017\\b"
+      "label": "\\bALASKA REGIONAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:105",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 105"
     },
     {
       "id": "regex:cms_rule:105",
-      "label": "\\b020018\\b"
+      "label": "\\bYUKON KUSKOKWIM DELTA REG HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:106",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 106"
     },
     {
       "id": "regex:cms_rule:106",
-      "label": "\\b020024\\b"
+      "label": "\\bCENTRAL PENINSULA GENERAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:107",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 107"
     },
     {
       "id": "regex:cms_rule:107",
-      "label": "\\b020026\\b"
+      "label": "\\bALASKA NATIVE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:108",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 108"
     },
     {
       "id": "regex:cms_rule:108",
-      "label": "\\b02013F\\b"
+      "label": "\\b673rd Medical Group \\(Joint Base Elmendorf-Richardson\\)\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:109",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 109"
     },
     {
       "id": "regex:cms_rule:109",
-      "label": "\\b02014F\\b"
+      "label": "\\bBassett ACH \\(FT Wainwright\\)\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:110",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 110"
     },
     {
       "id": "regex:cms_rule:110",
-      "label": "\\b021301\\b"
+      "label": "\\bPROVIDENCE VALDEZ MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:111",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 111"
     },
     {
       "id": "regex:cms_rule:111",
-      "label": "\\b021302\\b"
+      "label": "\\bPROVIDENCE SEWARD HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:112",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 112"
     },
     {
       "id": "regex:cms_rule:112",
-      "label": "\\b021304\\b"
+      "label": "\\bPETERSBURG MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:113",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 113"
     },
     {
       "id": "regex:cms_rule:113",
-      "label": "\\b021305\\b"
+      "label": "\\bSEARHC WRANGELL MEDICAL CENTER-CAH\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:114",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 114"
     },
     {
       "id": "regex:cms_rule:114",
-      "label": "\\b021306\\b"
+      "label": "\\bPROVIDENCE KODIAK ISLAND MEDICAL CTR\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:115",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 115"
     },
     {
       "id": "regex:cms_rule:115",
-      "label": "\\b021307\\b"
+      "label": "\\bCORDOVA COMMUNITY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:116",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 116"
     },
     {
       "id": "regex:cms_rule:116",
-      "label": "\\b021308\\b"
+      "label": "\\bNORTON SOUND REGIONAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:117",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 117"
     },
     {
       "id": "regex:cms_rule:117",
-      "label": "\\b021309\\b"
+      "label": "\\bBRISTOL BAY AREA HEALTH CORPORATION\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:118",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 118"
     },
     {
       "id": "regex:cms_rule:118",
-      "label": "\\b021310\\b"
+      "label": "\\bMANIILAQ HEALTH CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:119",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 119"
     },
     {
       "id": "regex:cms_rule:119",
-      "label": "\\b021311\\b"
+      "label": "\\bPEACEHEALTH KETCHIKAN MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:120",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 120"
     },
     {
       "id": "regex:cms_rule:120",
-      "label": "\\b021312\\b"
+      "label": "\\bSAMUEL SIMMONDS MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:121",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 121"
     },
     {
       "id": "regex:cms_rule:121",
-      "label": "\\b021313\\b"
+      "label": "\\bSOUTH PENINSULA HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:122",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 122"
     },
     {
       "id": "regex:cms_rule:122",
-      "label": "\\b021314\\b"
+      "label": "\\bSOUTHEAST ALASKA REGIONAL HEALTH CONSORTIUM\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:123",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 123"
     },
     {
       "id": "regex:cms_rule:123",
-      "label": "\\b024001\\b"
+      "label": "\\bNORTH STAR HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:124",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 124"
     },
     {
       "id": "regex:cms_rule:124",
-      "label": "\\b024002\\b"
+      "label": "\\bALASKA PSYCHIATRIC INSTITUTE\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:125",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 125"
     },
     {
       "id": "regex:cms_rule:125",
-      "label": "\\b030002\\b"
+      "label": "\\bBANNER - UNIVERSITY MEDICAL CENTER PHOENIX\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:126",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 126"
     },
     {
       "id": "regex:cms_rule:126",
-      "label": "\\b030006\\b"
+      "label": "\\bTUCSON MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:127",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 127"
     },
     {
       "id": "regex:cms_rule:127",
-      "label": "\\b030007\\b"
+      "label": "\\bVERDE VALLEY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:128",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 128"
     },
     {
       "id": "regex:cms_rule:128",
-      "label": "\\b030010\\b"
+      "label": "\\bST. MARY'S HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:129",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 129"
     },
     {
       "id": "regex:cms_rule:129",
-      "label": "\\b030011\\b"
+      "label": "\\bST JOSEPH'S HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:130",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 130"
     },
     {
       "id": "regex:cms_rule:130",
-      "label": "\\b030012\\b"
+      "label": "\\bYAVAPAI REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:131",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 131"
     },
     {
       "id": "regex:cms_rule:131",
-      "label": "\\b030013\\b"
+      "label": "\\bYUMA REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:132",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 132"
     },
     {
       "id": "regex:cms_rule:132",
-      "label": "\\b030014\\b"
+      "label": "\\bHONOR HEALTH JOHN C. LINCOLN MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:133",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 133"
     },
     {
       "id": "regex:cms_rule:133",
-      "label": "\\b030016\\b"
+      "label": "\\bBANNER CASA GRANDE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:134",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 134"
     },
     {
       "id": "regex:cms_rule:134",
-      "label": "\\b030022\\b"
+      "label": "\\bVALLEYWISE HEALTH MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:135",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 135"
     },
     {
       "id": "regex:cms_rule:135",
-      "label": "\\b030023\\b"
+      "label": "\\bFLAGSTAFF MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:136",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 136"
     },
     {
       "id": "regex:cms_rule:136",
-      "label": "\\b030024\\b"
+      "label": "\\bST. JOSEPH'S HOSPITAL AND MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:137",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 137"
     },
     {
       "id": "regex:cms_rule:137",
-      "label": "\\b030030\\b"
+      "label": "\\bABRAZO CENTRAL CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:138",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 138"
     },
     {
       "id": "regex:cms_rule:138",
-      "label": "\\b030036\\b"
+      "label": "\\bCHANDLER REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:139",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 139"
     },
     {
       "id": "regex:cms_rule:139",
-      "label": "\\b030037\\b"
+      "label": "\\bHONORHEALTH TEMPE MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:140",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 140"
     },
     {
       "id": "regex:cms_rule:140",
-      "label": "\\b030038\\b"
+      "label": "\\bHONORHEALTH SCOTTSDALE OSBORN MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:141",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 141"
     },
     {
       "id": "regex:cms_rule:141",
-      "label": "\\b030043\\b"
+      "label": "\\bCANYON VISTA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:142",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 142"
     },
     {
       "id": "regex:cms_rule:142",
-      "label": "\\b030055\\b"
+      "label": "\\bKINGMAN REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:143",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 143"
     },
     {
       "id": "regex:cms_rule:143",
-      "label": "\\b030061\\b"
+      "label": "\\bBANNER BOSWELL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:144",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 144"
     },
     {
       "id": "regex:cms_rule:144",
-      "label": "\\b030062\\b"
+      "label": "\\bSUMMIT HEALTHCARE REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:145",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 145"
     },
     {
       "id": "regex:cms_rule:145",
-      "label": "\\b030064\\b"
+      "label": "\\bBANNER - UNIVERSITY MEDICAL CENTER TUCSON CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:146",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 146"
     },
     {
       "id": "regex:cms_rule:146",
-      "label": "\\b030065\\b"
+      "label": "\\bBANNER DESERT MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:147",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 147"
     },
     {
       "id": "regex:cms_rule:147",
-      "label": "\\b030069\\b"
+      "label": "\\bHAVASU REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:148",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 148"
     },
     {
       "id": "regex:cms_rule:148",
-      "label": "\\b030071\\b"
+      "label": "\\bFORT DEFIANCE INDIAN HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:149",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 149"
     },
     {
       "id": "regex:cms_rule:149",
-      "label": "\\b030073\\b"
+      "label": "\\bTUBA CITY REGIONAL HEALTH CARE CORPORATION\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:150",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 150"
     },
     {
       "id": "regex:cms_rule:150",
-      "label": "\\b030074\\b"
+      "label": "\\bSELLS HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:151",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 151"
     },
     {
       "id": "regex:cms_rule:151",
-      "label": "\\b030078\\b"
+      "label": "\\bPHOENIX INDIAN MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:152",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 152"
     },
     {
       "id": "regex:cms_rule:152",
-      "label": "\\b030083\\b"
+      "label": "\\bABRAZO SCOTTSDALE CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:153",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 153"
     },
     {
       "id": "regex:cms_rule:153",
-      "label": "\\b030084\\b"
+      "label": "\\bCHINLE COMPREHENSIVE HEALTH CARE FACILITY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:154",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 154"
     },
     {
       "id": "regex:cms_rule:154",
-      "label": "\\b030085\\b"
+      "label": "\\bHONORHEALTH SCOTTSDALE SHEA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:155",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 155"
     },
     {
       "id": "regex:cms_rule:155",
-      "label": "\\b030087\\b"
+      "label": "\\bBANNER BAYWOOD MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:156",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 156"
     },
     {
       "id": "regex:cms_rule:156",
-      "label": "\\b030088\\b"
+      "label": "\\bBANNER THUNDERBIRD MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:157",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 157"
     },
     {
       "id": "regex:cms_rule:157",
-      "label": "\\b030089\\b"
+      "label": "\\bHONORHEALTH DEER VALLEY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:158",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 158"
     },
     {
       "id": "regex:cms_rule:158",
-      "label": "\\b030092\\b"
+      "label": "\\bBANNER DEL E. WEBB MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:159",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 159"
     },
     {
       "id": "regex:cms_rule:159",
-      "label": "\\b030093\\b"
+      "label": "\\bABRAZO ARROWHEAD HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:160",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 160"
     },
     {
       "id": "regex:cms_rule:160",
-      "label": "\\b030094\\b"
+      "label": "\\bWESTERN ARIZONA REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:161",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 161"
     },
     {
       "id": "regex:cms_rule:161",
-      "label": "\\b030101\\b"
+      "label": "\\bMAYO CLINIC HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:162",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 162"
     },
     {
       "id": "regex:cms_rule:162",
-      "label": "\\b030103\\b"
+      "label": "\\bBANNER HEART HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:163",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 163"
     },
     {
       "id": "regex:cms_rule:163",
-      "label": "\\b030105\\b"
+      "label": "\\bARIZONA SPINE AND JOINT HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:164",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 164"
     },
     {
       "id": "regex:cms_rule:164",
-      "label": "\\b030107\\b"
+      "label": "\\bTHE CORE INSTITUTE SPECIALTY HOSP\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:165",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 165"
     },
     {
       "id": "regex:cms_rule:165",
-      "label": "\\b030108\\b"
+      "label": "\\bABRAZO WEST CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:166",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 166"
     },
     {
       "id": "regex:cms_rule:166",
-      "label": "\\b030110\\b"
+      "label": "\\bBANNER-UNIVERSITY MEDICAL CENTER SOUTH CAMPUS\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:167",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 167"
     },
     {
       "id": "regex:cms_rule:167",
-      "label": "\\b030111\\b"
+      "label": "\\bARIZONA ORTHOPEDIC AND SURGICAL SPECIALTY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:168",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 168"
     },
     {
       "id": "regex:cms_rule:168",
-      "label": "\\b030112\\b"
+      "label": "\\bWHITERIVER PHS INDIAN HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:169",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 169"
     },
     {
       "id": "regex:cms_rule:169",
-      "label": "\\b030113\\b"
+      "label": "\\bORO VALLEY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:170",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 170"
     },
     {
       "id": "regex:cms_rule:170",
-      "label": "\\b030114\\b"
+      "label": "\\bBANNER ESTRELLA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:171",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 171"
     },
     {
       "id": "regex:cms_rule:171",
-      "label": "\\b030115\\b"
+      "label": "\\bVALLEY VIEW MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:172",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 172"
     },
     {
       "id": "regex:cms_rule:172",
-      "label": "\\b030117\\b"
+      "label": "\\bMERCY GILBERT MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:173",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 173"
     },
     {
       "id": "regex:cms_rule:173",
-      "label": "\\b030119\\b"
+      "label": "\\bHONORHEALTH MOUNTAIN VISTA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:174",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 174"
     },
     {
       "id": "regex:cms_rule:174",
-      "label": "\\b030121\\b"
+      "label": "\\bBANNER GATEWAY MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:175",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 175"
     },
     {
       "id": "regex:cms_rule:175",
-      "label": "\\b030122\\b"
+      "label": "\\bHONORHEALTH SCOTTSDALE THOMPSON PEAK MED CTR\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:176",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 176"
     },
     {
       "id": "regex:cms_rule:176",
-      "label": "\\b030123\\b"
+      "label": "\\bPHOENIX VA MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:177",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 177"
     },
     {
       "id": "regex:cms_rule:177",
-      "label": "\\b03012F\\b"
+      "label": "\\bBANNER IRONWOOD MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:178",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 178"
     },
     {
       "id": "regex:cms_rule:178",
-      "label": "\\b030130\\b"
+      "label": "\\bBANNER GOLDFIELD MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:179",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 179"
     },
     {
       "id": "regex:cms_rule:179",
-      "label": "\\b030134\\b"
+      "label": "\\bDIGNITY HEALTH - ARIZONA GENERAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:180",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 180"
     },
     {
       "id": "regex:cms_rule:180",
-      "label": "\\b030136\\b"
+      "label": "\\bWESTERN REGIONAL MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:181",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 181"
     },
     {
       "id": "regex:cms_rule:181",
-      "label": "\\b030138\\b"
+      "label": "\\bDIGNITY HEALTH ARIZONA GENERAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:182",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 182"
     },
     {
       "id": "regex:cms_rule:182",
-      "label": "\\b030139\\b"
+      "label": "\\bVA S. ARIZONA HEALTHCARE SYSTEM\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:183",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 183"
     },
     {
       "id": "regex:cms_rule:183",
-      "label": "\\b03013F\\b"
+      "label": "\\bHONORHEALTH SONORAN CROSSING MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:184",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 184"
     },
     {
       "id": "regex:cms_rule:184",
-      "label": "\\b030146\\b"
+      "label": "\\bBANNER OCOTILLO MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:185",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 185"
     },
     {
       "id": "regex:cms_rule:185",
-      "label": "\\b030147\\b"
+      "label": "\\bNORTHWEST MEDICAL CENTER SAHUARITA\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:186",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 186"
     },
     {
       "id": "regex:cms_rule:186",
-      "label": "\\b030148\\b"
+      "label": "\\bEXCEPTIONAL COMMUNITY HOSPITAL - MARICOPA\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:187",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 187"
     },
     {
       "id": "regex:cms_rule:187",
-      "label": "\\b030152\\b"
+      "label": "\\bEAST VALLEY ER & HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:188",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 188"
     },
     {
       "id": "regex:cms_rule:188",
-      "label": "\\b030153\\b"
+      "label": "\\bEXCEPTIONAL COMMUNITY HOSPITAL YUMA\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:189",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 189"
     },
     {
       "id": "regex:cms_rule:189",
-      "label": "\\b030154\\b"
+      "label": "\\bEXCEPTIONAL COMMUNITY HOSPITAL BULLHEAD CITY\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:190",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 190"
     },
     {
       "id": "regex:cms_rule:190",
-      "label": "\\b030155\\b"
+      "label": "\\bVA NORTHERN ARIZONA HEALTHCARE SYSTEM\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:191",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 191"
     },
     {
       "id": "regex:cms_rule:191",
-      "label": "\\b03033F\\b"
+      "label": "\\bWICKENBURG COMMUNITY HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:192",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 192"
     },
     {
       "id": "regex:cms_rule:192",
-      "label": "\\b031300\\b"
+      "label": "\\bBENSON HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:193",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 193"
     },
     {
       "id": "regex:cms_rule:193",
-      "label": "\\b031301\\b"
+      "label": "\\bNORTHERN COCHISE COMMUNITY HOSPITAL, INC.\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:194",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 194"
     },
     {
       "id": "regex:cms_rule:194",
-      "label": "\\b031302\\b"
+      "label": "\\bPAGE HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:195",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 195"
     },
     {
       "id": "regex:cms_rule:195",
-      "label": "\\b031304\\b"
+      "label": "\\bHOPI HEALTH CARE CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:196",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 196"
     },
     {
       "id": "regex:cms_rule:196",
-      "label": "\\b031305\\b"
+      "label": "\\bPARKER INDIAN HEALTH CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:197",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 197"
     },
     {
       "id": "regex:cms_rule:197",
-      "label": "\\b031307\\b"
+      "label": "\\bHUHU KAM MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:198",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 198"
     },
     {
       "id": "regex:cms_rule:198",
-      "label": "\\b031308\\b"
+      "label": "\\bSAGE MEMORIAL HOSPITAL\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:199",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 199"
     },
     {
       "id": "regex:cms_rule:199",
-      "label": "\\b031309\\b"
+      "label": "\\bLITTLE COLORADO MEDICAL CENTER\\b"
+    },
+    {
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "cms_rule:200",
-      "label": "CMS Hospital Rule"
+      "label": "CMS Hospital Rule 200"
     },
     {
       "id": "regex:cms_rule:200",
-      "label": "\\b031311\\b"
+      "label": "\\bCOPPER QUEEN COMMUNITY HOSPITAL\\b"
     },
     {
-      "id": "region:HIPAA",
-      "label": "HIPAA"
+      "id": "region:CMS",
+      "label": "CMS"
     },
     {
       "id": "hipaa_rule:1",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 1"
     },
     {
       "id": "regex:hipaa_rule:1",
       "label": "\\bMeridian Valley Laboratories, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:2",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 2"
     },
     {
       "id": "regex:hipaa_rule:2",
       "label": "\\bReimagine Network\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:3",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 3"
     },
     {
       "id": "regex:hipaa_rule:3",
       "label": "\\bCollege Hometown Pharmacy\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:4",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 4"
     },
     {
       "id": "regex:hipaa_rule:4",
       "label": "\\bCollege Parkside Pharmacy\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:5",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 5"
     },
     {
       "id": "regex:hipaa_rule:5",
       "label": "\\bWoodlawn Hospital\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:6",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 6"
     },
     {
       "id": "regex:hipaa_rule:6",
       "label": "\\bVital Imaging Medical Diagnostic Centers, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:7",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 7"
     },
     {
       "id": "regex:hipaa_rule:7",
       "label": "\\bPreferred Hospital Leasing Hemphill Inc., d/b/a Sabine County Hospital\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:8",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 8"
     },
     {
       "id": "regex:hipaa_rule:8",
       "label": "\\bArkansas Primary Care Clinic\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:9",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 9"
     },
     {
       "id": "regex:hipaa_rule:9",
       "label": "\\bAspire Rural Health System\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:10",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 10"
     },
     {
       "id": "regex:hipaa_rule:10",
       "label": "\\bIndiana Exceptional Medical care LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:11",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 11"
     },
     {
       "id": "regex:hipaa_rule:11",
       "label": "\\bRevere Health PC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:12",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 12"
     },
     {
       "id": "regex:hipaa_rule:12",
       "label": "\\bBehavioral Health Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:13",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 13"
     },
     {
       "id": "regex:hipaa_rule:13",
       "label": "\\bCareTracker, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:14",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 14"
     },
     {
       "id": "regex:hipaa_rule:14",
-      "label": "\\bCPAP Medical Supplies and Services Inc.\\b"
+      "label": "\\bCPAP Medical Supplies and Services Inc. \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:15",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 15"
     },
     {
       "id": "regex:hipaa_rule:15",
       "label": "\\bCancer Care Center of North Florida\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:16",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 16"
     },
     {
       "id": "regex:hipaa_rule:16",
       "label": "\\bLake City Cancer Care, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:17",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 17"
     },
     {
       "id": "regex:hipaa_rule:17",
       "label": "\\bMower County Health and Human Services\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:18",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 18"
     },
     {
       "id": "regex:hipaa_rule:18",
       "label": "\\bWelcome Dentistry\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:19",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 19"
     },
     {
       "id": "regex:hipaa_rule:19",
       "label": "\\bChildren's Home & Aid dba Brightpoint\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:20",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 20"
     },
     {
       "id": "regex:hipaa_rule:20",
       "label": "\\bUniversity of Michigan/Michigan Medicine\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:21",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 21"
     },
     {
       "id": "regex:hipaa_rule:21",
       "label": "\\bUnitedHealthcare\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:22",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 22"
     },
     {
       "id": "regex:hipaa_rule:22",
       "label": "\\bLaurel Cancer Care, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:23",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 23"
     },
     {
       "id": "regex:hipaa_rule:23",
       "label": "\\bKathalene Keller Riney NP, LLC DBA Life in Motion Family Wellness Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:24",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 24"
     },
     {
       "id": "regex:hipaa_rule:24",
       "label": "\\bZelis Healthcare LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:25",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 25"
     },
     {
       "id": "regex:hipaa_rule:25",
       "label": "\\bIntegrated Orthopedics of Arizona\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:26",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 26"
     },
     {
       "id": "regex:hipaa_rule:26",
       "label": "\\bAltos Inc\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:27",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 27"
     },
     {
       "id": "regex:hipaa_rule:27",
       "label": "\\bDr. Doug's Pediatric Dentistry\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:28",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 28"
     },
     {
       "id": "regex:hipaa_rule:28",
       "label": "\\bAnderson & Kreiger LLP\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:29",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 29"
     },
     {
       "id": "regex:hipaa_rule:29",
-      "label": "\\bAflac Incorporated (\u201cAflac\u201d)\\b"
+      "label": "\\bAflac Incorporated \\(\u201cAflac\u201d\\)\\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:30",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 30"
     },
     {
       "id": "regex:hipaa_rule:30",
       "label": "\\bFriesen Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:31",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 31"
     },
     {
       "id": "regex:hipaa_rule:31",
       "label": "\\bCenter for Disability Services, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:32",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 32"
     },
     {
       "id": "regex:hipaa_rule:32",
       "label": "\\bPROVAIL\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:33",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 33"
     },
     {
       "id": "regex:hipaa_rule:33",
       "label": "\\bSouth Coast Pediatrics\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:34",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 34"
     },
     {
       "id": "regex:hipaa_rule:34",
       "label": "\\bPrecision Edodontics of Raleigh\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:35",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 35"
     },
     {
       "id": "regex:hipaa_rule:35",
-      "label": "\\bMDLand International Corporation\\b"
+      "label": "\\bMDLand International Corporation \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:36",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 36"
     },
     {
       "id": "regex:hipaa_rule:36",
       "label": "\\bGenoa Community Hospital/LTC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:37",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 37"
     },
     {
       "id": "regex:hipaa_rule:37",
       "label": "\\bWest Texas Oral Facial Surgery\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:38",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 38"
     },
     {
       "id": "regex:hipaa_rule:38",
       "label": "\\bHighlands Oncology Group PA\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:39",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 39"
     },
     {
       "id": "regex:hipaa_rule:39",
       "label": "\\bLangdon & Company, LLP Certified Public Accountants\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:40",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 40"
     },
     {
       "id": "regex:hipaa_rule:40",
       "label": "\\bDaVita Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:41",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 41"
     },
     {
       "id": "regex:hipaa_rule:41",
       "label": "\\bWestern Montana Clinic PC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:42",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 42"
     },
     {
       "id": "regex:hipaa_rule:42",
       "label": "\\bVail Summit Orthopaedics\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:43",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 43"
     },
     {
       "id": "regex:hipaa_rule:43",
       "label": "\\bCentral Maine Healthcare\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:44",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 44"
     },
     {
       "id": "regex:hipaa_rule:44",
       "label": "\\bBerkshire Health Systems, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:45",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 45"
     },
     {
       "id": "regex:hipaa_rule:45",
       "label": "\\bCompass Counseling Services, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:46",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 46"
     },
     {
       "id": "regex:hipaa_rule:46",
       "label": "\\bAlera Group, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:47",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 47"
     },
     {
       "id": "regex:hipaa_rule:47",
       "label": "\\bPhyNet Dermatology, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:48",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 48"
     },
     {
       "id": "regex:hipaa_rule:48",
       "label": "\\bAVALA Holdings\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:49",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 49"
     },
     {
       "id": "regex:hipaa_rule:49",
       "label": "\\bUniversity of Miami\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:50",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 50"
     },
     {
       "id": "regex:hipaa_rule:50",
       "label": "\\bWood River Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:51",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 51"
     },
     {
       "id": "regex:hipaa_rule:51",
-      "label": "\\bNorthwest Denture Center, Inc.\\b"
+      "label": "\\bNorthwest Denture Center, Inc. \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:52",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 52"
     },
     {
       "id": "regex:hipaa_rule:52",
-      "label": "\\bDoctors\u2019 Memorial Hospital\\b"
+      "label": "\\bDoctors\u2019 Memorial Hospital \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:53",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 53"
     },
     {
       "id": "regex:hipaa_rule:53",
       "label": "\\bValley Mountain Regional Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:54",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 54"
     },
     {
       "id": "regex:hipaa_rule:54",
       "label": "\\bNova Recovery Center, LLC d/b/a Nova Recovery Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:55",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 55"
     },
     {
       "id": "regex:hipaa_rule:55",
       "label": "\\bMcKenzie Memorial Hospital\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:56",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 56"
     },
     {
       "id": "regex:hipaa_rule:56",
       "label": "\\bOB/GYN Medical Center Associates\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:57",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 57"
     },
     {
       "id": "regex:hipaa_rule:57",
-      "label": "\\bGastroenterology Consultants of South Texas\\b"
+      "label": "\\bGastroenterology Consultants of South Texas \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:58",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 58"
     },
     {
       "id": "regex:hipaa_rule:58",
       "label": "\\bKettering Adventist Healthcare\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:59",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 59"
     },
     {
       "id": "regex:hipaa_rule:59",
       "label": "\\bOrthoAtlanta LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:60",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 60"
     },
     {
       "id": "regex:hipaa_rule:60",
       "label": "\\bInfinite Services, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:61",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 61"
     },
     {
       "id": "regex:hipaa_rule:61",
       "label": "\\bDr. Michael Bilikas and Associates d.b.a. 32 Pearls\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:62",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 62"
     },
     {
       "id": "regex:hipaa_rule:62",
       "label": "\\bBlue Shield of California\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:63",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 63"
     },
     {
       "id": "regex:hipaa_rule:63",
       "label": "\\bEquilibria Mental Health Services\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:64",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 64"
     },
     {
       "id": "regex:hipaa_rule:64",
       "label": "\\bKeys Pathology Associates, PA\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:65",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 65"
     },
     {
       "id": "regex:hipaa_rule:65",
       "label": "\\bOregon Specialty Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:66",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 66"
     },
     {
       "id": "regex:hipaa_rule:66",
       "label": "\\bThe Brien Center for Mental Health and Substance Abuse Services\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:67",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 67"
     },
     {
       "id": "regex:hipaa_rule:67",
       "label": "\\bABC Holding Company\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:68",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 68"
     },
     {
       "id": "regex:hipaa_rule:68",
       "label": "\\bHuman Development Services of Westchester\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:69",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 69"
     },
     {
       "id": "regex:hipaa_rule:69",
       "label": "\\bSelf Regional Healthcare\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:70",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 70"
     },
     {
       "id": "regex:hipaa_rule:70",
       "label": "\\bJack L Marcus\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:71",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 71"
     },
     {
       "id": "regex:hipaa_rule:71",
       "label": "\\bNorthwest Medical Homes, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:72",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 72"
     },
     {
       "id": "regex:hipaa_rule:72",
-      "label": "\\bWilliamsburg Area Medical Assistance Corporation d/b/a Olde Towne Medical and Dental Center (OTMDC)\\b"
+      "label": "\\bWilliamsburg Area Medical Assistance Corporation d/b/a Olde Towne Medical and Dental Center \\(OTMDC\\)\\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:73",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 73"
     },
     {
       "id": "regex:hipaa_rule:73",
       "label": "\\bRegency Oaks\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:74",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 74"
     },
     {
       "id": "regex:hipaa_rule:74",
       "label": "\\bFreedom Plaza Senior Living\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:75",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 75"
     },
     {
       "id": "regex:hipaa_rule:75",
       "label": "\\bFreedom Square of Seminole\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:76",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 76"
     },
     {
       "id": "regex:hipaa_rule:76",
       "label": "\\bPicis Clinical Solutions, Inc. d/b/a Medstreaming\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:77",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 77"
     },
     {
       "id": "regex:hipaa_rule:77",
-      "label": "\\bCovenant Health\\b"
+      "label": "\\bCovenant Health \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:78",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 78"
     },
     {
       "id": "regex:hipaa_rule:78",
-      "label": "\\bAnne Arundel Dermatology\\b"
+      "label": "\\bAnne Arundel Dermatology \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:79",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 79"
     },
     {
       "id": "regex:hipaa_rule:79",
       "label": "\\bMountain Laurel Dermatology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:80",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 80"
     },
     {
       "id": "regex:hipaa_rule:80",
       "label": "\\bNaper Grove Vision Care\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:81",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 81"
     },
     {
       "id": "regex:hipaa_rule:81",
-      "label": "\\bFlorida Lung, Asthma & Sleep Specialists (FLASS)\\b"
+      "label": "\\bFlorida Lung, Asthma & Sleep Specialists \\(FLASS\\)\\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:82",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 82"
     },
     {
       "id": "regex:hipaa_rule:82",
       "label": "\\bAscension Health Services LLC dba Alpha Wellness & Alpha Medical Centre\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:83",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 83"
     },
     {
       "id": "regex:hipaa_rule:83",
       "label": "\\bComplete Care Rehab LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:84",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 84"
     },
     {
       "id": "regex:hipaa_rule:84",
       "label": "\\bK&E Advanced Dentisrty\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:85",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 85"
     },
     {
       "id": "regex:hipaa_rule:85",
       "label": "\\bCity of Franklin\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:86",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 86"
     },
     {
       "id": "regex:hipaa_rule:86",
       "label": "\\bZumpano Patricios, P.A.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:87",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 87"
     },
     {
       "id": "regex:hipaa_rule:87",
-      "label": "\\bCierant Corporation\\b"
+      "label": "\\bCierant Corporation \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:88",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 88"
     },
     {
       "id": "regex:hipaa_rule:88",
       "label": "\\bArbor Associates, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:89",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 89"
     },
     {
       "id": "regex:hipaa_rule:89",
       "label": "\\bUrology Associates of Charleston\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:90",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 90"
     },
     {
       "id": "regex:hipaa_rule:90",
       "label": "\\bRadiology Associates of Richmond, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:91",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 91"
     },
     {
       "id": "regex:hipaa_rule:91",
       "label": "\\bKotel ATX PLLC dba Heading Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:92",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 92"
     },
     {
       "id": "regex:hipaa_rule:92",
       "label": "\\bTexas Center for Infectious Disease Associates\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:93",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 93"
     },
     {
       "id": "regex:hipaa_rule:93",
       "label": "\\bCenters for Medicare & Medicaid Services\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:94",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 94"
     },
     {
       "id": "regex:hipaa_rule:94",
       "label": "\\bClinical Practices of the University of Pennsylvania\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:95",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 95"
     },
     {
       "id": "regex:hipaa_rule:95",
       "label": "\\bSouthwest Urology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:96",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 96"
     },
     {
       "id": "regex:hipaa_rule:96",
       "label": "\\bSouth Georgia Center for Cancer Care, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:97",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 97"
     },
     {
       "id": "regex:hipaa_rule:97",
       "label": "\\bRadiation Oncology Network of Southern California, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:98",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 98"
     },
     {
       "id": "regex:hipaa_rule:98",
       "label": "\\bPDCM Insurance\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:99",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 99"
     },
     {
       "id": "regex:hipaa_rule:99",
       "label": "\\bRocky Mountain Oncology Care\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:100",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 100"
     },
     {
       "id": "regex:hipaa_rule:100",
       "label": "\\bPET Imaging of Tulsa\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:101",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 101"
     },
     {
       "id": "regex:hipaa_rule:101",
       "label": "\\bPET Imaging of The Woodlands\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:102",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 102"
     },
     {
       "id": "regex:hipaa_rule:102",
       "label": "\\bPET Imaging of Sugar Land\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:103",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 103"
     },
     {
       "id": "regex:hipaa_rule:103",
       "label": "\\bPET Imaging of Northern Colorado\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:104",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 104"
     },
     {
       "id": "regex:hipaa_rule:104",
       "label": "\\bPET Imaging of Houston Medical Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:105",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 105"
     },
     {
       "id": "regex:hipaa_rule:105",
       "label": "\\bPET Imaging of Dallas Northeast\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:106",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 106"
     },
     {
       "id": "regex:hipaa_rule:106",
       "label": "\\bOrange County Radiation Oncology Medical Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:107",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 107"
     },
     {
       "id": "regex:hipaa_rule:107",
       "label": "\\bMojave Radiation Oncology Medical Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:108",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 108"
     },
     {
       "id": "regex:hipaa_rule:108",
       "label": "\\bHeartland Regional Medical Center d/b/a Mosaic Life Care\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:109",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 109"
     },
     {
       "id": "regex:hipaa_rule:109",
       "label": "\\bCompumedics USA, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:110",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 110"
     },
     {
       "id": "regex:hipaa_rule:110",
       "label": "\\bIntegrated Oncology Network\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:111",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 111"
     },
     {
       "id": "regex:hipaa_rule:111",
       "label": "\\bGolden State Radiation Oncology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:112",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 112"
     },
     {
       "id": "regex:hipaa_rule:112",
       "label": "\\bFairbanks Urology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:113",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 113"
     },
     {
       "id": "regex:hipaa_rule:113",
       "label": "\\be+ Oncologics Louisiana, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:114",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 114"
     },
     {
       "id": "regex:hipaa_rule:114",
       "label": "\\bDenali Biomedical\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:115",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 115"
     },
     {
       "id": "regex:hipaa_rule:115",
       "label": "\\bHorizon Healthcare RCM\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:116",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 116"
     },
     {
       "id": "regex:hipaa_rule:116",
       "label": "\\bCancer Care Center of North Florida-Lake Butler\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:117",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 117"
     },
     {
       "id": "regex:hipaa_rule:117",
       "label": "\\bCalifornia Cancer Associates for Research and Excellence \u2013 San Diego\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:118",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 118"
     },
     {
       "id": "regex:hipaa_rule:118",
       "label": "\\bCalifornia Cancer Associates for Research and Excellence \u2013 High Desert\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:119",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 119"
     },
     {
       "id": "regex:hipaa_rule:119",
       "label": "\\bCalifornia Cancer Associates for Research and Excellence - Fresno\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:120",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 120"
     },
     {
       "id": "regex:hipaa_rule:120",
       "label": "\\bBardmoor Cancer Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:121",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 121"
     },
     {
       "id": "regex:hipaa_rule:121",
       "label": "\\bAcadiana Radiation Therapy, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:122",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 122"
     },
     {
       "id": "regex:hipaa_rule:122",
       "label": "\\bJordan Drug, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:123",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 123"
     },
     {
       "id": "regex:hipaa_rule:123",
       "label": "\\bClement Manor\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:124",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 124"
     },
     {
       "id": "regex:hipaa_rule:124",
       "label": "\\bMcLaren Health Care\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:125",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 125"
     },
     {
       "id": "regex:hipaa_rule:125",
       "label": "\\bGardner Orthopedics LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:126",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 126"
     },
     {
       "id": "regex:hipaa_rule:126",
       "label": "\\bMinneapolis VA Medical Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:127",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 127"
     },
     {
       "id": "regex:hipaa_rule:127",
-      "label": "\\bEsse Health\\b"
+      "label": "\\bEsse Health \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:128",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 128"
     },
     {
       "id": "regex:hipaa_rule:128",
       "label": "\\bLos Angeles County Developmental Services Fdn., Inc. dba Frank D. Lanterman Regional Ctr.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:129",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 129"
     },
     {
       "id": "regex:hipaa_rule:129",
       "label": "\\bRetina Associates of Cleveland, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:130",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 130"
     },
     {
       "id": "regex:hipaa_rule:130",
       "label": "\\bHarbor\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:131",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 131"
     },
     {
       "id": "regex:hipaa_rule:131",
       "label": "\\bSkin Care Specialty Physicians\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:132",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 132"
     },
     {
       "id": "regex:hipaa_rule:132",
-      "label": "\\bTRG, LLC\\b"
+      "label": "\\bTRG, LLC \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:133",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 133"
     },
     {
       "id": "regex:hipaa_rule:133",
       "label": "\\bIron County Medical Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:134",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 134"
     },
     {
       "id": "regex:hipaa_rule:134",
       "label": "\\bMarquette County Medical Care Facility\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:135",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 135"
     },
     {
       "id": "regex:hipaa_rule:135",
       "label": "\\bCerner Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:136",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 136"
     },
     {
       "id": "regex:hipaa_rule:136",
       "label": "\\bWinkler County Hospital District\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:137",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 137"
     },
     {
       "id": "regex:hipaa_rule:137",
       "label": "\\bBroadwest Specialty Surgical Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:138",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 138"
     },
     {
       "id": "regex:hipaa_rule:138",
       "label": "\\bDecisely Insurance Services, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:139",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 139"
     },
     {
       "id": "regex:hipaa_rule:139",
       "label": "\\bCentral Kentucky Radiology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:140",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 140"
     },
     {
       "id": "regex:hipaa_rule:140",
       "label": "\\bDiversified Services Enterprises\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:141",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 141"
     },
     {
       "id": "regex:hipaa_rule:141",
       "label": "\\bElmore County\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:142",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 142"
     },
     {
       "id": "regex:hipaa_rule:142",
       "label": "\\bArkansas Urology Associates PA\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:143",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 143"
     },
     {
       "id": "regex:hipaa_rule:143",
       "label": "\\bAltaMed Health Services Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:144",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 144"
     },
     {
       "id": "regex:hipaa_rule:144",
       "label": "\\bMount Rogers Community Services\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:145",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 145"
     },
     {
       "id": "regex:hipaa_rule:145",
-      "label": "\\bRural Health Services\\b"
+      "label": "\\bRural Health Services \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:146",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 146"
     },
     {
       "id": "regex:hipaa_rule:146",
       "label": "\\bClarkston Chiropractic Sports & Wellness\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:147",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 147"
     },
     {
       "id": "regex:hipaa_rule:147",
       "label": "\\bApex Global Solutions, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:148",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 148"
     },
     {
       "id": "regex:hipaa_rule:148",
       "label": "\\bRepay Management Services, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:149",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 149"
     },
     {
       "id": "regex:hipaa_rule:149",
       "label": "\\bSentara Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:150",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 150"
     },
     {
       "id": "regex:hipaa_rule:150",
       "label": "\\bSouthern Connecticut Vascular Center, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:151",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 151"
     },
     {
       "id": "regex:hipaa_rule:151",
       "label": "\\bEpisource, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:152",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 152"
     },
     {
       "id": "regex:hipaa_rule:152",
       "label": "\\bSharp Community Medical Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:153",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 153"
     },
     {
       "id": "regex:hipaa_rule:153",
       "label": "\\bPublic Health Trust of Miami Dade County DBA Jackson Health System\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:154",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 154"
     },
     {
       "id": "regex:hipaa_rule:154",
       "label": "\\bSharp HealthCare\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:155",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 155"
     },
     {
       "id": "regex:hipaa_rule:155",
       "label": "\\bSelect Medical Holdings Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:156",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 156"
     },
     {
       "id": "regex:hipaa_rule:156",
       "label": "\\bCentivo Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:157",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 157"
     },
     {
       "id": "regex:hipaa_rule:157",
       "label": "\\bNYC Health + Hospitals\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:158",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 158"
     },
     {
       "id": "regex:hipaa_rule:158",
       "label": "\\bSensata Technologies, Inc. Health and Welfare Benefit Plan\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:159",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 159"
     },
     {
       "id": "regex:hipaa_rule:159",
       "label": "\\bAffirmedRx PBC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:160",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 160"
     },
     {
       "id": "regex:hipaa_rule:160",
       "label": "\\bJupiter Family Medicine PC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:161",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 161"
     },
     {
       "id": "regex:hipaa_rule:161",
       "label": "\\bRenkim Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:162",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 162"
     },
     {
       "id": "regex:hipaa_rule:162",
       "label": "\\bCumberland County Hospital Association\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:163",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 163"
     },
     {
       "id": "regex:hipaa_rule:163",
       "label": "\\bUpper Dublin Family Dentistry\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:164",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 164"
     },
     {
       "id": "regex:hipaa_rule:164",
       "label": "\\bOcuco Inc\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:165",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 165"
     },
     {
       "id": "regex:hipaa_rule:165",
       "label": "\\bCareOregon, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:166",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 166"
     },
     {
       "id": "regex:hipaa_rule:166",
-      "label": "\\bOliver Street Dermatology Management LLC\\b"
+      "label": "\\bOliver Street Dermatology Management LLC \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:167",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 167"
     },
     {
       "id": "regex:hipaa_rule:167",
       "label": "\\bHorizon Blue Cross Blue Shield NJ\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:168",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 168"
     },
     {
       "id": "regex:hipaa_rule:168",
       "label": "\\bNext Step Healthcare LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:169",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 169"
     },
     {
       "id": "regex:hipaa_rule:169",
       "label": "\\bMissouri Department of Conservation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:170",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 170"
     },
     {
       "id": "regex:hipaa_rule:170",
       "label": "\\bMedStar St. Mary's Hospital\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:171",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 171"
     },
     {
       "id": "regex:hipaa_rule:171",
       "label": "\\bNorthwestern Community Services Board\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:172",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 172"
     },
     {
       "id": "regex:hipaa_rule:172",
-      "label": "\\bGateway Community Services, Inc.\\b"
+      "label": "\\bGateway Community Services, Inc. \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:173",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 173"
     },
     {
       "id": "regex:hipaa_rule:173",
       "label": "\\bErlanger Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:174",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 174"
     },
     {
       "id": "regex:hipaa_rule:174",
       "label": "\\bThe Smith Institute for Urology\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:175",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 175"
     },
     {
       "id": "regex:hipaa_rule:175",
       "label": "\\bCovenant Surgical Partners, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:176",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 176"
     },
     {
       "id": "regex:hipaa_rule:176",
       "label": "\\bMary B. Toporcer, MD, P.C.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:177",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 177"
     },
     {
       "id": "regex:hipaa_rule:177",
       "label": "\\bCahaba Center for Mental Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:178",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 178"
     },
     {
       "id": "regex:hipaa_rule:178",
       "label": "\\bNHPP Physical Medicine and Rehabilitation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:179",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 179"
     },
     {
       "id": "regex:hipaa_rule:179",
       "label": "\\bSports Physical Therapy, Occupational Therapy and Rehabilitation Services of the North Shore, P.L.L.C\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:180",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 180"
     },
     {
       "id": "regex:hipaa_rule:180",
       "label": "\\bNorth Shore University Hospital Sleep Disorders Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:181",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 181"
     },
     {
       "id": "regex:hipaa_rule:181",
       "label": "\\bThe Cooper Health System\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:182",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 182"
     },
     {
       "id": "regex:hipaa_rule:182",
       "label": "\\bUChicago Medicine Medical Group\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:183",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 183"
     },
     {
       "id": "regex:hipaa_rule:183",
-      "label": "\\bAccess2Day Health\\b"
+      "label": "\\bAccess2Day Health \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:184",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 184"
     },
     {
       "id": "regex:hipaa_rule:184",
       "label": "\\bConnections for Kids\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:185",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 185"
     },
     {
       "id": "regex:hipaa_rule:185",
       "label": "\\bShore Medical Center\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:186",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 186"
     },
     {
       "id": "regex:hipaa_rule:186",
-      "label": "\\bFamily Health Services, Inc.\\b"
+      "label": "\\bFamily Health Services, Inc. \\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     },
     {
       "id": "hipaa_rule:187",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 187"
     },
     {
       "id": "regex:hipaa_rule:187",
       "label": "\\bHopeWay Foundation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:188",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 188"
     },
     {
       "id": "regex:hipaa_rule:188",
       "label": "\\bInstituto de Ojos de Puerto Rico\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:189",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 189"
     },
     {
       "id": "regex:hipaa_rule:189",
       "label": "\\bCommunity Hospital of Anaconda\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:190",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 190"
     },
     {
       "id": "regex:hipaa_rule:190",
       "label": "\\bInsulet Corporation\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:191",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 191"
     },
     {
       "id": "regex:hipaa_rule:191",
       "label": "\\bMercy Surgical Dressing Group, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:192",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 192"
     },
     {
       "id": "regex:hipaa_rule:192",
       "label": "\\bRadiology Chartered\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:193",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 193"
     },
     {
       "id": "regex:hipaa_rule:193",
       "label": "\\bCompassion Health Care, Inc.\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:194",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 194"
     },
     {
       "id": "regex:hipaa_rule:194",
       "label": "\\bBalance Autism\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:195",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 195"
     },
     {
       "id": "regex:hipaa_rule:195",
       "label": "\\bHarbin Clinic, LLC\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:196",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 196"
     },
     {
       "id": "regex:hipaa_rule:196",
       "label": "\\bWeiser Valley Hospital District dba Weiser Memorial Hospital\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:197",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 197"
     },
     {
       "id": "regex:hipaa_rule:197",
       "label": "\\bCareNexa, LLC, doing business as Molecular Testing Labs\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:198",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 198"
     },
     {
       "id": "regex:hipaa_rule:198",
       "label": "\\bHunter Health Clinic\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:199",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 199"
     },
     {
       "id": "regex:hipaa_rule:199",
       "label": "\\bAnne Arundel County Department of Health\\b"
     },
     {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
       "id": "hipaa_rule:200",
-      "label": "HIPAA Breach Rule"
+      "label": "HIPAA Entity Rule 200"
     },
     {
       "id": "regex:hipaa_rule:200",
       "label": "\\bDoctors Hospital at Renaissance, LTD\\b"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
     }
   ],
   "edges": [
@@ -3727,51 +5367,6 @@
     {
       "source": "fda_rule:21",
       "target": "region:FDA",
-      "relation": "applies_to"
-    },
-    {
-      "source": "DataSource",
-      "target": "ema_rule:1",
-      "relation": "contains"
-    },
-    {
-      "source": "ema_rule:1",
-      "target": "regex:ema_rule:1",
-      "relation": "uses"
-    },
-    {
-      "source": "ema_rule:1",
-      "target": "region:EMA",
-      "relation": "applies_to"
-    },
-    {
-      "source": "DataSource",
-      "target": "ema_rule:2",
-      "relation": "contains"
-    },
-    {
-      "source": "ema_rule:2",
-      "target": "regex:ema_rule:2",
-      "relation": "uses"
-    },
-    {
-      "source": "ema_rule:2",
-      "target": "region:EMA",
-      "relation": "applies_to"
-    },
-    {
-      "source": "DataSource",
-      "target": "ema_rule:3",
-      "relation": "contains"
-    },
-    {
-      "source": "ema_rule:3",
-      "target": "regex:ema_rule:3",
-      "relation": "uses"
-    },
-    {
-      "source": "ema_rule:3",
-      "target": "region:EMA",
       "relation": "applies_to"
     },
     {

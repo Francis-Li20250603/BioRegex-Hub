@@ -1,854 +1,1264 @@
 id,label
-DataSource,Regulatory Data
-region:FDA,FDA
-fda_rule:1,FDA Drug Rule
+fda_rule:1,FDA Drug Rule 1
 regex:fda_rule:1,\bSILICEA\b
-fda_rule:2,FDA Drug Rule
+region:FDA,FDA
+fda_rule:2,FDA Drug Rule 2
 regex:fda_rule:2,\bBetadine\b
-fda_rule:3,FDA Drug Rule
+region:FDA,FDA
+fda_rule:3,FDA Drug Rule 3
 regex:fda_rule:3,\bNaproxen\b
-fda_rule:4,FDA Drug Rule
+region:FDA,FDA
+fda_rule:4,FDA Drug Rule 4
 regex:fda_rule:4,\bMoisturizing Antibacterial\b
-fda_rule:5,FDA Drug Rule
+region:FDA,FDA
+fda_rule:5,FDA Drug Rule 5
 regex:fda_rule:5,\bQuick Action\b
-fda_rule:6,FDA Drug Rule
+region:FDA,FDA
+fda_rule:6,FDA Drug Rule 6
 regex:fda_rule:6,\bCuprum aceticum Nicotiana\b
-fda_rule:7,FDA Drug Rule
+region:FDA,FDA
+fda_rule:7,FDA Drug Rule 7
 regex:fda_rule:7,\bMekinist\b
-fda_rule:8,FDA Drug Rule
+region:FDA,FDA
+fda_rule:8,FDA Drug Rule 8
 regex:fda_rule:8,\bGlimepiride\b
-fda_rule:9,FDA Drug Rule
+region:FDA,FDA
+fda_rule:9,FDA Drug Rule 9
 regex:fda_rule:9,\bMethocarbamol\b
-fda_rule:10,FDA Drug Rule
+region:FDA,FDA
+fda_rule:10,FDA Drug Rule 10
 regex:fda_rule:10,\banti itch\b
-fda_rule:11,FDA Drug Rule
+region:FDA,FDA
+fda_rule:11,FDA Drug Rule 11
 regex:fda_rule:11,\bNP Thyroid 120\b
-fda_rule:12,FDA Drug Rule
+region:FDA,FDA
+fda_rule:12,FDA Drug Rule 12
 regex:fda_rule:12,\bVarenicline\b
-fda_rule:13,FDA Drug Rule
+region:FDA,FDA
+fda_rule:13,FDA Drug Rule 13
 regex:fda_rule:13,\bRescue Sleep\b
-fda_rule:14,FDA Drug Rule
+region:FDA,FDA
+fda_rule:14,FDA Drug Rule 14
 regex:fda_rule:14,\bPain Reliever Extra Strength\b
-fda_rule:15,FDA Drug Rule
+region:FDA,FDA
+fda_rule:15,FDA Drug Rule 15
 regex:fda_rule:15,\bOASIS Tears Lubricant Eye\b
-fda_rule:16,FDA Drug Rule
+region:FDA,FDA
+fda_rule:16,FDA Drug Rule 16
 regex:fda_rule:16,\bThera Plus Maximum Strength Feminine Anti-Itch\b
-fda_rule:17,FDA Drug Rule
+region:FDA,FDA
+fda_rule:17,FDA Drug Rule 17
 regex:fda_rule:17,"\bSure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented\b"
-fda_rule:18,FDA Drug Rule
+region:FDA,FDA
+fda_rule:18,FDA Drug Rule 18
 regex:fda_rule:18,\bBetamethasone Dipropionate\b
-fda_rule:19,FDA Drug Rule
+region:FDA,FDA
+fda_rule:19,FDA Drug Rule 19
 regex:fda_rule:19,\bLights Povindone Iodine Scrub\b
-fda_rule:20,FDA Drug Rule
+region:FDA,FDA
+fda_rule:20,FDA Drug Rule 20
 regex:fda_rule:20,\bCalcium Acetate\b
-fda_rule:21,FDA Drug Rule
+region:FDA,FDA
+fda_rule:21,FDA Drug Rule 21
 regex:fda_rule:21,\bENTRESTO\b
-region:EMA,EMA
-ema_rule:1,EMA Medicine Rule
-regex:ema_rule:1,\bCategory\b
-ema_rule:2,EMA Medicine Rule
-regex:ema_rule:2,\bVeterinary\b
-ema_rule:3,EMA Medicine Rule
-regex:ema_rule:3,\bHuman\b
+region:FDA,FDA
+cms_rule:1,CMS Hospital Rule 1
+regex:cms_rule:1,\bSOUTHEAST HEALTH MEDICAL CENTER\b
 region:CMS,CMS
-cms_rule:1,CMS Hospital Rule
-regex:cms_rule:1,\b010001\b
-cms_rule:2,CMS Hospital Rule
-regex:cms_rule:2,\b010005\b
-cms_rule:3,CMS Hospital Rule
-regex:cms_rule:3,\b010006\b
-cms_rule:4,CMS Hospital Rule
-regex:cms_rule:4,\b010007\b
-cms_rule:5,CMS Hospital Rule
-regex:cms_rule:5,\b010008\b
-cms_rule:6,CMS Hospital Rule
-regex:cms_rule:6,\b010011\b
-cms_rule:7,CMS Hospital Rule
-regex:cms_rule:7,\b010012\b
-cms_rule:8,CMS Hospital Rule
-regex:cms_rule:8,\b010016\b
-cms_rule:9,CMS Hospital Rule
-regex:cms_rule:9,\b010018\b
-cms_rule:10,CMS Hospital Rule
-regex:cms_rule:10,\b010019\b
-cms_rule:11,CMS Hospital Rule
-regex:cms_rule:11,\b010021\b
-cms_rule:12,CMS Hospital Rule
-regex:cms_rule:12,\b010022\b
-cms_rule:13,CMS Hospital Rule
-regex:cms_rule:13,\b010023\b
-cms_rule:14,CMS Hospital Rule
-regex:cms_rule:14,\b010024\b
-cms_rule:15,CMS Hospital Rule
-regex:cms_rule:15,\b010029\b
-cms_rule:16,CMS Hospital Rule
-regex:cms_rule:16,\b010033\b
-cms_rule:17,CMS Hospital Rule
-regex:cms_rule:17,\b010034\b
-cms_rule:18,CMS Hospital Rule
-regex:cms_rule:18,\b010035\b
-cms_rule:19,CMS Hospital Rule
-regex:cms_rule:19,\b010036\b
-cms_rule:20,CMS Hospital Rule
-regex:cms_rule:20,\b010039\b
-cms_rule:21,CMS Hospital Rule
-regex:cms_rule:21,\b010040\b
-cms_rule:22,CMS Hospital Rule
-regex:cms_rule:22,\b010044\b
-cms_rule:23,CMS Hospital Rule
-regex:cms_rule:23,\b010045\b
-cms_rule:24,CMS Hospital Rule
-regex:cms_rule:24,\b010046\b
-cms_rule:25,CMS Hospital Rule
-regex:cms_rule:25,\b010049\b
-cms_rule:26,CMS Hospital Rule
-regex:cms_rule:26,\b010051\b
-cms_rule:27,CMS Hospital Rule
-regex:cms_rule:27,\b010052\b
-cms_rule:28,CMS Hospital Rule
-regex:cms_rule:28,\b010055\b
-cms_rule:29,CMS Hospital Rule
-regex:cms_rule:29,\b010056\b
-cms_rule:30,CMS Hospital Rule
-regex:cms_rule:30,\b010058\b
-cms_rule:31,CMS Hospital Rule
-regex:cms_rule:31,\b010059\b
-cms_rule:32,CMS Hospital Rule
-regex:cms_rule:32,\b010061\b
-cms_rule:33,CMS Hospital Rule
-regex:cms_rule:33,\b010062\b
-cms_rule:34,CMS Hospital Rule
-regex:cms_rule:34,\b010065\b
-cms_rule:35,CMS Hospital Rule
-regex:cms_rule:35,\b010073\b
-cms_rule:36,CMS Hospital Rule
-regex:cms_rule:36,\b010078\b
-cms_rule:37,CMS Hospital Rule
-regex:cms_rule:37,\b010079\b
-cms_rule:38,CMS Hospital Rule
-regex:cms_rule:38,\b010083\b
-cms_rule:39,CMS Hospital Rule
-regex:cms_rule:39,\b010085\b
-cms_rule:40,CMS Hospital Rule
-regex:cms_rule:40,\b010086\b
-cms_rule:41,CMS Hospital Rule
-regex:cms_rule:41,\b010087\b
-cms_rule:42,CMS Hospital Rule
-regex:cms_rule:42,\b010089\b
-cms_rule:43,CMS Hospital Rule
-regex:cms_rule:43,\b010090\b
-cms_rule:44,CMS Hospital Rule
-regex:cms_rule:44,\b010091\b
-cms_rule:45,CMS Hospital Rule
-regex:cms_rule:45,\b010092\b
-cms_rule:46,CMS Hospital Rule
-regex:cms_rule:46,\b010095\b
-cms_rule:47,CMS Hospital Rule
-regex:cms_rule:47,\b010097\b
-cms_rule:48,CMS Hospital Rule
-regex:cms_rule:48,\b010099\b
-cms_rule:49,CMS Hospital Rule
-regex:cms_rule:49,\b010100\b
-cms_rule:50,CMS Hospital Rule
-regex:cms_rule:50,\b010101\b
-cms_rule:51,CMS Hospital Rule
-regex:cms_rule:51,\b010102\b
-cms_rule:52,CMS Hospital Rule
-regex:cms_rule:52,\b010103\b
-cms_rule:53,CMS Hospital Rule
-regex:cms_rule:53,\b010104\b
-cms_rule:54,CMS Hospital Rule
-regex:cms_rule:54,\b010108\b
-cms_rule:55,CMS Hospital Rule
-regex:cms_rule:55,\b010110\b
-cms_rule:56,CMS Hospital Rule
-regex:cms_rule:56,\b010112\b
-cms_rule:57,CMS Hospital Rule
-regex:cms_rule:57,\b010113\b
-cms_rule:58,CMS Hospital Rule
-regex:cms_rule:58,\b010114\b
-cms_rule:59,CMS Hospital Rule
-regex:cms_rule:59,\b010118\b
-cms_rule:60,CMS Hospital Rule
-regex:cms_rule:60,\b010120\b
-cms_rule:61,CMS Hospital Rule
-regex:cms_rule:61,\b010125\b
-cms_rule:62,CMS Hospital Rule
-regex:cms_rule:62,\b010126\b
-cms_rule:63,CMS Hospital Rule
-regex:cms_rule:63,\b010128\b
-cms_rule:64,CMS Hospital Rule
-regex:cms_rule:64,\b010129\b
-cms_rule:65,CMS Hospital Rule
-regex:cms_rule:65,\b010130\b
-cms_rule:66,CMS Hospital Rule
-regex:cms_rule:66,\b010131\b
-cms_rule:67,CMS Hospital Rule
-regex:cms_rule:67,\b010138\b
-cms_rule:68,CMS Hospital Rule
-regex:cms_rule:68,\b010139\b
-cms_rule:69,CMS Hospital Rule
-regex:cms_rule:69,\b010144\b
-cms_rule:70,CMS Hospital Rule
-regex:cms_rule:70,\b010148\b
-cms_rule:71,CMS Hospital Rule
-regex:cms_rule:71,\b010149\b
-cms_rule:72,CMS Hospital Rule
-regex:cms_rule:72,\b01014F\b
-cms_rule:73,CMS Hospital Rule
-regex:cms_rule:73,\b010150\b
-cms_rule:74,CMS Hospital Rule
-regex:cms_rule:74,\b010157\b
-cms_rule:75,CMS Hospital Rule
-regex:cms_rule:75,\b010158\b
-cms_rule:76,CMS Hospital Rule
-regex:cms_rule:76,\b010164\b
-cms_rule:77,CMS Hospital Rule
-regex:cms_rule:77,\b010168\b
-cms_rule:78,CMS Hospital Rule
-regex:cms_rule:78,\b010169\b
-cms_rule:79,CMS Hospital Rule
-regex:cms_rule:79,\b010173\b
-cms_rule:80,CMS Hospital Rule
-regex:cms_rule:80,\b010175\b
-cms_rule:81,CMS Hospital Rule
-regex:cms_rule:81,\b01019F\b
-cms_rule:82,CMS Hospital Rule
-regex:cms_rule:82,\b01021F\b
-cms_rule:83,CMS Hospital Rule
-regex:cms_rule:83,\b011300\b
-cms_rule:84,CMS Hospital Rule
-regex:cms_rule:84,\b011302\b
-cms_rule:85,CMS Hospital Rule
-regex:cms_rule:85,\b011304\b
-cms_rule:86,CMS Hospital Rule
-regex:cms_rule:86,\b011305\b
-cms_rule:87,CMS Hospital Rule
-regex:cms_rule:87,\b011306\b
-cms_rule:88,CMS Hospital Rule
-regex:cms_rule:88,\b011307\b
-cms_rule:89,CMS Hospital Rule
-regex:cms_rule:89,\b013300\b
-cms_rule:90,CMS Hospital Rule
-regex:cms_rule:90,\b013301\b
-cms_rule:91,CMS Hospital Rule
-regex:cms_rule:91,\b014000\b
-cms_rule:92,CMS Hospital Rule
-regex:cms_rule:92,\b014006\b
-cms_rule:93,CMS Hospital Rule
-regex:cms_rule:93,\b014007\b
-cms_rule:94,CMS Hospital Rule
-regex:cms_rule:94,\b014012\b
-cms_rule:95,CMS Hospital Rule
-regex:cms_rule:95,\b014014\b
-cms_rule:96,CMS Hospital Rule
-regex:cms_rule:96,\b014015\b
-cms_rule:97,CMS Hospital Rule
-regex:cms_rule:97,\b014016\b
-cms_rule:98,CMS Hospital Rule
-regex:cms_rule:98,\b014017\b
-cms_rule:99,CMS Hospital Rule
-regex:cms_rule:99,\b014018\b
-cms_rule:100,CMS Hospital Rule
-regex:cms_rule:100,\b020001\b
-cms_rule:101,CMS Hospital Rule
-regex:cms_rule:101,\b020006\b
-cms_rule:102,CMS Hospital Rule
-regex:cms_rule:102,\b020008\b
-cms_rule:103,CMS Hospital Rule
-regex:cms_rule:103,\b020012\b
-cms_rule:104,CMS Hospital Rule
-regex:cms_rule:104,\b020017\b
-cms_rule:105,CMS Hospital Rule
-regex:cms_rule:105,\b020018\b
-cms_rule:106,CMS Hospital Rule
-regex:cms_rule:106,\b020024\b
-cms_rule:107,CMS Hospital Rule
-regex:cms_rule:107,\b020026\b
-cms_rule:108,CMS Hospital Rule
-regex:cms_rule:108,\b02013F\b
-cms_rule:109,CMS Hospital Rule
-regex:cms_rule:109,\b02014F\b
-cms_rule:110,CMS Hospital Rule
-regex:cms_rule:110,\b021301\b
-cms_rule:111,CMS Hospital Rule
-regex:cms_rule:111,\b021302\b
-cms_rule:112,CMS Hospital Rule
-regex:cms_rule:112,\b021304\b
-cms_rule:113,CMS Hospital Rule
-regex:cms_rule:113,\b021305\b
-cms_rule:114,CMS Hospital Rule
-regex:cms_rule:114,\b021306\b
-cms_rule:115,CMS Hospital Rule
-regex:cms_rule:115,\b021307\b
-cms_rule:116,CMS Hospital Rule
-regex:cms_rule:116,\b021308\b
-cms_rule:117,CMS Hospital Rule
-regex:cms_rule:117,\b021309\b
-cms_rule:118,CMS Hospital Rule
-regex:cms_rule:118,\b021310\b
-cms_rule:119,CMS Hospital Rule
-regex:cms_rule:119,\b021311\b
-cms_rule:120,CMS Hospital Rule
-regex:cms_rule:120,\b021312\b
-cms_rule:121,CMS Hospital Rule
-regex:cms_rule:121,\b021313\b
-cms_rule:122,CMS Hospital Rule
-regex:cms_rule:122,\b021314\b
-cms_rule:123,CMS Hospital Rule
-regex:cms_rule:123,\b024001\b
-cms_rule:124,CMS Hospital Rule
-regex:cms_rule:124,\b024002\b
-cms_rule:125,CMS Hospital Rule
-regex:cms_rule:125,\b030002\b
-cms_rule:126,CMS Hospital Rule
-regex:cms_rule:126,\b030006\b
-cms_rule:127,CMS Hospital Rule
-regex:cms_rule:127,\b030007\b
-cms_rule:128,CMS Hospital Rule
-regex:cms_rule:128,\b030010\b
-cms_rule:129,CMS Hospital Rule
-regex:cms_rule:129,\b030011\b
-cms_rule:130,CMS Hospital Rule
-regex:cms_rule:130,\b030012\b
-cms_rule:131,CMS Hospital Rule
-regex:cms_rule:131,\b030013\b
-cms_rule:132,CMS Hospital Rule
-regex:cms_rule:132,\b030014\b
-cms_rule:133,CMS Hospital Rule
-regex:cms_rule:133,\b030016\b
-cms_rule:134,CMS Hospital Rule
-regex:cms_rule:134,\b030022\b
-cms_rule:135,CMS Hospital Rule
-regex:cms_rule:135,\b030023\b
-cms_rule:136,CMS Hospital Rule
-regex:cms_rule:136,\b030024\b
-cms_rule:137,CMS Hospital Rule
-regex:cms_rule:137,\b030030\b
-cms_rule:138,CMS Hospital Rule
-regex:cms_rule:138,\b030036\b
-cms_rule:139,CMS Hospital Rule
-regex:cms_rule:139,\b030037\b
-cms_rule:140,CMS Hospital Rule
-regex:cms_rule:140,\b030038\b
-cms_rule:141,CMS Hospital Rule
-regex:cms_rule:141,\b030043\b
-cms_rule:142,CMS Hospital Rule
-regex:cms_rule:142,\b030055\b
-cms_rule:143,CMS Hospital Rule
-regex:cms_rule:143,\b030061\b
-cms_rule:144,CMS Hospital Rule
-regex:cms_rule:144,\b030062\b
-cms_rule:145,CMS Hospital Rule
-regex:cms_rule:145,\b030064\b
-cms_rule:146,CMS Hospital Rule
-regex:cms_rule:146,\b030065\b
-cms_rule:147,CMS Hospital Rule
-regex:cms_rule:147,\b030069\b
-cms_rule:148,CMS Hospital Rule
-regex:cms_rule:148,\b030071\b
-cms_rule:149,CMS Hospital Rule
-regex:cms_rule:149,\b030073\b
-cms_rule:150,CMS Hospital Rule
-regex:cms_rule:150,\b030074\b
-cms_rule:151,CMS Hospital Rule
-regex:cms_rule:151,\b030078\b
-cms_rule:152,CMS Hospital Rule
-regex:cms_rule:152,\b030083\b
-cms_rule:153,CMS Hospital Rule
-regex:cms_rule:153,\b030084\b
-cms_rule:154,CMS Hospital Rule
-regex:cms_rule:154,\b030085\b
-cms_rule:155,CMS Hospital Rule
-regex:cms_rule:155,\b030087\b
-cms_rule:156,CMS Hospital Rule
-regex:cms_rule:156,\b030088\b
-cms_rule:157,CMS Hospital Rule
-regex:cms_rule:157,\b030089\b
-cms_rule:158,CMS Hospital Rule
-regex:cms_rule:158,\b030092\b
-cms_rule:159,CMS Hospital Rule
-regex:cms_rule:159,\b030093\b
-cms_rule:160,CMS Hospital Rule
-regex:cms_rule:160,\b030094\b
-cms_rule:161,CMS Hospital Rule
-regex:cms_rule:161,\b030101\b
-cms_rule:162,CMS Hospital Rule
-regex:cms_rule:162,\b030103\b
-cms_rule:163,CMS Hospital Rule
-regex:cms_rule:163,\b030105\b
-cms_rule:164,CMS Hospital Rule
-regex:cms_rule:164,\b030107\b
-cms_rule:165,CMS Hospital Rule
-regex:cms_rule:165,\b030108\b
-cms_rule:166,CMS Hospital Rule
-regex:cms_rule:166,\b030110\b
-cms_rule:167,CMS Hospital Rule
-regex:cms_rule:167,\b030111\b
-cms_rule:168,CMS Hospital Rule
-regex:cms_rule:168,\b030112\b
-cms_rule:169,CMS Hospital Rule
-regex:cms_rule:169,\b030113\b
-cms_rule:170,CMS Hospital Rule
-regex:cms_rule:170,\b030114\b
-cms_rule:171,CMS Hospital Rule
-regex:cms_rule:171,\b030115\b
-cms_rule:172,CMS Hospital Rule
-regex:cms_rule:172,\b030117\b
-cms_rule:173,CMS Hospital Rule
-regex:cms_rule:173,\b030119\b
-cms_rule:174,CMS Hospital Rule
-regex:cms_rule:174,\b030121\b
-cms_rule:175,CMS Hospital Rule
-regex:cms_rule:175,\b030122\b
-cms_rule:176,CMS Hospital Rule
-regex:cms_rule:176,\b030123\b
-cms_rule:177,CMS Hospital Rule
-regex:cms_rule:177,\b03012F\b
-cms_rule:178,CMS Hospital Rule
-regex:cms_rule:178,\b030130\b
-cms_rule:179,CMS Hospital Rule
-regex:cms_rule:179,\b030134\b
-cms_rule:180,CMS Hospital Rule
-regex:cms_rule:180,\b030136\b
-cms_rule:181,CMS Hospital Rule
-regex:cms_rule:181,\b030138\b
-cms_rule:182,CMS Hospital Rule
-regex:cms_rule:182,\b030139\b
-cms_rule:183,CMS Hospital Rule
-regex:cms_rule:183,\b03013F\b
-cms_rule:184,CMS Hospital Rule
-regex:cms_rule:184,\b030146\b
-cms_rule:185,CMS Hospital Rule
-regex:cms_rule:185,\b030147\b
-cms_rule:186,CMS Hospital Rule
-regex:cms_rule:186,\b030148\b
-cms_rule:187,CMS Hospital Rule
-regex:cms_rule:187,\b030152\b
-cms_rule:188,CMS Hospital Rule
-regex:cms_rule:188,\b030153\b
-cms_rule:189,CMS Hospital Rule
-regex:cms_rule:189,\b030154\b
-cms_rule:190,CMS Hospital Rule
-regex:cms_rule:190,\b030155\b
-cms_rule:191,CMS Hospital Rule
-regex:cms_rule:191,\b03033F\b
-cms_rule:192,CMS Hospital Rule
-regex:cms_rule:192,\b031300\b
-cms_rule:193,CMS Hospital Rule
-regex:cms_rule:193,\b031301\b
-cms_rule:194,CMS Hospital Rule
-regex:cms_rule:194,\b031302\b
-cms_rule:195,CMS Hospital Rule
-regex:cms_rule:195,\b031304\b
-cms_rule:196,CMS Hospital Rule
-regex:cms_rule:196,\b031305\b
-cms_rule:197,CMS Hospital Rule
-regex:cms_rule:197,\b031307\b
-cms_rule:198,CMS Hospital Rule
-regex:cms_rule:198,\b031308\b
-cms_rule:199,CMS Hospital Rule
-regex:cms_rule:199,\b031309\b
-cms_rule:200,CMS Hospital Rule
-regex:cms_rule:200,\b031311\b
-region:HIPAA,HIPAA
-hipaa_rule:1,HIPAA Breach Rule
+cms_rule:2,CMS Hospital Rule 2
+regex:cms_rule:2,\bMARSHALL MEDICAL CENTERS\b
+region:CMS,CMS
+cms_rule:3,CMS Hospital Rule 3
+regex:cms_rule:3,\bNORTH ALABAMA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:4,CMS Hospital Rule 4
+regex:cms_rule:4,\bMIZELL MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:5,CMS Hospital Rule 5
+regex:cms_rule:5,\bCRENSHAW COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:6,CMS Hospital Rule 6
+regex:cms_rule:6,\bST. VINCENT'S EAST\b
+region:CMS,CMS
+cms_rule:7,CMS Hospital Rule 7
+regex:cms_rule:7,\bDEKALB REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:8,CMS Hospital Rule 8
+regex:cms_rule:8,\bSHELBY BAPTIST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:9,CMS Hospital Rule 9
+regex:cms_rule:9,\bCALLAHAN EYE HOSPITAL\b
+region:CMS,CMS
+cms_rule:10,CMS Hospital Rule 10
+regex:cms_rule:10,\bHELEN KELLER HOSPITAL\b
+region:CMS,CMS
+cms_rule:11,CMS Hospital Rule 11
+regex:cms_rule:11,\bDALE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:12,CMS Hospital Rule 12
+regex:cms_rule:12,\bFLOYD CHEROKEE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:13,CMS Hospital Rule 13
+regex:cms_rule:13,\bBAPTIST MEDICAL CENTER SOUTH\b
+region:CMS,CMS
+cms_rule:14,CMS Hospital Rule 14
+regex:cms_rule:14,\bJACKSON HOSPITAL & CLINIC INC\b
+region:CMS,CMS
+cms_rule:15,CMS Hospital Rule 15
+regex:cms_rule:15,\bTHE EAST ALABAMA HEALTHCARE AUTHORITY\b
+region:CMS,CMS
+cms_rule:16,CMS Hospital Rule 16
+regex:cms_rule:16,\bUNIVERSITY OF ALABAMA HOSPITAL\b
+region:CMS,CMS
+cms_rule:17,CMS Hospital Rule 17
+regex:cms_rule:17,\bCOMMUNITY HOSPITAL INC\b
+region:CMS,CMS
+cms_rule:18,CMS Hospital Rule 18
+regex:cms_rule:18,\bCULLMAN REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:19,CMS Hospital Rule 19
+regex:cms_rule:19,\bANDALUSIA HEALTH\b
+region:CMS,CMS
+cms_rule:20,CMS Hospital Rule 20
+regex:cms_rule:20,\bHUNTSVILLE HOSPITAL\b
+region:CMS,CMS
+cms_rule:21,CMS Hospital Rule 21
+regex:cms_rule:21,\bGADSDEN REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:22,CMS Hospital Rule 22
+regex:cms_rule:22,\bMARION REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:23,CMS Hospital Rule 23
+regex:cms_rule:23,\bFAYETTE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:24,CMS Hospital Rule 24
+regex:cms_rule:24,\bRIVERVIEW REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:25,CMS Hospital Rule 25
+regex:cms_rule:25,\bMEDICAL CENTER ENTERPRISE\b
+region:CMS,CMS
+cms_rule:26,CMS Hospital Rule 26
+regex:cms_rule:26,\bGREENE COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:27,CMS Hospital Rule 27
+regex:cms_rule:27,\bLAKE MARTIN COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:28,CMS Hospital Rule 28
+regex:cms_rule:28,\bFLOWERS HOSPITAL\b
+region:CMS,CMS
+cms_rule:29,CMS Hospital Rule 29
+regex:cms_rule:29,\bST VINCENT'S BIRMINGHAM\b
+region:CMS,CMS
+cms_rule:30,CMS Hospital Rule 30
+regex:cms_rule:30,\bBIBB MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:31,CMS Hospital Rule 31
+regex:cms_rule:31,\bLAWRENCE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:32,CMS Hospital Rule 32
+regex:cms_rule:32,\bHIGHLANDS MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:33,CMS Hospital Rule 33
+regex:cms_rule:33,\bWIREGRASS MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:34,CMS Hospital Rule 34
+regex:cms_rule:34,\bRUSSELL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:35,CMS Hospital Rule 35
+regex:cms_rule:35,\bCLAY COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:36,CMS Hospital Rule 36
+regex:cms_rule:36,\bNORTHEAST ALABAMA REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:37,CMS Hospital Rule 37
+regex:cms_rule:37,\bATHENS LIMESTONE HOSPITAL\b
+region:CMS,CMS
+cms_rule:38,CMS Hospital Rule 38
+regex:cms_rule:38,\bBALDWIN HEALTH\b
+region:CMS,CMS
+cms_rule:39,CMS Hospital Rule 39
+regex:cms_rule:39,\bDECATUR MORGAN HOSPITAL - DECATUR CAMPUS\b
+region:CMS,CMS
+cms_rule:40,CMS Hospital Rule 40
+regex:cms_rule:40,\bNORTHWEST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:41,CMS Hospital Rule 41
+regex:cms_rule:41,\bUSA HEALTH UNIVERSITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:42,CMS Hospital Rule 42
+regex:cms_rule:42,\bWALKER BAPTIST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:43,CMS Hospital Rule 43
+regex:cms_rule:43,"\bUSA HEALTH HCA PROVIDENCE HOSPITAL, LLC\b"
+region:CMS,CMS
+cms_rule:44,CMS Hospital Rule 44
+regex:cms_rule:44,\bGROVE HILL MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:45,CMS Hospital Rule 45
+regex:cms_rule:45,\bDCH REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:46,CMS Hospital Rule 46
+regex:cms_rule:46,\bHALE COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:47,CMS Hospital Rule 47
+regex:cms_rule:47,\bELMORE COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:48,CMS Hospital Rule 48
+regex:cms_rule:48,\bD W MCMILLAN MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:49,CMS Hospital Rule 49
+regex:cms_rule:49,\bTHOMAS HOSPITAL\b
+region:CMS,CMS
+cms_rule:50,CMS Hospital Rule 50
+regex:cms_rule:50,\bCITIZENS BAPTIST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:51,CMS Hospital Rule 51
+regex:cms_rule:51,\bJ PAUL JONES HOSPITAL\b
+region:CMS,CMS
+cms_rule:52,CMS Hospital Rule 52
+regex:cms_rule:52,\bPRINCETON BAPTIST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:53,CMS Hospital Rule 53
+regex:cms_rule:53,\bGRANDVIEW MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:54,CMS Hospital Rule 54
+regex:cms_rule:54,\bPRATTVILLE BAPTIST HOSPITAL\b
+region:CMS,CMS
+cms_rule:55,CMS Hospital Rule 55
+regex:cms_rule:55,\bBULLOCK COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:56,CMS Hospital Rule 56
+regex:cms_rule:56,\bWHITFIELD REGIONAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:57,CMS Hospital Rule 57
+regex:cms_rule:57,\bMOBILE INFIRMARY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:58,CMS Hospital Rule 58
+regex:cms_rule:58,"\bMEDICAL WEST, AN AFFILIATE OF UAB HEALTH SYSTEM\b"
+region:CMS,CMS
+cms_rule:59,CMS Hospital Rule 59
+regex:cms_rule:59,\bVAUGHAN REGIONAL MEDICAL CENTER PARKWAY CAMPUS\b
+region:CMS,CMS
+cms_rule:60,CMS Hospital Rule 60
+regex:cms_rule:60,\bMONROE COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:61,CMS Hospital Rule 61
+regex:cms_rule:61,\bLAKELAND COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:62,CMS Hospital Rule 62
+regex:cms_rule:62,\bTROY REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:63,CMS Hospital Rule 63
+regex:cms_rule:63,\bJACKSON MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:64,CMS Hospital Rule 64
+regex:cms_rule:64,\bNORTH BALDWIN INFIRMARY\b
+region:CMS,CMS
+cms_rule:65,CMS Hospital Rule 65
+regex:cms_rule:65,\bST VINCENT'S ST CLAIR\b
+region:CMS,CMS
+cms_rule:66,CMS Hospital Rule 66
+regex:cms_rule:66,\bCRESTWOOD MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:67,CMS Hospital Rule 67
+regex:cms_rule:67,\bHILL HOSPITAL OF SUMTER COUNTY\b
+region:CMS,CMS
+cms_rule:68,CMS Hospital Rule 68
+regex:cms_rule:68,\bBROOKWOOD BAPTIST MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:69,CMS Hospital Rule 69
+regex:cms_rule:69,\bSPRINGHILL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:70,CMS Hospital Rule 70
+regex:cms_rule:70,\bEVERGREEN MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:71,CMS Hospital Rule 71
+regex:cms_rule:71,\bBAPTIST MEDICAL CENTER EAST\b
+region:CMS,CMS
+cms_rule:72,CMS Hospital Rule 72
+regex:cms_rule:72,\bBIRMINGHAM VA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:73,CMS Hospital Rule 73
+regex:cms_rule:73,\bTHE HEALTH CARE AUTHORITY OF THE CITY OF GREENVILLE- LV STABLER HOSPITAL\b
+region:CMS,CMS
+cms_rule:74,CMS Hospital Rule 74
+regex:cms_rule:74,\bNORTH ALABAMA SHOALS HOSPITAL\b
+region:CMS,CMS
+cms_rule:75,CMS Hospital Rule 75
+regex:cms_rule:75,\bRUSSELLVILLE HOSPITAL\b
+region:CMS,CMS
+cms_rule:76,CMS Hospital Rule 76
+regex:cms_rule:76,\bCOOSA VALLEY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:77,CMS Hospital Rule 77
+regex:cms_rule:77,\bJACK HUGHSTON MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:78,CMS Hospital Rule 78
+regex:cms_rule:78,\bATMORE COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:79,CMS Hospital Rule 79
+regex:cms_rule:79,\bST VINCENT'S CHILTON\b
+region:CMS,CMS
+cms_rule:80,CMS Hospital Rule 80
+regex:cms_rule:80,\bEAMC - LANIER\b
+region:CMS,CMS
+cms_rule:81,CMS Hospital Rule 81
+regex:cms_rule:81,\bVA CENTRAL ALABAMA HEALTHCARE SYSTEM - MONTGOMERY\b
+region:CMS,CMS
+cms_rule:82,CMS Hospital Rule 82
+regex:cms_rule:82,\bTUSCALOOSA VA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:83,CMS Hospital Rule 83
+regex:cms_rule:83,\bWASHINGTON COUNTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:84,CMS Hospital Rule 84
+regex:cms_rule:84,\bRED BAY HOSPITAL\b
+region:CMS,CMS
+cms_rule:85,CMS Hospital Rule 85
+regex:cms_rule:85,\bOCHSNER CHOCTAW GENERAL\b
+region:CMS,CMS
+cms_rule:86,CMS Hospital Rule 86
+regex:cms_rule:86,\bST VINCENTS BLOUNT\b
+region:CMS,CMS
+cms_rule:87,CMS Hospital Rule 87
+regex:cms_rule:87,\bTANNER MEDICAL CENTER-EAST ALABAMA\b
+region:CMS,CMS
+cms_rule:88,CMS Hospital Rule 88
+regex:cms_rule:88,\bMEDICAL CENTER BARBOUR\b
+region:CMS,CMS
+cms_rule:89,CMS Hospital Rule 89
+regex:cms_rule:89,\bTHE CHILDREN'S HOSPITAL OF ALABAMA\b
+region:CMS,CMS
+cms_rule:90,CMS Hospital Rule 90
+regex:cms_rule:90,\bUSA HEALTH CHILDREN'S & WOMEN'S HOSPITAL\b
+region:CMS,CMS
+cms_rule:91,CMS Hospital Rule 91
+regex:cms_rule:91,\bHILL CREST BEHAVIORAL HEALTH SERVICES\b
+region:CMS,CMS
+cms_rule:92,CMS Hospital Rule 92
+regex:cms_rule:92,\bMOUNTAIN VIEW HOSPITAL\b
+region:CMS,CMS
+cms_rule:93,CMS Hospital Rule 93
+regex:cms_rule:93,\bBRYCE HOSPITAL\b
+region:CMS,CMS
+cms_rule:94,CMS Hospital Rule 94
+regex:cms_rule:94,\bMARY S HARPER GERIATRIC PSYCHIATRY CENTER\b
+region:CMS,CMS
+cms_rule:95,CMS Hospital Rule 95
+regex:cms_rule:95,\bBAYPOINTE BEHAVIORAL HEALTH\b
+region:CMS,CMS
+cms_rule:96,CMS Hospital Rule 96
+regex:cms_rule:96,\bBEACON CHILDREN'S HOSPITAL\b
+region:CMS,CMS
+cms_rule:97,CMS Hospital Rule 97
+regex:cms_rule:97,"\bSANCTUARY AT THE WOODLANDS, THE\b"
+region:CMS,CMS
+cms_rule:98,CMS Hospital Rule 98
+regex:cms_rule:98,\bEASTPOINTE HOSPITAL\b
+region:CMS,CMS
+cms_rule:99,CMS Hospital Rule 99
+regex:cms_rule:99,\bUNITY PSYCHIATRIC CARE - HUNTSVILLE\b
+region:CMS,CMS
+cms_rule:100,CMS Hospital Rule 100
+regex:cms_rule:100,\bPROVIDENCE ALASKA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:101,CMS Hospital Rule 101
+regex:cms_rule:101,\bMAT-SU REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:102,CMS Hospital Rule 102
+regex:cms_rule:102,\bBARTLETT REGIONAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:103,CMS Hospital Rule 103
+regex:cms_rule:103,\bFAIRBANKS MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:104,CMS Hospital Rule 104
+regex:cms_rule:104,\bALASKA REGIONAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:105,CMS Hospital Rule 105
+regex:cms_rule:105,\bYUKON KUSKOKWIM DELTA REG HOSPITAL\b
+region:CMS,CMS
+cms_rule:106,CMS Hospital Rule 106
+regex:cms_rule:106,\bCENTRAL PENINSULA GENERAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:107,CMS Hospital Rule 107
+regex:cms_rule:107,\bALASKA NATIVE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:108,CMS Hospital Rule 108
+regex:cms_rule:108,\b673rd Medical Group \(Joint Base Elmendorf-Richardson\)\b
+region:CMS,CMS
+cms_rule:109,CMS Hospital Rule 109
+regex:cms_rule:109,\bBassett ACH \(FT Wainwright\)\b
+region:CMS,CMS
+cms_rule:110,CMS Hospital Rule 110
+regex:cms_rule:110,\bPROVIDENCE VALDEZ MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:111,CMS Hospital Rule 111
+regex:cms_rule:111,\bPROVIDENCE SEWARD HOSPITAL\b
+region:CMS,CMS
+cms_rule:112,CMS Hospital Rule 112
+regex:cms_rule:112,\bPETERSBURG MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:113,CMS Hospital Rule 113
+regex:cms_rule:113,\bSEARHC WRANGELL MEDICAL CENTER-CAH\b
+region:CMS,CMS
+cms_rule:114,CMS Hospital Rule 114
+regex:cms_rule:114,\bPROVIDENCE KODIAK ISLAND MEDICAL CTR\b
+region:CMS,CMS
+cms_rule:115,CMS Hospital Rule 115
+regex:cms_rule:115,\bCORDOVA COMMUNITY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:116,CMS Hospital Rule 116
+regex:cms_rule:116,\bNORTON SOUND REGIONAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:117,CMS Hospital Rule 117
+regex:cms_rule:117,\bBRISTOL BAY AREA HEALTH CORPORATION\b
+region:CMS,CMS
+cms_rule:118,CMS Hospital Rule 118
+regex:cms_rule:118,\bMANIILAQ HEALTH CENTER\b
+region:CMS,CMS
+cms_rule:119,CMS Hospital Rule 119
+regex:cms_rule:119,\bPEACEHEALTH KETCHIKAN MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:120,CMS Hospital Rule 120
+regex:cms_rule:120,\bSAMUEL SIMMONDS MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:121,CMS Hospital Rule 121
+regex:cms_rule:121,\bSOUTH PENINSULA HOSPITAL\b
+region:CMS,CMS
+cms_rule:122,CMS Hospital Rule 122
+regex:cms_rule:122,\bSOUTHEAST ALASKA REGIONAL HEALTH CONSORTIUM\b
+region:CMS,CMS
+cms_rule:123,CMS Hospital Rule 123
+regex:cms_rule:123,\bNORTH STAR HOSPITAL\b
+region:CMS,CMS
+cms_rule:124,CMS Hospital Rule 124
+regex:cms_rule:124,\bALASKA PSYCHIATRIC INSTITUTE\b
+region:CMS,CMS
+cms_rule:125,CMS Hospital Rule 125
+regex:cms_rule:125,\bBANNER - UNIVERSITY MEDICAL CENTER PHOENIX\b
+region:CMS,CMS
+cms_rule:126,CMS Hospital Rule 126
+regex:cms_rule:126,\bTUCSON MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:127,CMS Hospital Rule 127
+regex:cms_rule:127,\bVERDE VALLEY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:128,CMS Hospital Rule 128
+regex:cms_rule:128,\bST. MARY'S HOSPITAL\b
+region:CMS,CMS
+cms_rule:129,CMS Hospital Rule 129
+regex:cms_rule:129,\bST JOSEPH'S HOSPITAL\b
+region:CMS,CMS
+cms_rule:130,CMS Hospital Rule 130
+regex:cms_rule:130,\bYAVAPAI REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:131,CMS Hospital Rule 131
+regex:cms_rule:131,\bYUMA REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:132,CMS Hospital Rule 132
+regex:cms_rule:132,\bHONOR HEALTH JOHN C. LINCOLN MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:133,CMS Hospital Rule 133
+regex:cms_rule:133,\bBANNER CASA GRANDE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:134,CMS Hospital Rule 134
+regex:cms_rule:134,\bVALLEYWISE HEALTH MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:135,CMS Hospital Rule 135
+regex:cms_rule:135,\bFLAGSTAFF MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:136,CMS Hospital Rule 136
+regex:cms_rule:136,\bST. JOSEPH'S HOSPITAL AND MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:137,CMS Hospital Rule 137
+regex:cms_rule:137,\bABRAZO CENTRAL CAMPUS\b
+region:CMS,CMS
+cms_rule:138,CMS Hospital Rule 138
+regex:cms_rule:138,\bCHANDLER REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:139,CMS Hospital Rule 139
+regex:cms_rule:139,\bHONORHEALTH TEMPE MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:140,CMS Hospital Rule 140
+regex:cms_rule:140,\bHONORHEALTH SCOTTSDALE OSBORN MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:141,CMS Hospital Rule 141
+regex:cms_rule:141,\bCANYON VISTA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:142,CMS Hospital Rule 142
+regex:cms_rule:142,\bKINGMAN REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:143,CMS Hospital Rule 143
+regex:cms_rule:143,\bBANNER BOSWELL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:144,CMS Hospital Rule 144
+regex:cms_rule:144,\bSUMMIT HEALTHCARE REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:145,CMS Hospital Rule 145
+regex:cms_rule:145,\bBANNER - UNIVERSITY MEDICAL CENTER TUCSON CAMPUS\b
+region:CMS,CMS
+cms_rule:146,CMS Hospital Rule 146
+regex:cms_rule:146,\bBANNER DESERT MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:147,CMS Hospital Rule 147
+regex:cms_rule:147,\bHAVASU REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:148,CMS Hospital Rule 148
+regex:cms_rule:148,\bFORT DEFIANCE INDIAN HOSPITAL\b
+region:CMS,CMS
+cms_rule:149,CMS Hospital Rule 149
+regex:cms_rule:149,\bTUBA CITY REGIONAL HEALTH CARE CORPORATION\b
+region:CMS,CMS
+cms_rule:150,CMS Hospital Rule 150
+regex:cms_rule:150,\bSELLS HOSPITAL\b
+region:CMS,CMS
+cms_rule:151,CMS Hospital Rule 151
+regex:cms_rule:151,\bPHOENIX INDIAN MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:152,CMS Hospital Rule 152
+regex:cms_rule:152,\bABRAZO SCOTTSDALE CAMPUS\b
+region:CMS,CMS
+cms_rule:153,CMS Hospital Rule 153
+regex:cms_rule:153,\bCHINLE COMPREHENSIVE HEALTH CARE FACILITY\b
+region:CMS,CMS
+cms_rule:154,CMS Hospital Rule 154
+regex:cms_rule:154,\bHONORHEALTH SCOTTSDALE SHEA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:155,CMS Hospital Rule 155
+regex:cms_rule:155,\bBANNER BAYWOOD MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:156,CMS Hospital Rule 156
+regex:cms_rule:156,\bBANNER THUNDERBIRD MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:157,CMS Hospital Rule 157
+regex:cms_rule:157,\bHONORHEALTH DEER VALLEY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:158,CMS Hospital Rule 158
+regex:cms_rule:158,\bBANNER DEL E. WEBB MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:159,CMS Hospital Rule 159
+regex:cms_rule:159,\bABRAZO ARROWHEAD HOSPITAL\b
+region:CMS,CMS
+cms_rule:160,CMS Hospital Rule 160
+regex:cms_rule:160,\bWESTERN ARIZONA REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:161,CMS Hospital Rule 161
+regex:cms_rule:161,\bMAYO CLINIC HOSPITAL\b
+region:CMS,CMS
+cms_rule:162,CMS Hospital Rule 162
+regex:cms_rule:162,\bBANNER HEART HOSPITAL\b
+region:CMS,CMS
+cms_rule:163,CMS Hospital Rule 163
+regex:cms_rule:163,\bARIZONA SPINE AND JOINT HOSPITAL\b
+region:CMS,CMS
+cms_rule:164,CMS Hospital Rule 164
+regex:cms_rule:164,\bTHE CORE INSTITUTE SPECIALTY HOSP\b
+region:CMS,CMS
+cms_rule:165,CMS Hospital Rule 165
+regex:cms_rule:165,\bABRAZO WEST CAMPUS\b
+region:CMS,CMS
+cms_rule:166,CMS Hospital Rule 166
+regex:cms_rule:166,\bBANNER-UNIVERSITY MEDICAL CENTER SOUTH CAMPUS\b
+region:CMS,CMS
+cms_rule:167,CMS Hospital Rule 167
+regex:cms_rule:167,\bARIZONA ORTHOPEDIC AND SURGICAL SPECIALTY HOSPITAL\b
+region:CMS,CMS
+cms_rule:168,CMS Hospital Rule 168
+regex:cms_rule:168,\bWHITERIVER PHS INDIAN HOSPITAL\b
+region:CMS,CMS
+cms_rule:169,CMS Hospital Rule 169
+regex:cms_rule:169,\bORO VALLEY HOSPITAL\b
+region:CMS,CMS
+cms_rule:170,CMS Hospital Rule 170
+regex:cms_rule:170,\bBANNER ESTRELLA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:171,CMS Hospital Rule 171
+regex:cms_rule:171,\bVALLEY VIEW MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:172,CMS Hospital Rule 172
+regex:cms_rule:172,\bMERCY GILBERT MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:173,CMS Hospital Rule 173
+regex:cms_rule:173,\bHONORHEALTH MOUNTAIN VISTA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:174,CMS Hospital Rule 174
+regex:cms_rule:174,\bBANNER GATEWAY MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:175,CMS Hospital Rule 175
+regex:cms_rule:175,\bHONORHEALTH SCOTTSDALE THOMPSON PEAK MED CTR\b
+region:CMS,CMS
+cms_rule:176,CMS Hospital Rule 176
+regex:cms_rule:176,\bPHOENIX VA MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:177,CMS Hospital Rule 177
+regex:cms_rule:177,\bBANNER IRONWOOD MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:178,CMS Hospital Rule 178
+regex:cms_rule:178,\bBANNER GOLDFIELD MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:179,CMS Hospital Rule 179
+regex:cms_rule:179,\bDIGNITY HEALTH - ARIZONA GENERAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:180,CMS Hospital Rule 180
+regex:cms_rule:180,\bWESTERN REGIONAL MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:181,CMS Hospital Rule 181
+regex:cms_rule:181,\bDIGNITY HEALTH ARIZONA GENERAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:182,CMS Hospital Rule 182
+regex:cms_rule:182,\bVA S. ARIZONA HEALTHCARE SYSTEM\b
+region:CMS,CMS
+cms_rule:183,CMS Hospital Rule 183
+regex:cms_rule:183,\bHONORHEALTH SONORAN CROSSING MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:184,CMS Hospital Rule 184
+regex:cms_rule:184,\bBANNER OCOTILLO MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:185,CMS Hospital Rule 185
+regex:cms_rule:185,\bNORTHWEST MEDICAL CENTER SAHUARITA\b
+region:CMS,CMS
+cms_rule:186,CMS Hospital Rule 186
+regex:cms_rule:186,\bEXCEPTIONAL COMMUNITY HOSPITAL - MARICOPA\b
+region:CMS,CMS
+cms_rule:187,CMS Hospital Rule 187
+regex:cms_rule:187,\bEAST VALLEY ER & HOSPITAL\b
+region:CMS,CMS
+cms_rule:188,CMS Hospital Rule 188
+regex:cms_rule:188,\bEXCEPTIONAL COMMUNITY HOSPITAL YUMA\b
+region:CMS,CMS
+cms_rule:189,CMS Hospital Rule 189
+regex:cms_rule:189,\bEXCEPTIONAL COMMUNITY HOSPITAL BULLHEAD CITY\b
+region:CMS,CMS
+cms_rule:190,CMS Hospital Rule 190
+regex:cms_rule:190,\bVA NORTHERN ARIZONA HEALTHCARE SYSTEM\b
+region:CMS,CMS
+cms_rule:191,CMS Hospital Rule 191
+regex:cms_rule:191,\bWICKENBURG COMMUNITY HOSPITAL\b
+region:CMS,CMS
+cms_rule:192,CMS Hospital Rule 192
+regex:cms_rule:192,\bBENSON HOSPITAL\b
+region:CMS,CMS
+cms_rule:193,CMS Hospital Rule 193
+regex:cms_rule:193,"\bNORTHERN COCHISE COMMUNITY HOSPITAL, INC.\b"
+region:CMS,CMS
+cms_rule:194,CMS Hospital Rule 194
+regex:cms_rule:194,\bPAGE HOSPITAL\b
+region:CMS,CMS
+cms_rule:195,CMS Hospital Rule 195
+regex:cms_rule:195,\bHOPI HEALTH CARE CENTER\b
+region:CMS,CMS
+cms_rule:196,CMS Hospital Rule 196
+regex:cms_rule:196,\bPARKER INDIAN HEALTH CENTER\b
+region:CMS,CMS
+cms_rule:197,CMS Hospital Rule 197
+regex:cms_rule:197,\bHUHU KAM MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:198,CMS Hospital Rule 198
+regex:cms_rule:198,\bSAGE MEMORIAL HOSPITAL\b
+region:CMS,CMS
+cms_rule:199,CMS Hospital Rule 199
+regex:cms_rule:199,\bLITTLE COLORADO MEDICAL CENTER\b
+region:CMS,CMS
+cms_rule:200,CMS Hospital Rule 200
+regex:cms_rule:200,\bCOPPER QUEEN COMMUNITY HOSPITAL\b
+region:CMS,CMS
+hipaa_rule:1,HIPAA Entity Rule 1
 regex:hipaa_rule:1,"\bMeridian Valley Laboratories, Inc.\b"
-hipaa_rule:2,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:2,HIPAA Entity Rule 2
 regex:hipaa_rule:2,\bReimagine Network\b
-hipaa_rule:3,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:3,HIPAA Entity Rule 3
 regex:hipaa_rule:3,\bCollege Hometown Pharmacy\b
-hipaa_rule:4,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:4,HIPAA Entity Rule 4
 regex:hipaa_rule:4,\bCollege Parkside Pharmacy\b
-hipaa_rule:5,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:5,HIPAA Entity Rule 5
 regex:hipaa_rule:5,\bWoodlawn Hospital\b
-hipaa_rule:6,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:6,HIPAA Entity Rule 6
 regex:hipaa_rule:6,"\bVital Imaging Medical Diagnostic Centers, LLC\b"
-hipaa_rule:7,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:7,HIPAA Entity Rule 7
 regex:hipaa_rule:7,"\bPreferred Hospital Leasing Hemphill Inc., d/b/a Sabine County Hospital\b"
-hipaa_rule:8,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:8,HIPAA Entity Rule 8
 regex:hipaa_rule:8,\bArkansas Primary Care Clinic\b
-hipaa_rule:9,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:9,HIPAA Entity Rule 9
 regex:hipaa_rule:9,\bAspire Rural Health System\b
-hipaa_rule:10,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:10,HIPAA Entity Rule 10
 regex:hipaa_rule:10,\bIndiana Exceptional Medical care LLC\b
-hipaa_rule:11,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:11,HIPAA Entity Rule 11
 regex:hipaa_rule:11,\bRevere Health PC\b
-hipaa_rule:12,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:12,HIPAA Entity Rule 12
 regex:hipaa_rule:12,\bBehavioral Health Group\b
-hipaa_rule:13,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:13,HIPAA Entity Rule 13
 regex:hipaa_rule:13,"\bCareTracker, Inc.\b"
-hipaa_rule:14,HIPAA Breach Rule
-regex:hipaa_rule:14,\bCPAP Medical Supplies and Services Inc.\b
-hipaa_rule:15,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:14,HIPAA Entity Rule 14
+regex:hipaa_rule:14,\bCPAP Medical Supplies and Services Inc. \b
+region:HIPAA,HIPAA
+hipaa_rule:15,HIPAA Entity Rule 15
 regex:hipaa_rule:15,\bCancer Care Center of North Florida\b
-hipaa_rule:16,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:16,HIPAA Entity Rule 16
 regex:hipaa_rule:16,"\bLake City Cancer Care, LLC\b"
-hipaa_rule:17,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:17,HIPAA Entity Rule 17
 regex:hipaa_rule:17,\bMower County Health and Human Services\b
-hipaa_rule:18,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:18,HIPAA Entity Rule 18
 regex:hipaa_rule:18,\bWelcome Dentistry\b
-hipaa_rule:19,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:19,HIPAA Entity Rule 19
 regex:hipaa_rule:19,\bChildren's Home & Aid dba Brightpoint\b
-hipaa_rule:20,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:20,HIPAA Entity Rule 20
 regex:hipaa_rule:20,\bUniversity of Michigan/Michigan Medicine\b
-hipaa_rule:21,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:21,HIPAA Entity Rule 21
 regex:hipaa_rule:21,\bUnitedHealthcare\b
-hipaa_rule:22,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:22,HIPAA Entity Rule 22
 regex:hipaa_rule:22,"\bLaurel Cancer Care, LLC\b"
-hipaa_rule:23,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:23,HIPAA Entity Rule 23
 regex:hipaa_rule:23,"\bKathalene Keller Riney NP, LLC DBA Life in Motion Family Wellness Center\b"
-hipaa_rule:24,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:24,HIPAA Entity Rule 24
 regex:hipaa_rule:24,\bZelis Healthcare LLC\b
-hipaa_rule:25,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:25,HIPAA Entity Rule 25
 regex:hipaa_rule:25,\bIntegrated Orthopedics of Arizona\b
-hipaa_rule:26,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:26,HIPAA Entity Rule 26
 regex:hipaa_rule:26,\bAltos Inc\b
-hipaa_rule:27,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:27,HIPAA Entity Rule 27
 regex:hipaa_rule:27,\bDr. Doug's Pediatric Dentistry\b
-hipaa_rule:28,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:28,HIPAA Entity Rule 28
 regex:hipaa_rule:28,\bAnderson & Kreiger LLP\b
-hipaa_rule:29,HIPAA Breach Rule
-regex:hipaa_rule:29,\bAflac Incorporated (“Aflac”)\b
-hipaa_rule:30,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:29,HIPAA Entity Rule 29
+regex:hipaa_rule:29,\bAflac Incorporated \(“Aflac”\)\b
+region:HIPAA,HIPAA
+hipaa_rule:30,HIPAA Entity Rule 30
 regex:hipaa_rule:30,\bFriesen Group\b
-hipaa_rule:31,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:31,HIPAA Entity Rule 31
 regex:hipaa_rule:31,"\bCenter for Disability Services, Inc.\b"
-hipaa_rule:32,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:32,HIPAA Entity Rule 32
 regex:hipaa_rule:32,\bPROVAIL\b
-hipaa_rule:33,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:33,HIPAA Entity Rule 33
 regex:hipaa_rule:33,\bSouth Coast Pediatrics\b
-hipaa_rule:34,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:34,HIPAA Entity Rule 34
 regex:hipaa_rule:34,\bPrecision Edodontics of Raleigh\b
-hipaa_rule:35,HIPAA Breach Rule
-regex:hipaa_rule:35,\bMDLand International Corporation\b
-hipaa_rule:36,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:35,HIPAA Entity Rule 35
+regex:hipaa_rule:35,\bMDLand International Corporation \b
+region:HIPAA,HIPAA
+hipaa_rule:36,HIPAA Entity Rule 36
 regex:hipaa_rule:36,\bGenoa Community Hospital/LTC\b
-hipaa_rule:37,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:37,HIPAA Entity Rule 37
 regex:hipaa_rule:37,\bWest Texas Oral Facial Surgery\b
-hipaa_rule:38,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:38,HIPAA Entity Rule 38
 regex:hipaa_rule:38,\bHighlands Oncology Group PA\b
-hipaa_rule:39,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:39,HIPAA Entity Rule 39
 regex:hipaa_rule:39,"\bLangdon & Company, LLP Certified Public Accountants\b"
-hipaa_rule:40,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:40,HIPAA Entity Rule 40
 regex:hipaa_rule:40,\bDaVita Inc.\b
-hipaa_rule:41,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:41,HIPAA Entity Rule 41
 regex:hipaa_rule:41,\bWestern Montana Clinic PC\b
-hipaa_rule:42,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:42,HIPAA Entity Rule 42
 regex:hipaa_rule:42,\bVail Summit Orthopaedics\b
-hipaa_rule:43,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:43,HIPAA Entity Rule 43
 regex:hipaa_rule:43,\bCentral Maine Healthcare\b
-hipaa_rule:44,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:44,HIPAA Entity Rule 44
 regex:hipaa_rule:44,"\bBerkshire Health Systems, Inc.\b"
-hipaa_rule:45,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:45,HIPAA Entity Rule 45
 regex:hipaa_rule:45,"\bCompass Counseling Services, LLC\b"
-hipaa_rule:46,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:46,HIPAA Entity Rule 46
 regex:hipaa_rule:46,"\bAlera Group, Inc.\b"
-hipaa_rule:47,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:47,HIPAA Entity Rule 47
 regex:hipaa_rule:47,"\bPhyNet Dermatology, LLC\b"
-hipaa_rule:48,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:48,HIPAA Entity Rule 48
 regex:hipaa_rule:48,\bAVALA Holdings\b
-hipaa_rule:49,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:49,HIPAA Entity Rule 49
 regex:hipaa_rule:49,\bUniversity of Miami\b
-hipaa_rule:50,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:50,HIPAA Entity Rule 50
 regex:hipaa_rule:50,\bWood River Health\b
-hipaa_rule:51,HIPAA Breach Rule
-regex:hipaa_rule:51,"\bNorthwest Denture Center, Inc.\b"
-hipaa_rule:52,HIPAA Breach Rule
-regex:hipaa_rule:52,\bDoctors’ Memorial Hospital\b
-hipaa_rule:53,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:51,HIPAA Entity Rule 51
+regex:hipaa_rule:51,"\bNorthwest Denture Center, Inc. \b"
+region:HIPAA,HIPAA
+hipaa_rule:52,HIPAA Entity Rule 52
+regex:hipaa_rule:52,\bDoctors’ Memorial Hospital \b
+region:HIPAA,HIPAA
+hipaa_rule:53,HIPAA Entity Rule 53
 regex:hipaa_rule:53,\bValley Mountain Regional Center\b
-hipaa_rule:54,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:54,HIPAA Entity Rule 54
 regex:hipaa_rule:54,"\bNova Recovery Center, LLC d/b/a Nova Recovery Center\b"
-hipaa_rule:55,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:55,HIPAA Entity Rule 55
 regex:hipaa_rule:55,\bMcKenzie Memorial Hospital\b
-hipaa_rule:56,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:56,HIPAA Entity Rule 56
 regex:hipaa_rule:56,\bOB/GYN Medical Center Associates\b
-hipaa_rule:57,HIPAA Breach Rule
-regex:hipaa_rule:57,\bGastroenterology Consultants of South Texas\b
-hipaa_rule:58,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:57,HIPAA Entity Rule 57
+regex:hipaa_rule:57,\bGastroenterology Consultants of South Texas \b
+region:HIPAA,HIPAA
+hipaa_rule:58,HIPAA Entity Rule 58
 regex:hipaa_rule:58,\bKettering Adventist Healthcare\b
-hipaa_rule:59,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:59,HIPAA Entity Rule 59
 regex:hipaa_rule:59,\bOrthoAtlanta LLC\b
-hipaa_rule:60,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:60,HIPAA Entity Rule 60
 regex:hipaa_rule:60,"\bInfinite Services, Inc.\b"
-hipaa_rule:61,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:61,HIPAA Entity Rule 61
 regex:hipaa_rule:61,\bDr. Michael Bilikas and Associates d.b.a. 32 Pearls\b
-hipaa_rule:62,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:62,HIPAA Entity Rule 62
 regex:hipaa_rule:62,\bBlue Shield of California\b
-hipaa_rule:63,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:63,HIPAA Entity Rule 63
 regex:hipaa_rule:63,\bEquilibria Mental Health Services\b
-hipaa_rule:64,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:64,HIPAA Entity Rule 64
 regex:hipaa_rule:64,"\bKeys Pathology Associates, PA\b"
-hipaa_rule:65,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:65,HIPAA Entity Rule 65
 regex:hipaa_rule:65,\bOregon Specialty Group\b
-hipaa_rule:66,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:66,HIPAA Entity Rule 66
 regex:hipaa_rule:66,\bThe Brien Center for Mental Health and Substance Abuse Services\b
-hipaa_rule:67,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:67,HIPAA Entity Rule 67
 regex:hipaa_rule:67,\bABC Holding Company\b
-hipaa_rule:68,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:68,HIPAA Entity Rule 68
 regex:hipaa_rule:68,\bHuman Development Services of Westchester\b
-hipaa_rule:69,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:69,HIPAA Entity Rule 69
 regex:hipaa_rule:69,\bSelf Regional Healthcare\b
-hipaa_rule:70,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:70,HIPAA Entity Rule 70
 regex:hipaa_rule:70,\bJack L Marcus\b
-hipaa_rule:71,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:71,HIPAA Entity Rule 71
 regex:hipaa_rule:71,"\bNorthwest Medical Homes, LLC\b"
-hipaa_rule:72,HIPAA Breach Rule
-regex:hipaa_rule:72,\bWilliamsburg Area Medical Assistance Corporation d/b/a Olde Towne Medical and Dental Center (OTMDC)\b
-hipaa_rule:73,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:72,HIPAA Entity Rule 72
+regex:hipaa_rule:72,\bWilliamsburg Area Medical Assistance Corporation d/b/a Olde Towne Medical and Dental Center \(OTMDC\)\b
+region:HIPAA,HIPAA
+hipaa_rule:73,HIPAA Entity Rule 73
 regex:hipaa_rule:73,\bRegency Oaks\b
-hipaa_rule:74,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:74,HIPAA Entity Rule 74
 regex:hipaa_rule:74,\bFreedom Plaza Senior Living\b
-hipaa_rule:75,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:75,HIPAA Entity Rule 75
 regex:hipaa_rule:75,\bFreedom Square of Seminole\b
-hipaa_rule:76,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:76,HIPAA Entity Rule 76
 regex:hipaa_rule:76,"\bPicis Clinical Solutions, Inc. d/b/a Medstreaming\b"
-hipaa_rule:77,HIPAA Breach Rule
-regex:hipaa_rule:77,\bCovenant Health\b
-hipaa_rule:78,HIPAA Breach Rule
-regex:hipaa_rule:78,\bAnne Arundel Dermatology\b
-hipaa_rule:79,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:77,HIPAA Entity Rule 77
+regex:hipaa_rule:77,\bCovenant Health \b
+region:HIPAA,HIPAA
+hipaa_rule:78,HIPAA Entity Rule 78
+regex:hipaa_rule:78,\bAnne Arundel Dermatology \b
+region:HIPAA,HIPAA
+hipaa_rule:79,HIPAA Entity Rule 79
 regex:hipaa_rule:79,\bMountain Laurel Dermatology\b
-hipaa_rule:80,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:80,HIPAA Entity Rule 80
 regex:hipaa_rule:80,\bNaper Grove Vision Care\b
-hipaa_rule:81,HIPAA Breach Rule
-regex:hipaa_rule:81,"\bFlorida Lung, Asthma & Sleep Specialists (FLASS)\b"
-hipaa_rule:82,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:81,HIPAA Entity Rule 81
+regex:hipaa_rule:81,"\bFlorida Lung, Asthma & Sleep Specialists \(FLASS\)\b"
+region:HIPAA,HIPAA
+hipaa_rule:82,HIPAA Entity Rule 82
 regex:hipaa_rule:82,\bAscension Health Services LLC dba Alpha Wellness & Alpha Medical Centre\b
-hipaa_rule:83,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:83,HIPAA Entity Rule 83
 regex:hipaa_rule:83,\bComplete Care Rehab LLC\b
-hipaa_rule:84,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:84,HIPAA Entity Rule 84
 regex:hipaa_rule:84,\bK&E Advanced Dentisrty\b
-hipaa_rule:85,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:85,HIPAA Entity Rule 85
 regex:hipaa_rule:85,\bCity of Franklin\b
-hipaa_rule:86,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:86,HIPAA Entity Rule 86
 regex:hipaa_rule:86,"\bZumpano Patricios, P.A.\b"
-hipaa_rule:87,HIPAA Breach Rule
-regex:hipaa_rule:87,\bCierant Corporation\b
-hipaa_rule:88,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:87,HIPAA Entity Rule 87
+regex:hipaa_rule:87,\bCierant Corporation \b
+region:HIPAA,HIPAA
+hipaa_rule:88,HIPAA Entity Rule 88
 regex:hipaa_rule:88,"\bArbor Associates, Inc.\b"
-hipaa_rule:89,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:89,HIPAA Entity Rule 89
 regex:hipaa_rule:89,\bUrology Associates of Charleston\b
-hipaa_rule:90,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:90,HIPAA Entity Rule 90
 regex:hipaa_rule:90,"\bRadiology Associates of Richmond, Inc.\b"
-hipaa_rule:91,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:91,HIPAA Entity Rule 91
 regex:hipaa_rule:91,\bKotel ATX PLLC dba Heading Health\b
-hipaa_rule:92,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:92,HIPAA Entity Rule 92
 regex:hipaa_rule:92,\bTexas Center for Infectious Disease Associates\b
-hipaa_rule:93,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:93,HIPAA Entity Rule 93
 regex:hipaa_rule:93,\bCenters for Medicare & Medicaid Services\b
-hipaa_rule:94,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:94,HIPAA Entity Rule 94
 regex:hipaa_rule:94,\bClinical Practices of the University of Pennsylvania\b
-hipaa_rule:95,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:95,HIPAA Entity Rule 95
 regex:hipaa_rule:95,\bSouthwest Urology\b
-hipaa_rule:96,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:96,HIPAA Entity Rule 96
 regex:hipaa_rule:96,"\bSouth Georgia Center for Cancer Care, LLC\b"
-hipaa_rule:97,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:97,HIPAA Entity Rule 97
 regex:hipaa_rule:97,"\bRadiation Oncology Network of Southern California, LLC\b"
-hipaa_rule:98,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:98,HIPAA Entity Rule 98
 regex:hipaa_rule:98,\bPDCM Insurance\b
-hipaa_rule:99,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:99,HIPAA Entity Rule 99
 regex:hipaa_rule:99,\bRocky Mountain Oncology Care\b
-hipaa_rule:100,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:100,HIPAA Entity Rule 100
 regex:hipaa_rule:100,\bPET Imaging of Tulsa\b
-hipaa_rule:101,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:101,HIPAA Entity Rule 101
 regex:hipaa_rule:101,\bPET Imaging of The Woodlands\b
-hipaa_rule:102,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:102,HIPAA Entity Rule 102
 regex:hipaa_rule:102,\bPET Imaging of Sugar Land\b
-hipaa_rule:103,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:103,HIPAA Entity Rule 103
 regex:hipaa_rule:103,\bPET Imaging of Northern Colorado\b
-hipaa_rule:104,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:104,HIPAA Entity Rule 104
 regex:hipaa_rule:104,\bPET Imaging of Houston Medical Center\b
-hipaa_rule:105,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:105,HIPAA Entity Rule 105
 regex:hipaa_rule:105,\bPET Imaging of Dallas Northeast\b
-hipaa_rule:106,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:106,HIPAA Entity Rule 106
 regex:hipaa_rule:106,\bOrange County Radiation Oncology Medical Group\b
-hipaa_rule:107,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:107,HIPAA Entity Rule 107
 regex:hipaa_rule:107,\bMojave Radiation Oncology Medical Group\b
-hipaa_rule:108,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:108,HIPAA Entity Rule 108
 regex:hipaa_rule:108,\bHeartland Regional Medical Center d/b/a Mosaic Life Care\b
-hipaa_rule:109,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:109,HIPAA Entity Rule 109
 regex:hipaa_rule:109,"\bCompumedics USA, Inc.\b"
-hipaa_rule:110,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:110,HIPAA Entity Rule 110
 regex:hipaa_rule:110,\bIntegrated Oncology Network\b
-hipaa_rule:111,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:111,HIPAA Entity Rule 111
 regex:hipaa_rule:111,\bGolden State Radiation Oncology\b
-hipaa_rule:112,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:112,HIPAA Entity Rule 112
 regex:hipaa_rule:112,\bFairbanks Urology\b
-hipaa_rule:113,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:113,HIPAA Entity Rule 113
 regex:hipaa_rule:113,"\be+ Oncologics Louisiana, LLC\b"
-hipaa_rule:114,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:114,HIPAA Entity Rule 114
 regex:hipaa_rule:114,\bDenali Biomedical\b
-hipaa_rule:115,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:115,HIPAA Entity Rule 115
 regex:hipaa_rule:115,\bHorizon Healthcare RCM\b
-hipaa_rule:116,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:116,HIPAA Entity Rule 116
 regex:hipaa_rule:116,\bCancer Care Center of North Florida-Lake Butler\b
-hipaa_rule:117,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:117,HIPAA Entity Rule 117
 regex:hipaa_rule:117,\bCalifornia Cancer Associates for Research and Excellence – San Diego\b
-hipaa_rule:118,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:118,HIPAA Entity Rule 118
 regex:hipaa_rule:118,\bCalifornia Cancer Associates for Research and Excellence – High Desert\b
-hipaa_rule:119,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:119,HIPAA Entity Rule 119
 regex:hipaa_rule:119,\bCalifornia Cancer Associates for Research and Excellence - Fresno\b
-hipaa_rule:120,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:120,HIPAA Entity Rule 120
 regex:hipaa_rule:120,\bBardmoor Cancer Center\b
-hipaa_rule:121,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:121,HIPAA Entity Rule 121
 regex:hipaa_rule:121,"\bAcadiana Radiation Therapy, LLC\b"
-hipaa_rule:122,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:122,HIPAA Entity Rule 122
 regex:hipaa_rule:122,"\bJordan Drug, Inc.\b"
-hipaa_rule:123,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:123,HIPAA Entity Rule 123
 regex:hipaa_rule:123,\bClement Manor\b
-hipaa_rule:124,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:124,HIPAA Entity Rule 124
 regex:hipaa_rule:124,\bMcLaren Health Care\b
-hipaa_rule:125,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:125,HIPAA Entity Rule 125
 regex:hipaa_rule:125,\bGardner Orthopedics LLC\b
-hipaa_rule:126,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:126,HIPAA Entity Rule 126
 regex:hipaa_rule:126,\bMinneapolis VA Medical Center\b
-hipaa_rule:127,HIPAA Breach Rule
-regex:hipaa_rule:127,\bEsse Health\b
-hipaa_rule:128,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:127,HIPAA Entity Rule 127
+regex:hipaa_rule:127,\bEsse Health \b
+region:HIPAA,HIPAA
+hipaa_rule:128,HIPAA Entity Rule 128
 regex:hipaa_rule:128,"\bLos Angeles County Developmental Services Fdn., Inc. dba Frank D. Lanterman Regional Ctr.\b"
-hipaa_rule:129,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:129,HIPAA Entity Rule 129
 regex:hipaa_rule:129,"\bRetina Associates of Cleveland, Inc.\b"
-hipaa_rule:130,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:130,HIPAA Entity Rule 130
 regex:hipaa_rule:130,\bHarbor\b
-hipaa_rule:131,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:131,HIPAA Entity Rule 131
 regex:hipaa_rule:131,\bSkin Care Specialty Physicians\b
-hipaa_rule:132,HIPAA Breach Rule
-regex:hipaa_rule:132,"\bTRG, LLC\b"
-hipaa_rule:133,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:132,HIPAA Entity Rule 132
+regex:hipaa_rule:132,"\bTRG, LLC \b"
+region:HIPAA,HIPAA
+hipaa_rule:133,HIPAA Entity Rule 133
 regex:hipaa_rule:133,\bIron County Medical Center\b
-hipaa_rule:134,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:134,HIPAA Entity Rule 134
 regex:hipaa_rule:134,\bMarquette County Medical Care Facility\b
-hipaa_rule:135,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:135,HIPAA Entity Rule 135
 regex:hipaa_rule:135,\bCerner Corporation\b
-hipaa_rule:136,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:136,HIPAA Entity Rule 136
 regex:hipaa_rule:136,\bWinkler County Hospital District\b
-hipaa_rule:137,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:137,HIPAA Entity Rule 137
 regex:hipaa_rule:137,\bBroadwest Specialty Surgical Center\b
-hipaa_rule:138,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:138,HIPAA Entity Rule 138
 regex:hipaa_rule:138,"\bDecisely Insurance Services, LLC\b"
-hipaa_rule:139,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:139,HIPAA Entity Rule 139
 regex:hipaa_rule:139,\bCentral Kentucky Radiology\b
-hipaa_rule:140,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:140,HIPAA Entity Rule 140
 regex:hipaa_rule:140,\bDiversified Services Enterprises\b
-hipaa_rule:141,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:141,HIPAA Entity Rule 141
 regex:hipaa_rule:141,\bElmore County\b
-hipaa_rule:142,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:142,HIPAA Entity Rule 142
 regex:hipaa_rule:142,\bArkansas Urology Associates PA\b
-hipaa_rule:143,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:143,HIPAA Entity Rule 143
 regex:hipaa_rule:143,\bAltaMed Health Services Corporation\b
-hipaa_rule:144,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:144,HIPAA Entity Rule 144
 regex:hipaa_rule:144,\bMount Rogers Community Services\b
-hipaa_rule:145,HIPAA Breach Rule
-regex:hipaa_rule:145,\bRural Health Services\b
-hipaa_rule:146,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:145,HIPAA Entity Rule 145
+regex:hipaa_rule:145,\bRural Health Services \b
+region:HIPAA,HIPAA
+hipaa_rule:146,HIPAA Entity Rule 146
 regex:hipaa_rule:146,\bClarkston Chiropractic Sports & Wellness\b
-hipaa_rule:147,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:147,HIPAA Entity Rule 147
 regex:hipaa_rule:147,"\bApex Global Solutions, LLC\b"
-hipaa_rule:148,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:148,HIPAA Entity Rule 148
 regex:hipaa_rule:148,"\bRepay Management Services, LLC\b"
-hipaa_rule:149,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:149,HIPAA Entity Rule 149
 regex:hipaa_rule:149,\bSentara Health\b
-hipaa_rule:150,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:150,HIPAA Entity Rule 150
 regex:hipaa_rule:150,"\bSouthern Connecticut Vascular Center, LLC\b"
-hipaa_rule:151,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:151,HIPAA Entity Rule 151
 regex:hipaa_rule:151,"\bEpisource, LLC\b"
-hipaa_rule:152,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:152,HIPAA Entity Rule 152
 regex:hipaa_rule:152,\bSharp Community Medical Group\b
-hipaa_rule:153,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:153,HIPAA Entity Rule 153
 regex:hipaa_rule:153,\bPublic Health Trust of Miami Dade County DBA Jackson Health System\b
-hipaa_rule:154,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:154,HIPAA Entity Rule 154
 regex:hipaa_rule:154,\bSharp HealthCare\b
-hipaa_rule:155,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:155,HIPAA Entity Rule 155
 regex:hipaa_rule:155,\bSelect Medical Holdings Corporation\b
-hipaa_rule:156,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:156,HIPAA Entity Rule 156
 regex:hipaa_rule:156,\bCentivo Corporation\b
-hipaa_rule:157,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:157,HIPAA Entity Rule 157
 regex:hipaa_rule:157,\bNYC Health + Hospitals\b
-hipaa_rule:158,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:158,HIPAA Entity Rule 158
 regex:hipaa_rule:158,"\bSensata Technologies, Inc. Health and Welfare Benefit Plan\b"
-hipaa_rule:159,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:159,HIPAA Entity Rule 159
 regex:hipaa_rule:159,\bAffirmedRx PBC\b
-hipaa_rule:160,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:160,HIPAA Entity Rule 160
 regex:hipaa_rule:160,\bJupiter Family Medicine PC\b
-hipaa_rule:161,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:161,HIPAA Entity Rule 161
 regex:hipaa_rule:161,\bRenkim Corporation\b
-hipaa_rule:162,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:162,HIPAA Entity Rule 162
 regex:hipaa_rule:162,\bCumberland County Hospital Association\b
-hipaa_rule:163,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:163,HIPAA Entity Rule 163
 regex:hipaa_rule:163,\bUpper Dublin Family Dentistry\b
-hipaa_rule:164,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:164,HIPAA Entity Rule 164
 regex:hipaa_rule:164,\bOcuco Inc\b
-hipaa_rule:165,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:165,HIPAA Entity Rule 165
 regex:hipaa_rule:165,"\bCareOregon, Inc.\b"
-hipaa_rule:166,HIPAA Breach Rule
-regex:hipaa_rule:166,\bOliver Street Dermatology Management LLC\b
-hipaa_rule:167,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:166,HIPAA Entity Rule 166
+regex:hipaa_rule:166,\bOliver Street Dermatology Management LLC \b
+region:HIPAA,HIPAA
+hipaa_rule:167,HIPAA Entity Rule 167
 regex:hipaa_rule:167,\bHorizon Blue Cross Blue Shield NJ\b
-hipaa_rule:168,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:168,HIPAA Entity Rule 168
 regex:hipaa_rule:168,\bNext Step Healthcare LLC\b
-hipaa_rule:169,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:169,HIPAA Entity Rule 169
 regex:hipaa_rule:169,\bMissouri Department of Conservation\b
-hipaa_rule:170,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:170,HIPAA Entity Rule 170
 regex:hipaa_rule:170,\bMedStar St. Mary's Hospital\b
-hipaa_rule:171,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:171,HIPAA Entity Rule 171
 regex:hipaa_rule:171,\bNorthwestern Community Services Board\b
-hipaa_rule:172,HIPAA Breach Rule
-regex:hipaa_rule:172,"\bGateway Community Services, Inc.\b"
-hipaa_rule:173,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:172,HIPAA Entity Rule 172
+regex:hipaa_rule:172,"\bGateway Community Services, Inc. \b"
+region:HIPAA,HIPAA
+hipaa_rule:173,HIPAA Entity Rule 173
 regex:hipaa_rule:173,\bErlanger Health\b
-hipaa_rule:174,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:174,HIPAA Entity Rule 174
 regex:hipaa_rule:174,\bThe Smith Institute for Urology\b
-hipaa_rule:175,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:175,HIPAA Entity Rule 175
 regex:hipaa_rule:175,"\bCovenant Surgical Partners, Inc.\b"
-hipaa_rule:176,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:176,HIPAA Entity Rule 176
 regex:hipaa_rule:176,"\bMary B. Toporcer, MD, P.C.\b"
-hipaa_rule:177,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:177,HIPAA Entity Rule 177
 regex:hipaa_rule:177,\bCahaba Center for Mental Health\b
-hipaa_rule:178,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:178,HIPAA Entity Rule 178
 regex:hipaa_rule:178,\bNHPP Physical Medicine and Rehabilitation\b
-hipaa_rule:179,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:179,HIPAA Entity Rule 179
 regex:hipaa_rule:179,"\bSports Physical Therapy, Occupational Therapy and Rehabilitation Services of the North Shore, P.L.L.C\b"
-hipaa_rule:180,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:180,HIPAA Entity Rule 180
 regex:hipaa_rule:180,\bNorth Shore University Hospital Sleep Disorders Center\b
-hipaa_rule:181,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:181,HIPAA Entity Rule 181
 regex:hipaa_rule:181,\bThe Cooper Health System\b
-hipaa_rule:182,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:182,HIPAA Entity Rule 182
 regex:hipaa_rule:182,\bUChicago Medicine Medical Group\b
-hipaa_rule:183,HIPAA Breach Rule
-regex:hipaa_rule:183,\bAccess2Day Health\b
-hipaa_rule:184,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:183,HIPAA Entity Rule 183
+regex:hipaa_rule:183,\bAccess2Day Health \b
+region:HIPAA,HIPAA
+hipaa_rule:184,HIPAA Entity Rule 184
 regex:hipaa_rule:184,\bConnections for Kids\b
-hipaa_rule:185,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:185,HIPAA Entity Rule 185
 regex:hipaa_rule:185,\bShore Medical Center\b
-hipaa_rule:186,HIPAA Breach Rule
-regex:hipaa_rule:186,"\bFamily Health Services, Inc.\b"
-hipaa_rule:187,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:186,HIPAA Entity Rule 186
+regex:hipaa_rule:186,"\bFamily Health Services, Inc. \b"
+region:HIPAA,HIPAA
+hipaa_rule:187,HIPAA Entity Rule 187
 regex:hipaa_rule:187,\bHopeWay Foundation\b
-hipaa_rule:188,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:188,HIPAA Entity Rule 188
 regex:hipaa_rule:188,\bInstituto de Ojos de Puerto Rico\b
-hipaa_rule:189,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:189,HIPAA Entity Rule 189
 regex:hipaa_rule:189,\bCommunity Hospital of Anaconda\b
-hipaa_rule:190,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:190,HIPAA Entity Rule 190
 regex:hipaa_rule:190,\bInsulet Corporation\b
-hipaa_rule:191,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:191,HIPAA Entity Rule 191
 regex:hipaa_rule:191,"\bMercy Surgical Dressing Group, Inc.\b"
-hipaa_rule:192,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:192,HIPAA Entity Rule 192
 regex:hipaa_rule:192,\bRadiology Chartered\b
-hipaa_rule:193,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:193,HIPAA Entity Rule 193
 regex:hipaa_rule:193,"\bCompassion Health Care, Inc.\b"
-hipaa_rule:194,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:194,HIPAA Entity Rule 194
 regex:hipaa_rule:194,\bBalance Autism\b
-hipaa_rule:195,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:195,HIPAA Entity Rule 195
 regex:hipaa_rule:195,"\bHarbin Clinic, LLC\b"
-hipaa_rule:196,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:196,HIPAA Entity Rule 196
 regex:hipaa_rule:196,\bWeiser Valley Hospital District dba Weiser Memorial Hospital\b
-hipaa_rule:197,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:197,HIPAA Entity Rule 197
 regex:hipaa_rule:197,"\bCareNexa, LLC, doing business as Molecular Testing Labs\b"
-hipaa_rule:198,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:198,HIPAA Entity Rule 198
 regex:hipaa_rule:198,\bHunter Health Clinic\b
-hipaa_rule:199,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:199,HIPAA Entity Rule 199
 regex:hipaa_rule:199,\bAnne Arundel County Department of Health\b
-hipaa_rule:200,HIPAA Breach Rule
+region:HIPAA,HIPAA
+hipaa_rule:200,HIPAA Entity Rule 200
 regex:hipaa_rule:200,"\bDoctors Hospital at Renaissance, LTD\b"
+region:HIPAA,HIPAA

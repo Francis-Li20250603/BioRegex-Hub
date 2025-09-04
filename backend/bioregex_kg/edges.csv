@@ -62,15 +62,6 @@ fda_rule:20,region:FDA,applies_to
 DataSource,fda_rule:21,contains
 fda_rule:21,regex:fda_rule:21,uses
 fda_rule:21,region:FDA,applies_to
-DataSource,ema_rule:1,contains
-ema_rule:1,regex:ema_rule:1,uses
-ema_rule:1,region:EMA,applies_to
-DataSource,ema_rule:2,contains
-ema_rule:2,regex:ema_rule:2,uses
-ema_rule:2,region:EMA,applies_to
-DataSource,ema_rule:3,contains
-ema_rule:3,regex:ema_rule:3,uses
-ema_rule:3,region:EMA,applies_to
 DataSource,cms_rule:1,contains
 cms_rule:1,regex:cms_rule:1,uses
 cms_rule:1,region:CMS,applies_to
