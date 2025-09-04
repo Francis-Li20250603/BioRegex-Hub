@@ -1,87 +1,173 @@
 # backend/scripts/export_kg.py
-"""
-Export the current BioRegex Hub database content into a knowledge graph format.
-
-Outputs:
-  - bioregex_kg/graph.json  (nodes + edges in JSON)
-  - bioregex_kg/nodes.csv   (tabular node list)
-  - bioregex_kg/edges.csv   (tabular edge list)
-"""
-
 import os
 import json
-import csv
-from sqlmodel import Session, select
-from app.database import get_engine
-from app.models import Rule
+import uuid
+import hashlib
+from typing import Dict, Any, List, Optional
 
-OUT_DIR = os.environ.get("KG_OUT_DIR", "bioregex_kg")
-os.makedirs(OUT_DIR, exist_ok=True)
+import pandas as pd
 
-def main():
-    engine = get_engine()
-    with Session(engine) as session:
-        rules = session.exec(select(Rule)).all()
+# --- Paths ---------------------------------------------------
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+DATA_DIR = os.path.join(REPO_ROOT, "data")
+KG_DIR = os.path.join(REPO_ROOT, "bioregex_kg")
+os.makedirs(KG_DIR, exist_ok=True)
 
-    nodes, edges = [], []
-    seen_regions, seen_dtypes = set(), set()
+NODES_CSV = os.path.join(KG_DIR, "nodes.csv")
+EDGES_CSV = os.path.join(KG_DIR, "edges.csv")
+GRAPH_JSON = os.path.join(KG_DIR, "graph.json")
 
-    for rule in rules:
-        rid = f"rule:{rule.id}"
+# --- Helpers -------------------------------------------------
+def uuid5_for(*parts: str) -> str:
+    """
+    Deterministic UUIDv5 from a tuple of strings.
+    Use a fixed namespace so IDs are stable across runs.
+    """
+    base = "||".join([p if p is not None else "" for p in parts])
+    return str(uuid.uuid5(uuid.NAMESPACE_URL, base))
+
+def safe_label(row: Dict[str, Any], fallbacks: List[str], default_prefix: str) -> str:
+    for k in fallbacks:
+        v = row.get(k)
+        if v and isinstance(v, str) and v.strip():
+            return v.strip()
+    # Fallback to first non-empty value in row
+    for v in row.values():
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return f"{default_prefix}:{uuid.uuid4().hex[:8]}"
+
+def load_csv(path: str) -> Optional[pd.DataFrame]:
+    if os.path.exists(path):
+        try:
+            return pd.read_csv(path)
+        except Exception:
+            # Try with ISO-8859-1 as a fallback
+            return pd.read_csv(path, encoding="ISO-8859-1")
+    return None
+
+def load_xlsx(path: str) -> Optional[pd.DataFrame]:
+    if os.path.exists(path):
+        try:
+            return pd.read_excel(path, engine="openpyxl")
+        except Exception:
+            return pd.read_excel(path)
+    return None
+
+def rows_to_nodes(rows: List[Dict[str, Any]], type_name: str, source_key: str) -> List[Dict[str, Any]]:
+    nodes = []
+    for r in rows:
+        # robust label detection
+        label = safe_label(
+            r,
+            fallbacks=[
+                "brand_name", "generic_name", "drug_name", "product_name", "proprietary_name",
+                "Name", "name", "medicinal_product", "medicinal_product_name",
+                "facility_name", "hospital_name", "provider_name",
+                "entity_name", "covered_entity_name", "Name of Covered Entity",
+                "title"
+            ],
+            default_prefix=type_name
+        )
+
+        # stable id: based on type + source + label (+ a few key fields if present)
+        id_basis = [type_name, source_key, label]
+        for key in ("application_number", "product_ndc", "ndc", "id", "ID", "eudract_number"):
+            if r.get(key):
+                id_basis.append(str(r.get(key)))
+        node_id = uuid5_for(*id_basis)
+
         nodes.append({
-            "id": rid,
-            "label": "Rule",
-            "pattern": rule.pattern,
-            "region": rule.region,
-            "data_type": rule.data_type,
+            "id": node_id,
+            "label": label,
+            "type": type_name,
+            "source": source_key,
+            "props": json.dumps(r, ensure_ascii=False)
         })
+    return nodes
 
-        reg_id = f"region:{rule.region}"
-        if rule.region not in seen_regions:
-            nodes.append({
-                "id": reg_id,
-                "label": "Region",
-                "name": rule.region
-            })
-            seen_regions.add(rule.region)
-        edges.append({
-            "source": rid,
-            "target": reg_id,
-            "type": "BELONGS_TO"
-        })
+def df_to_rows(df: pd.DataFrame) -> List[Dict[str, Any]]:
+    if df is None or df.empty:
+        return []
+    # Convert NaNs to None and everything to python objects
+    return [ {k: (None if pd.isna(v) else v) for k, v in row.items()} for row in df.to_dict(orient="records") ]
 
-        dt_id = f"dtype:{rule.data_type}"
-        if rule.data_type not in seen_dtypes:
-            nodes.append({
-                "id": dt_id,
-                "label": "DataType",
-                "name": rule.data_type
-            })
-            seen_dtypes.add(rule.data_type)
-        edges.append({
-            "source": rid,
-            "target": dt_id,
-            "type": "TYPED_AS"
-        })
+# --- Source “root” nodes ------------------------------------
+SOURCE_ROOTS = [
+    {"id": uuid5_for("SOURCE", "FDA"),   "label": "FDA",   "type": "Source", "source": "SYSTEM", "props": json.dumps({"url": "https://www.fda.gov"})},
+    {"id": uuid5_for("SOURCE", "HIPAA"), "label": "HIPAA", "type": "Source", "source": "SYSTEM", "props": json.dumps({"url": "https://www.hhs.gov/hipaa"})},
+    {"id": uuid5_for("SOURCE", "CMS"),   "label": "CMS",   "type": "Source", "source": "SYSTEM", "props": json.dumps({"url": "https://data.cms.gov"})},
+    {"id": uuid5_for("SOURCE", "EMA"),   "label": "EMA",   "type": "Source", "source": "SYSTEM", "props": json.dumps({"url": "https://www.ema.europa.eu"})},
+    {"id": uuid5_for("SOURCE", "EFSA"),  "label": "EFSA",  "type": "Source", "source": "SYSTEM", "props": json.dumps({"url": "https://www.efsa.europa.eu"})},
+]
 
-    # JSON export
-    with open(os.path.join(OUT_DIR, "graph.json"), "w", encoding="utf-8") as f:
-        json.dump({"nodes": nodes, "edges": edges}, f, ensure_ascii=False, indent=2)
+# --- Main build ---------------------------------------------
+def main():
+    nodes: List[Dict[str, Any]] = []
+    edges: List[Dict[str, str]] = []
 
-    # CSV export
-    with open(os.path.join(OUT_DIR, "nodes.csv"), "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["id", "label", "pattern", "region", "data_type", "name"])
-        writer.writeheader()
-        for n in nodes:
-            writer.writerow({k: n.get(k, "") for k in writer.fieldnames})
+    # add source roots
+    nodes.extend(SOURCE_ROOTS)
+    src_ids = {n["label"]: n["id"] for n in SOURCE_ROOTS}
 
-    with open(os.path.join(OUT_DIR, "edges.csv"), "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["source", "target", "type"])
-        writer.writeheader()
-        for e in edges:
-            writer.writerow(e)
+    # FDA
+    fda_csv = os.path.join(DATA_DIR, "fda_drugs.csv")
+    fda_df = load_csv(fda_csv)
+    fda_rows = df_to_rows(fda_df)
+    fda_nodes = rows_to_nodes(fda_rows, "Drug", "FDA")
+    nodes.extend(fda_nodes)
+    edges.extend([{"source": src_ids["FDA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in fda_nodes])
 
-    print(f"Knowledge graph exported to {OUT_DIR}/")
+    # HIPAA
+    hipaa_csv = os.path.join(DATA_DIR, "hipaa_breaches.csv")
+    hipaa_df = load_csv(hipaa_csv)
+    hipaa_rows = df_to_rows(hipaa_df)
+    hipaa_nodes = rows_to_nodes(hipaa_rows, "Breach", "HIPAA")
+    nodes.extend(hipaa_nodes)
+    edges.extend([{"source": src_ids["HIPAA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in hipaa_nodes])
+
+    # CMS
+    cms_csv = os.path.join(DATA_DIR, "cms_hospitals.csv")
+    cms_df = load_csv(cms_csv)
+    cms_rows = df_to_rows(cms_df)
+    cms_nodes = rows_to_nodes(cms_rows, "Provider", "CMS")
+    nodes.extend(cms_nodes)
+    edges.extend([{"source": src_ids["CMS"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in cms_nodes])
+
+    # EMA
+    ema_xlsx = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
+    ema_df = load_xlsx(ema_xlsx)
+    ema_rows = df_to_rows(ema_df)
+    ema_nodes = rows_to_nodes(ema_rows, "Medicine", "EMA")
+    nodes.extend(ema_nodes)
+    edges.extend([{"source": src_ids["EMA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in ema_nodes])
+
+    # EFSA (optional — only if you later store it)
+    efsa_xlsx = os.path.join(DATA_DIR, "efsa_openfoodtox.xlsx")
+    if os.path.exists(efsa_xlsx):
+        efsa_df = load_xlsx(efsa_xlsx)
+        efsa_rows = df_to_rows(efsa_df)
+        efsa_nodes = rows_to_nodes(efsa_rows, "Substance", "EFSA")
+        nodes.extend(efsa_nodes)
+        edges.extend([{"source": src_ids["EFSA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in efsa_nodes])
+
+    # Deduplicate nodes by id (if any overlap)
+    seen = set()
+    unique_nodes = []
+    for n in nodes:
+        if n["id"] not in seen:
+            unique_nodes.append(n)
+            seen.add(n["id"])
+
+    # Write CSVs
+    pd.DataFrame(unique_nodes).to_csv(NODES_CSV, index=False)
+    pd.DataFrame(edges).to_csv(EDGES_CSV, index=False)
+
+    # Write JSON
+    with open(GRAPH_JSON, "w", encoding="utf-8") as f:
+        json.dump({"nodes": unique_nodes, "edges": edges}, f, ensure_ascii=False, indent=2)
+
+    print(f"[KG] Wrote {len(unique_nodes)} nodes and {len(edges)} edges to {KG_DIR}")
 
 if __name__ == "__main__":
     main()
