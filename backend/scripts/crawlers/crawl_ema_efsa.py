@@ -35,12 +35,14 @@ def crawl_ema():
     print(f"[EMA] Saved medicines dataset from {url} to {EMA_OUT}")
 
 def crawl_efsa():
-    # Correct EFSA stable link
+    # Correct EFSA stable link (note: 'record', not 'records')
     url = "https://zenodo.org/record/4274656/files/OpenFoodTox_v2.xlsx?download=1"
     resp = polite_request(url)
+    resp.raise_for_status()
     with open(EFSA_OUT, "wb") as f:
         f.write(resp.content)
     print(f"[EFSA] Saved OpenFoodTox dataset to {EFSA_OUT}")
+
 
 if __name__ == "__main__":
     try:
