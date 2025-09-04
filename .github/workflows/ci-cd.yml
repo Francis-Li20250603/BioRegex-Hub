@@ -9,8 +9,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write   # ✅ allow committing changes back to repo
     services:
       postgres:
         image: postgres:15-alpine
@@ -24,155 +22,51 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis:
-        image: redis:7-alpine
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
-      - name: 拉取代码
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 安装Python环境
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: 安装系统依赖
-        run: |
-          sudo apt-get update && sudo apt-get install -y \
-            build-essential \
-            libssl-dev \
-            libffi-dev \
-            python3-dev \
-            libpq-dev \
-            libmagic-dev \
-            postgresql-client
-
-      - name: 安装Python依赖
+      - name: Install dependencies
         working-directory: backend
         run: |
           python -m pip install --upgrade pip
-          pip install --no-cache-dir -r requirements.txt
+          pip install -r requirements.txt
+          pip install pandas openpyxl
 
-      - name: 等待数据库就绪
-        run: |
-          for i in {1..10}; do
-            pg_isready -U postgres -h localhost && break
-            sleep 2
-          done
-
-      - name: 初始化数据库扩展
-        run: |
-          export PGPASSWORD=postgres
-          psql -U postgres -h localhost -d test_db -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
-
-      - name: 执行数据库初始化
-        working-directory: backend
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
-          SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
-          ADMIN_PASSWORD: ${{ secrets.TEST_ADMIN_PASSWORD }}
-        run: python -m scripts.init_db
-
-      - name: 运行测试
+      # ✅ Run tests first
+      - name: Run tests
         working-directory: backend
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
         run: pytest -v tests/ --cov=app
 
-      # === 确保知识图谱目录存在并清理 ===
-      - name: 清理并创建知识图谱目录
-        run: |
-          rm -rf backend/bioregex_kg
-          mkdir -p backend/bioregex_kg
-
-      # === 检查数据文件是否存在 ===
-      - name: 检查数据文件
-        run: |
-          if [ ! -d "backend/data" ]; then
-            echo "❌ backend/data 不存在"
-            exit 1
-          fi
-          if [ -z "$(ls -A backend/data)" ]; then
-            echo "❌ backend/data 中没有文件"
-            exit 1
-          fi
-          echo "✅ backend/data 目录内容："
-          ls -lh backend/data
-
-      # === 导出知识图谱 ===
-      - name: 导出知识图谱
+      # ✅ Build Knowledge Graph
+      - name: Export Knowledge Graph
         working-directory: backend
-        run: python -m scripts.export_kg
-
-      # === 验证输出文件 ===
-      - name: 验证知识图谱输出
         run: |
-          if [ ! -f "backend/bioregex_kg/nodes.csv" ]; then
-            echo "❌ nodes.csv 未生成"; exit 1
-          fi
-          if [ ! -f "backend/bioregex_kg/edges.csv" ]; then
-            echo "❌ edges.csv 未生成"; exit 1
-          fi
-          if [ ! -f "backend/bioregex_kg/graph.json" ]; then
-            echo "❌ graph.json 未生成"; exit 1
-          fi
-          echo "✅ 知识图谱文件生成成功"
-          ls -lh backend/bioregex_kg
+          rm -rf bioregex_kg
+          mkdir -p bioregex_kg
+          python -m scripts.export_kg
 
-      # === 自动提交知识图谱到仓库 ===
-      - name: 提交知识图谱文件到仓库
+      # ✅ Verify KG files exist
+      - name: Check KG output
+        run: |
+          test -f backend/bioregex_kg/nodes.csv || (echo "❌ nodes.csv 未生成" && exit 1)
+          test -f backend/bioregex_kg/edges.csv || (echo "❌ edges.csv 未生成" && exit 1)
+          test -f backend/bioregex_kg/graph.json || (echo "❌ graph.json 未生成" && exit 1)
+
+      # ✅ Commit Knowledge Graph
+      - name: Commit KG output
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update knowledge graph"
           file_pattern: backend/bioregex_kg/*
           branch: main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  build-images:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    permissions:
-      packages: write
-      contents: read
-    steps:
-      - name: 拉取代码
-        uses: actions/checkout@v4
-
-      - name: 设置 Docker 元数据
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: |
-            ghcr.io/${{ github.repository_owner }}/bioregex-hub-backend
-          tags: |
-            type=raw,value=latest
-
-      - name: 登录 GitHub 容器仓库
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 构建并推送后端镜像
-        uses: docker/build-push-action@v5
-        with:
-          context: backend
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
-
-
-
 
