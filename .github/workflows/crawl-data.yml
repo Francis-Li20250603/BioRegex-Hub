@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 3 * * 0"  # 每周日凌晨3点自动运行
 
+permissions:
+  contents: write   # ✅ 允许 GITHUB_TOKEN 写入
+
 jobs:
   crawl-data:
     runs-on: ubuntu-latest
@@ -50,5 +53,8 @@ jobs:
           commit_message: "chore: update crawled regulatory datasets"
           branch: main
           file_pattern: backend/data/*
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
 
 
