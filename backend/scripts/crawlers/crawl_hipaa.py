@@ -1,26 +1,34 @@
 # backend/scripts/crawlers/crawl_hipaa.py
+
 import requests
 import os
+import csv
 
 def crawl_hipaa():
-    url = "https://ocrportal.hhs.gov/ocr/breach/download?format=csv"
+    api_url = "https://healthdata.gov/resource/2fwp-4ekt.json"
     os.makedirs("backend/data", exist_ok=True)
-    out_path = "backend/data/hipaa_breaches.csv"
+    out_csv = "backend/data/hipaa_breaches.csv"
 
-    print(f"[HIPAA] Downloading HIPAA breaches dataset from {url}")
-    r = requests.get(url, timeout=60)
+    print(f"[HIPAA] Fetching breach data from {api_url}")
+    r = requests.get(api_url, timeout=60)
     r.raise_for_status()
 
-    ct = r.headers.get("Content-Type", "")
-    if "text/csv" not in ct and "application/csv" not in ct:
-        raise RuntimeError(f"[HIPAA] Unexpected content type: {ct}")
+    data = r.json()
+    if not data:
+        raise RuntimeError("[HIPAA] No data received from API.")
 
-    with open(out_path, "wb") as f:
-        f.write(r.content)
+    # Write CSV
+    keys = sorted({k for item in data for k in item.keys()})
+    with open(out_csv, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=keys)
+        writer.writeheader()
+        for row in data:
+            writer.writerow({k: row.get(k, "") for k in keys})
 
-    print(f"[HIPAA] Saved dataset to {out_path}")
+    print(f"[HIPAA] Saved {len(data)} records to {out_csv}")
 
 if __name__ == "__main__":
     crawl_hipaa()
+
 
 
