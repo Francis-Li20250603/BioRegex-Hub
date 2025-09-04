@@ -11,21 +11,17 @@ def crawl_cms(limit=50):
     r.raise_for_status()
     json_data = r.json()
 
-    # Try different possible keys
-    data = json_data.get("records") or json_data.get("data") or []
-    if not data:
-        raise ValueError("Unexpected CMS API response format")
+    # Extract column names from metadata
+    columns = [c["name"] for c in json_data["meta"]["view"]["columns"]]
+    rows = json_data.get("data", [])
 
-    # Normalize keys
-    fieldnames = data[0].keys()
-
+    # Save to CSV
     with open(OUT, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in data:
-            writer.writerow(row)
+        writer = csv.writer(f)
+        writer.writerow(columns)
+        writer.writerows(rows)
 
-    print(f"[CMS] Saved {len(data)} hospital records to {OUT}")
+    print(f"[CMS] Saved {len(rows)} hospital records to {OUT}")
 
 if __name__ == "__main__":
     crawl_cms()
