@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write  # ✅ allow pushing new KG files
+  contents: write  # allow pushing new KG files
 
 jobs:
   build-and-test:
@@ -89,26 +89,26 @@ jobs:
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
         run: pytest -v tests/ --cov=app
 
-      # ✅ Build new knowledge graph
+      # Build new knowledge graph
       - name: 构建新的知识图谱
         working-directory: backend
         run: python -m scripts.export_kg
 
-      # ✅ Debug: show generated files in logs
+      # Debug step to check new KG files
       - name: 查看生成的知识图谱文件
         run: |
           ls -lh backend/bioregex_kg
           head -n 20 backend/bioregex_kg/nodes.csv || true
           head -n 20 backend/bioregex_kg/edges.csv || true
 
-      # ✅ Commit and overwrite old KG
+      # Commit and overwrite old KG files
       - name: 提交并推送知识图谱
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: regenerate knowledge graph"
           branch: main
           file_pattern: backend/bioregex_kg/*
-          add_options: '--force'   # overwrite old files
+          add_options: '--force'   # force overwrite tracked files
 
   build-images: 
     needs: build-and-test
@@ -144,4 +144,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
 
