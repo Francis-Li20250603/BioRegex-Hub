@@ -85,22 +85,34 @@ jobs:
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
         run: pytest -v tests/ --cov=app
 
-      # === 确保知识图谱文件夹 ===
+      # === 确保知识图谱目录存在并清理 ===
       - name: 清理并创建知识图谱目录
         run: |
           if [ -d "backend/bioregex_kg" ]; then
-            echo "旧的 bioregex_kg 目录存在，删除后重建..."
+            echo "🧹 清理旧的 bioregex_kg 目录"
             rm -rf backend/bioregex_kg
           fi
           mkdir -p backend/bioregex_kg
 
+      # === 检查数据文件是否存在 ===
+      - name: 检查数据文件
+        run: |
+          if [ ! -d "backend/data" ]; then
+            echo "❌ 数据文件目录 backend/data 不存在！"
+            exit 1
+          fi
+          echo "✅ backend/data 目录存在："
+          ls -lh backend/data
+
+      # === 导出知识图谱 ===
       - name: 导出知识图谱
         working-directory: backend
         run: python -m scripts.export_kg
 
       - name: 查看生成的知识图谱文件
         run: |
-          ls -lh backend/bioregex_kg
+          echo "📂 知识图谱文件列表："
+          ls -lh backend/bioregex_kg || true
           head -n 20 backend/bioregex_kg/nodes.csv || true
           head -n 20 backend/bioregex_kg/edges.csv || true
 
@@ -138,6 +150,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
 
 
 
