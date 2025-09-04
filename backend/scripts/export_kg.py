@@ -1,137 +1,107 @@
+# backend/scripts/export_kg.py
 import os
 import csv
 import json
-import re
+import pandas as pd
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # backend/
-DATA_DIR = os.path.join(BASE_DIR, "data")
-OUTPUT_DIR = os.path.join(BASE_DIR, "bioregex_kg")
+DATA_DIR = "backend/data"
+OUT_DIR = "backend/bioregex_kg"
+os.makedirs(OUT_DIR, exist_ok=True)
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+def safe_read_csv(path):
+    try:
+        return pd.read_csv(path)
+    except Exception as e:
+        print(f"[WARN] Could not read {path}: {e}")
+        return pd.DataFrame()
 
-NODES_FILE = os.path.join(OUTPUT_DIR, "nodes.csv")
-EDGES_FILE = os.path.join(OUTPUT_DIR, "edges.csv")
-GRAPH_FILE = os.path.join(OUTPUT_DIR, "graph.json")
+def safe_read_excel(path):
+    try:
+        return pd.read_excel(path)
+    except Exception as e:
+        print(f"[WARN] Could not read {path}: {e}")
+        return pd.DataFrame()
 
-
-def build_regex_from_values(values, max_samples=20):
-    """Make a regex from sample values."""
-    cleaned = [re.escape(v.strip()) for v in values if v and len(v.strip()) > 2]
-    if not cleaned:
-        return None
-    return r"\b(" + "|".join(cleaned[:max_samples]) + r")\b"
-
-
-def read_csv_column(file_path, possible_columns):
-    """Try to extract values from one of the possible column names."""
-    if not os.path.exists(file_path):
-        return []
-
-    with open(file_path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        headers = [h.lower() for h in reader.fieldnames]
-
-        # Find matching column
-        match = None
-        for candidate in possible_columns:
-            if candidate.lower() in headers:
-                match = candidate
-                break
-
-        if not match:
-            print(f"[WARN] {file_path}: No matching column found in {headers}")
-            return []
-
-        return [row.get(match, "").strip() for row in reader if row.get(match)]
-
-
-def export_knowledge_graph():
+def build_kg():
     nodes, edges = [], []
-    nodes.append({"id": "DataSource", "label": "Regulatory Data"})
 
-    rule_counter = 1
+    # ✅ FDA
+    fda_path = os.path.join(DATA_DIR, "fda_drugs.csv")
+    if os.path.exists(fda_path):
+        df = safe_read_csv(fda_path)
+        for _, row in df.iterrows():
+            brand = row.get("brand_name")
+            generic = row.get("generic_name")
+            if pd.notna(brand):
+                nodes.append({"id": f"drug:{brand}", "label": brand, "type": "Drug"})
+            if pd.notna(generic):
+                nodes.append({"id": f"drug:{generic}", "label": generic, "type": "Drug"})
+            if pd.notna(brand) and pd.notna(generic):
+                edges.append({"source": f"drug:{brand}", "target": f"drug:{generic}", "relation": "HAS_GENERIC"})
 
-    # === FDA ===
-    fda_values = read_csv_column(
-        os.path.join(DATA_DIR, "fda_drugs.csv"),
-        ["drug_name", "Drug Name", "Product Name"]
-    )
-    if fda_values:
-        regex = build_regex_from_values(fda_values)
-        if regex:
-            rule_id = f"rule:{rule_counter}"; rule_counter += 1
-            nodes += [
-                {"id": rule_id, "label": "Drug Name Rule"},
-                {"id": "dtype:drug_name", "label": "Drug Name"},
-                {"id": "region:FDA", "label": "FDA"},
-                {"id": f"regex:{rule_id}", "label": regex}
-            ]
-            edges += [
-                {"source": rule_id, "target": "dtype:drug_name", "relation": "TYPED_AS"},
-                {"source": rule_id, "target": "region:FDA", "relation": "BELONGS_TO"},
-                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
-            ]
+    # ✅ HIPAA
+    hipaa_path = os.path.join(DATA_DIR, "hipaa_breaches.csv")
+    if os.path.exists(hipaa_path):
+        df = safe_read_csv(hipaa_path)
+        if not df.empty:
+            for _, row in df.iterrows():
+                breach_id = row.get("id") or row.get("BreachID") or _
+                breach_type = row.get("Type of Breach") or row.get("breach_type")
+                if pd.notna(breach_id):
+                    nodes.append({"id": f"breach:{breach_id}", "label": "HIPAA Breach", "type": "Breach"})
+                if pd.notna(breach_type):
+                    nodes.append({"id": f"btype:{breach_type}", "label": breach_type, "type": "BreachType"})
+                    edges.append({"source": f"breach:{breach_id}", "target": f"btype:{breach_type}", "relation": "CATEGORIZED_AS"})
 
-    # === HIPAA ===
-    hipaa_values = read_csv_column(
-        os.path.join(DATA_DIR, "hipaa_breaches.csv"),
-        ["breach_type", "Type of Breach", "Type"]
-    )
-    if hipaa_values:
-        regex = build_regex_from_values(hipaa_values)
-        if regex:
-            rule_id = f"rule:{rule_counter}"; rule_counter += 1
-            nodes += [
-                {"id": rule_id, "label": "HIPAA Breach Rule"},
-                {"id": "dtype:breach_type", "label": "Breach Type"},
-                {"id": "region:HIPAA", "label": "HIPAA"},
-                {"id": f"regex:{rule_id}", "label": regex}
-            ]
-            edges += [
-                {"source": rule_id, "target": "dtype:breach_type", "relation": "TYPED_AS"},
-                {"source": rule_id, "target": "region:HIPAA", "relation": "BELONGS_TO"},
-                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
-            ]
+    # ✅ CMS
+    cms_path = os.path.join(DATA_DIR, "cms_hospitals.csv")
+    if os.path.exists(cms_path):
+        df = safe_read_csv(cms_path)
+        if not df.empty:
+            for _, row in df.iterrows():
+                hosp = row.get("facility_name") or row.get("Hospital Name")
+                city = row.get("city") or row.get("City")
+                if pd.notna(hosp):
+                    nodes.append({"id": f"hosp:{hosp}", "label": hosp, "type": "Hospital"})
+                if pd.notna(city):
+                    nodes.append({"id": f"city:{city}", "label": city, "type": "City"})
+                    edges.append({"source": f"hosp:{hosp}", "target": f"city:{city}", "relation": "LOCATED_IN"})
 
-    # === CMS ===
-    cms_values = read_csv_column(
-        os.path.join(DATA_DIR, "cms_hospitals.csv"),
-        ["hospital_name", "Facility Name", "Hospital Name"]
-    )
-    if cms_values:
-        regex = build_regex_from_values(cms_values)
-        if regex:
-            rule_id = f"rule:{rule_counter}"; rule_counter += 1
-            nodes += [
-                {"id": rule_id, "label": "Hospital Rule"},
-                {"id": "dtype:hospital_name", "label": "Hospital Name"},
-                {"id": "region:CMS", "label": "CMS"},
-                {"id": f"regex:{rule_id}", "label": regex}
-            ]
-            edges += [
-                {"source": rule_id, "target": "dtype:hospital_name", "relation": "TYPED_AS"},
-                {"source": rule_id, "target": "region:CMS", "relation": "BELONGS_TO"},
-                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
-            ]
+    # ✅ EMA
+    ema_path = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
+    if os.path.exists(ema_path):
+        df = safe_read_excel(ema_path)
+        if not df.empty:
+            for _, row in df.iterrows():
+                med = row.get("name") or row.get("Medicinal product name")
+                active = row.get("active_substance") or row.get("Active substance")
+                if pd.notna(med):
+                    nodes.append({"id": f"med:{med}", "label": med, "type": "Medicine"})
+                if pd.notna(active):
+                    nodes.append({"id": f"sub:{active}", "label": active, "type": "Substance"})
+                if pd.notna(med) and pd.notna(active):
+                    edges.append({"source": f"med:{med}", "target": f"sub:{active}", "relation": "CONTAINS"})
 
-    # === Deduplicate ===
-    nodes = list({n["id"]: n for n in nodes}.values())
+    # Deduplicate nodes/edges
+    unique_nodes = {n["id"]: n for n in nodes}.values()
+    unique_edges = {f'{e["source"]}-{e["target"]}-{e["relation"]}': e for e in edges}.values()
 
-    # Write files
-    with open(NODES_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["id", "label"])
-        writer.writeheader(); writer.writerows(nodes)
+    # Save CSVs
+    with open(os.path.join(OUT_DIR, "nodes.csv"), "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["id", "label", "type"])
+        writer.writeheader()
+        writer.writerows(unique_nodes)
 
-    with open(EDGES_FILE, "w", newline="", encoding="utf-8") as f:
+    with open(os.path.join(OUT_DIR, "edges.csv"), "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
-        writer.writeheader(); writer.writerows(edges)
+        writer.writeheader()
+        writer.writerows(unique_edges)
 
-    with open(GRAPH_FILE, "w", encoding="utf-8") as f:
-        json.dump({"nodes": nodes, "edges": edges}, f, indent=2)
+    # Save JSON
+    with open(os.path.join(OUT_DIR, "graph.json"), "w", encoding="utf-8") as f:
+        json.dump({"nodes": list(unique_nodes), "edges": list(unique_edges)}, f, indent=2)
 
-    print(f"[KG Export] ✅ {len(nodes)} nodes, {len(edges)} edges")
-
+    print(f"[KG] Exported {len(unique_nodes)} nodes and {len(unique_edges)} edges to {OUT_DIR}")
 
 if __name__ == "__main__":
-    export_knowledge_graph()
-
+    build_kg()
