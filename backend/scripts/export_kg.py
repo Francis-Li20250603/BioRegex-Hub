@@ -40,7 +40,7 @@ if os.path.exists(fda_file):
                 rule_id = f"fda_rule:{i+1}"
                 regex_id = f"regex:fda_rule:{i+1}"
                 add_node(rule_id, f"FDA Rule {i+1}")
-                add_node(regex_id, regex)  # ✅ embed regex here
+                add_node(regex_id, regex)
                 add_edge("DataSource", rule_id, "contains")
                 add_edge(rule_id, regex_id, "uses")
                 add_edge(rule_id, "region:FDA", "applies_to")
@@ -49,9 +49,11 @@ if os.path.exists(fda_file):
 ema_file = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
 if os.path.exists(ema_file):
     df = pd.read_excel(ema_file)
-    if "medicine" in df.columns:
+    # Look for any column with "name" in it
+    col = next((c for c in df.columns if "name" in c.lower()), None)
+    if col:
         for i, row in df.iterrows():
-            regex = make_regex(row["medicine"])
+            regex = make_regex(row[col])
             if regex:
                 rule_id = f"ema_rule:{i+1}"
                 regex_id = f"regex:ema_rule:{i+1}"
@@ -65,9 +67,9 @@ if os.path.exists(ema_file):
 cms_file = os.path.join(DATA_DIR, "cms_hospitals.csv")
 if os.path.exists(cms_file):
     df = pd.read_csv(cms_file)
-    if "hospital" in df.columns:
+    if "hospital_name" in df.columns:
         for i, row in df.iterrows():
-            regex = make_regex(row["hospital"])
+            regex = make_regex(row["hospital_name"])
             if regex:
                 rule_id = f"cms_rule:{i+1}"
                 regex_id = f"regex:cms_rule:{i+1}"
@@ -81,9 +83,11 @@ if os.path.exists(cms_file):
 hipaa_file = os.path.join(DATA_DIR, "hipaa_breaches.csv")
 if os.path.exists(hipaa_file):
     df = pd.read_csv(hipaa_file)
-    if "breach_type" in df.columns:
+    # Column appears as "Breach Submission Type"
+    col = next((c for c in df.columns if "breach" in c.lower()), None)
+    if col:
         for i, row in df.iterrows():
-            regex = make_regex(row["breach_type"])
+            regex = make_regex(row[col])
             if regex:
                 rule_id = f"hipaa_rule:{i+1}"
                 regex_id = f"regex:hipaa_rule:{i+1}"
@@ -117,3 +121,4 @@ with open(graph_file, "w", encoding="utf-8") as f:
     json.dump(graph, f, indent=2)
 
 print(f"[DONE] Wrote {nodes_file}, {edges_file}, {graph_file}")
+
