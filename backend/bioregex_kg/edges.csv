@@ -1,0 +1,3 @@
+source,target,type
+rule:1,region:FDA,BELONGS_TO
+rule:1,dtype:string,TYPED_AS

@@ -1,0 +1,4 @@
+id,label,pattern,region,data_type,name
+rule:1,Rule,^[A-Za-z0-9_]+$,FDA,string,
+region:FDA,Region,,,,FDA
+dtype:string,DataType,,,,string
