@@ -1,47 +1,49 @@
 import os
 import csv
 import json
+import sys
 
-# === Ensure output directory exists ===
+# === Directories ===
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # backend/
 DATA_DIR = os.path.join(BASE_DIR, "data")
 OUTPUT_DIR = os.path.join(BASE_DIR, "bioregex_kg")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# === Output file paths ===
+# === Output files ===
 NODES_FILE = os.path.join(OUTPUT_DIR, "nodes.csv")
 EDGES_FILE = os.path.join(OUTPUT_DIR, "edges.csv")
 GRAPH_FILE = os.path.join(OUTPUT_DIR, "graph.json")
 
+print(f"[DEBUG] BASE_DIR = {BASE_DIR}")
+print(f"[DEBUG] DATA_DIR = {DATA_DIR}")
+print(f"[DEBUG] OUTPUT_DIR = {OUTPUT_DIR}")
+print(f"[DEBUG] Files in DATA_DIR: {os.listdir(DATA_DIR) if os.path.exists(DATA_DIR) else '❌ Not found'}")
+
 
 def export_nodes_and_edges():
-    """
-    Example export function:
-    Reads from backend/data/* and builds a simple knowledge graph.
-    """
     nodes = []
     edges = []
 
-    # Collect nodes from all available datasets
-    if os.path.exists(DATA_DIR):
-        for fname in os.listdir(DATA_DIR):
-            fpath = os.path.join(DATA_DIR, fname)
-            node_id = fname.split(".")[0]
+    if not os.path.exists(DATA_DIR):
+        print(f"[KG Export] ❌ Data directory not found: {DATA_DIR}")
+        sys.exit(1)
 
-            nodes.append({"id": node_id, "label": fname})
+    files = os.listdir(DATA_DIR)
+    if not files:
+        print(f"[KG Export] ❌ No files found in {DATA_DIR}")
+        sys.exit(1)
 
-            # Example: link dataset node to a central "DataSource"
-            edges.append({"source": "DataSource", "target": node_id, "relation": "contains"})
+    # Build graph from filenames
+    for fname in files:
+        node_id = fname.split(".")[0]
+        nodes.append({"id": node_id, "label": fname})
+        edges.append({"source": "DataSource", "target": node_id, "relation": "contains"})
 
-    else:
-        print(f"[KG Export] ⚠️ Data directory not found: {DATA_DIR}")
+    # Always include central node
+    nodes.append({"id": "DataSource", "label": "Regulatory Data"})
 
-    # Add central node
-    if nodes:
-        nodes.append({"id": "DataSource", "label": "Regulatory Data"})
-
-    # === Write CSV files ===
+    # === Write CSVs ===
     with open(NODES_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "label"])
         writer.writeheader()
@@ -52,17 +54,17 @@ def export_nodes_and_edges():
         writer.writeheader()
         writer.writerows(edges)
 
-    # === Write JSON file ===
+    # === Write JSON ===
     graph = {"nodes": nodes, "edges": edges}
     with open(GRAPH_FILE, "w", encoding="utf-8") as f:
         json.dump(graph, f, indent=2)
 
-    print(f"[KG Export] ✅ Nodes written to {NODES_FILE}")
-    print(f"[KG Export] ✅ Edges written to {EDGES_FILE}")
-    print(f"[KG Export] ✅ Graph written to {GRAPH_FILE}")
+    print(f"[KG Export] ✅ Wrote {len(nodes)} nodes and {len(edges)} edges")
+    print(f"[KG Export] ✅ Files saved in {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":
     export_nodes_and_edges()
+
 
 
