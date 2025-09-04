@@ -1,17 +1,11 @@
-# backend/scripts/export_kg.py
 import os
 import csv
-import re
-import pandas as pd
 import json
+import pandas as pd
 
 DATA_DIR = "backend/data"
-KG_DIR = "backend/bioregex_kg"
-os.makedirs(KG_DIR, exist_ok=True)
-
-nodes_file = os.path.join(KG_DIR, "nodes.csv")
-edges_file = os.path.join(KG_DIR, "edges.csv")
-graph_file = os.path.join(KG_DIR, "graph.json")
+OUT_DIR = "backend/bioregex_kg"
+os.makedirs(OUT_DIR, exist_ok=True)
 
 nodes = []
 edges = []
@@ -22,103 +16,79 @@ def add_node(node_id, label):
 def add_edge(source, target, relation):
     edges.append({"source": source, "target": target, "relation": relation})
 
-def make_regex(term: str):
-    """Escape term into regex with word boundaries."""
-    term = str(term).strip()
-    if not term:
-        return None
-    return r"\b" + re.escape(term) + r"\b"
+def make_regex_rule(prefix, idx, terms, region):
+    """Create regex rules for a dataset column"""
+    rule_id = f"{prefix}_rule:{idx}"
+    regex_id = f"regex:{prefix}_rule:{idx}"
 
-# FDA
+    # escape regex meta chars in terms
+    pattern = r"\b(" + "|".join([str(t).replace("(", "\(").replace(")", "\)").replace(".", "\.") 
+                                for t in terms if isinstance(t, str)]) + r")\b"
+
+    add_node(rule_id, f"{region} Rule {idx}")
+    add_node(regex_id, pattern)
+    add_edge("DataSource", rule_id, "contains")
+    add_edge(rule_id, regex_id, "uses")
+    add_edge(rule_id, f"region:{region}", "applies_to")
+
+# Base DataSource node
+add_node("DataSource", "Regulatory Data")
+
+# Regions
+for region in ["FDA", "EMA", "CMS", "HIPAA"]:
+    add_node(f"region:{region}", region)
+
+# --- FDA ---
 fda_file = os.path.join(DATA_DIR, "fda_drugs.csv")
 if os.path.exists(fda_file):
     df = pd.read_csv(fda_file)
     if "brand_name" in df.columns:
-        for i, row in df.iterrows():
-            regex = make_regex(row["brand_name"])
-            if regex:
-                rule_id = f"fda_rule:{i+1}"
-                regex_id = f"regex:fda_rule:{i+1}"
-                add_node(rule_id, f"FDA Rule {i+1}")
-                add_node(regex_id, regex)
-                add_edge("DataSource", rule_id, "contains")
-                add_edge(rule_id, regex_id, "uses")
-                add_edge(rule_id, "region:FDA", "applies_to")
+        make_regex_rule("fda", 1, df["brand_name"].dropna().unique(), "FDA")
+    if "generic_name" in df.columns:
+        make_regex_rule("fda", 2, df["generic_name"].dropna().unique(), "FDA")
+else:
+    print("[WARN] FDA file missing")
 
-# EMA
+# --- EMA ---
 ema_file = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
 if os.path.exists(ema_file):
     df = pd.read_excel(ema_file)
-    # Look for any column with "name" in it
-    col = next((c for c in df.columns if "name" in c.lower()), None)
-    if col:
-        for i, row in df.iterrows():
-            regex = make_regex(row[col])
-            if regex:
-                rule_id = f"ema_rule:{i+1}"
-                regex_id = f"regex:ema_rule:{i+1}"
-                add_node(rule_id, f"EMA Rule {i+1}")
-                add_node(regex_id, regex)
-                add_edge("DataSource", rule_id, "contains")
-                add_edge(rule_id, regex_id, "uses")
-                add_edge(rule_id, "region:EMA", "applies_to")
+    # EMA sheet often has "Name" or "Medicine name"
+    for col in df.columns:
+        if "Name" in col:
+            make_regex_rule("ema", 1, df[col].dropna().unique(), "EMA")
+else:
+    print("[WARN] EMA file missing")
 
-# CMS
+# --- CMS ---
 cms_file = os.path.join(DATA_DIR, "cms_hospitals.csv")
 if os.path.exists(cms_file):
     df = pd.read_csv(cms_file)
-    if "hospital_name" in df.columns:
-        for i, row in df.iterrows():
-            regex = make_regex(row["hospital_name"])
-            if regex:
-                rule_id = f"cms_rule:{i+1}"
-                regex_id = f"regex:cms_rule:{i+1}"
-                add_node(rule_id, f"CMS Rule {i+1}")
-                add_node(regex_id, regex)
-                add_edge("DataSource", rule_id, "contains")
-                add_edge(rule_id, regex_id, "uses")
-                add_edge(rule_id, "region:CMS", "applies_to")
+    if "Facility Name" in df.columns:
+        make_regex_rule("cms", 1, df["Facility Name"].dropna().unique(), "CMS")
+else:
+    print("[WARN] CMS file missing")
 
-# HIPAA
+# --- HIPAA ---
 hipaa_file = os.path.join(DATA_DIR, "hipaa_breaches.csv")
 if os.path.exists(hipaa_file):
     df = pd.read_csv(hipaa_file)
-    # Column appears as "Breach Submission Type"
-    col = next((c for c in df.columns if "breach" in c.lower()), None)
-    if col:
-        for i, row in df.iterrows():
-            regex = make_regex(row[col])
-            if regex:
-                rule_id = f"hipaa_rule:{i+1}"
-                regex_id = f"regex:hipaa_rule:{i+1}"
-                add_node(rule_id, f"HIPAA Rule {i+1}")
-                add_node(regex_id, regex)
-                add_edge("DataSource", rule_id, "contains")
-                add_edge(rule_id, regex_id, "uses")
-                add_edge(rule_id, "region:HIPAA", "applies_to")
+    if "Name of Covered Entity" in df.columns:
+        make_regex_rule("hipaa", 1, df["Name of Covered Entity"].dropna().unique(), "HIPAA")
+    if "Covered Entity Type" in df.columns:
+        make_regex_rule("hipaa", 2, df["Covered Entity Type"].dropna().unique(), "HIPAA")
+else:
+    print("[WARN] HIPAA file missing")
 
-# Base nodes
-add_node("DataSource", "Regulatory Data")
-add_node("region:FDA", "FDA")
-add_node("region:EMA", "EMA")
-add_node("region:CMS", "CMS")
-add_node("region:HIPAA", "HIPAA")
+# --- Save outputs ---
+nodes_file = os.path.join(OUT_DIR, "nodes.csv")
+edges_file = os.path.join(OUT_DIR, "edges.csv")
+graph_file = os.path.join(OUT_DIR, "graph.json")
 
-# Write CSVs
-with open(nodes_file, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=["id", "label"])
-    writer.writeheader()
-    writer.writerows(nodes)
-
-with open(edges_file, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
-    writer.writeheader()
-    writer.writerows(edges)
-
-# Write JSON graph
-graph = {"nodes": nodes, "edges": edges}
-with open(graph_file, "w", encoding="utf-8") as f:
-    json.dump(graph, f, indent=2)
+pd.DataFrame(nodes).to_csv(nodes_file, index=False)
+pd.DataFrame(edges).to_csv(edges_file, index=False)
+with open(graph_file, "w") as f:
+    json.dump({"nodes": nodes, "edges": edges}, f, indent=2)
 
 print(f"[DONE] Wrote {nodes_file}, {edges_file}, {graph_file}")
 
