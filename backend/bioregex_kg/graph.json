@@ -3,44 +3,7 @@
     {
       "id": "DataSource",
       "label": "Regulatory Data"
-    },
-    {
-      "id": "fda_drugs",
-      "label": "fda_drugs.csv"
-    },
-    {
-      "id": "hipaa_breaches",
-      "label": "hipaa_breaches.csv"
-    },
-    {
-      "id": "cms_hospitals",
-      "label": "cms_hospitals.csv"
-    },
-    {
-      "id": "ema_human_medicines",
-      "label": "ema_human_medicines.xlsx"
     }
   ],
-  "edges": [
-    {
-      "source": "DataSource",
-      "target": "fda_drugs",
-      "relation": "contains"
-    },
-    {
-      "source": "DataSource",
-      "target": "hipaa_breaches",
-      "relation": "contains"
-    },
-    {
-      "source": "DataSource",
-      "target": "cms_hospitals",
-      "relation": "contains"
-    },
-    {
-      "source": "DataSource",
-      "target": "ema_human_medicines",
-      "relation": "contains"
-    }
-  ]
+  "edges": []
 }
