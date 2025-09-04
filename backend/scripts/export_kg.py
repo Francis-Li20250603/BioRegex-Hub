@@ -4,9 +4,10 @@ import json
 import pandas as pd
 
 # --- Directories ---
-REPO_ROOT = os.path.dirname(os.path.dirname(__file__))  # repo root
-DATA_DIR = os.path.join(REPO_ROOT, "backend", "data")
-OUT_DIR = os.path.join(REPO_ROOT, "backend", "bioregex_kg")
+SCRIPT_DIR = os.path.dirname(__file__)          # backend/scripts
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)         # backend/
+DATA_DIR = os.path.join(REPO_ROOT, "data")      # backend/data
+OUT_DIR = os.path.join(REPO_ROOT, "bioregex_kg") # backend/bioregex_kg
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # --- Files ---
@@ -33,7 +34,7 @@ def build_nodes_edges():
     if os.path.exists(FDA_FILE):
         df = pd.read_csv(FDA_FILE)
         if "brand_name" in df.columns:
-            for i, name in enumerate(df["brand_name"].dropna().unique()[:200]):  # cap 200
+            for i, name in enumerate(df["brand_name"].dropna().unique()[:200]):
                 node_id = f"fda_rule:{i+1}"
                 regex_id = f"regex:fda_rule:{i+1}"
                 nodes.extend([
@@ -47,13 +48,13 @@ def build_nodes_edges():
                     {"source": node_id, "target": "region:FDA", "relation": "applies_to"},
                 ])
     else:
-        print("[WARN] FDA file missing")
+        print(f"[WARN] FDA file missing: {FDA_FILE}")
 
     # --- EMA ---
     if os.path.exists(EMA_FILE):
         df = pd.read_excel(EMA_FILE)
         col = None
-        for candidate in ["name", "Medicine Name", "INN"]:  # guess column
+        for candidate in ["name", "Medicine Name", "INN"]:
             if candidate in df.columns:
                 col = candidate
                 break
@@ -74,7 +75,7 @@ def build_nodes_edges():
         else:
             print("[WARN] No usable column in EMA file")
     else:
-        print("[WARN] EMA file missing")
+        print(f"[WARN] EMA file missing: {EMA_FILE}")
 
     # --- CMS ---
     if os.path.exists(CMS_FILE):
@@ -96,7 +97,7 @@ def build_nodes_edges():
         else:
             print("[WARN] Column 'Facility Name' not found in CMS file")
     else:
-        print("[WARN] CMS file missing")
+        print(f"[WARN] CMS file missing: {CMS_FILE}")
 
     # --- HIPAA ---
     if os.path.exists(HIPAA_FILE):
@@ -118,7 +119,7 @@ def build_nodes_edges():
         else:
             print("[WARN] Column 'Name of Covered Entity' not found in HIPAA file")
     else:
-        print("[WARN] HIPAA file missing")
+        print(f"[WARN] HIPAA file missing: {HIPAA_FILE}")
 
     return nodes, edges
 
@@ -126,26 +127,21 @@ def build_nodes_edges():
 def main():
     nodes, edges = build_nodes_edges()
 
-    # Save nodes
     with open(NODES_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "label"])
         writer.writeheader()
         writer.writerows(nodes)
 
-    # Save edges
     with open(EDGES_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
         writer.writeheader()
         writer.writerows(edges)
 
-    # Save JSON
-    graph = {"nodes": nodes, "edges": edges}
     with open(GRAPH_FILE, "w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2)
+        json.dump({"nodes": nodes, "edges": edges}, f, indent=2)
 
     print(f"[DONE] Wrote {NODES_FILE}, {EDGES_FILE}, {GRAPH_FILE}")
 
 
 if __name__ == "__main__":
     main()
-
