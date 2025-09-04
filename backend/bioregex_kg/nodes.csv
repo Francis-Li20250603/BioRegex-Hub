@@ -1,10 +1,45 @@
 id,label
 DataSource,Regulatory Data
-rule:1,HIPAA Breach Rule
-dtype:breach_type,Breach Type
-region:HIPAA,HIPAA
-regex:rule:1,\b(Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure|Unauthorized\ Access/Disclosure|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure)\b
-rule:2,Hospital Rule
-dtype:hospital_name,Hospital Name
-region:CMS,CMS
-regex:rule:2,\b(SOUTHEAST\ HEALTH\ MEDICAL\ CENTER|MARSHALL\ MEDICAL\ CENTERS|NORTH\ ALABAMA\ MEDICAL\ CENTER|MIZELL\ MEMORIAL\ HOSPITAL|CRENSHAW\ COMMUNITY\ HOSPITAL|ST\.\ VINCENT'S\ EAST|DEKALB\ REGIONAL\ MEDICAL\ CENTER|SHELBY\ BAPTIST\ MEDICAL\ CENTER|CALLAHAN\ EYE\ HOSPITAL|HELEN\ KELLER\ HOSPITAL|DALE\ MEDICAL\ CENTER|FLOYD\ CHEROKEE\ MEDICAL\ CENTER|BAPTIST\ MEDICAL\ CENTER\ SOUTH|JACKSON\ HOSPITAL\ \&\ CLINIC\ INC|THE\ EAST\ ALABAMA\ HEALTHCARE\ AUTHORITY|UNIVERSITY\ OF\ ALABAMA\ HOSPITAL|COMMUNITY\ HOSPITAL\ INC|CULLMAN\ REGIONAL\ MEDICAL\ CENTER|ANDALUSIA\ HEALTH|HUNTSVILLE\ HOSPITAL)\b
+region:FDA,FDA
+fda_rule:1,FDA Drug Rule
+regex:fda_rule:1,\bSILICEA\b
+fda_rule:2,FDA Drug Rule
+regex:fda_rule:2,\bBetadine\b
+fda_rule:3,FDA Drug Rule
+regex:fda_rule:3,\bNaproxen\b
+fda_rule:4,FDA Drug Rule
+regex:fda_rule:4,\bMoisturizing Antibacterial\b
+fda_rule:5,FDA Drug Rule
+regex:fda_rule:5,\bQuick Action\b
+fda_rule:6,FDA Drug Rule
+regex:fda_rule:6,\bCuprum aceticum Nicotiana\b
+fda_rule:7,FDA Drug Rule
+regex:fda_rule:7,\bMekinist\b
+fda_rule:8,FDA Drug Rule
+regex:fda_rule:8,\bGlimepiride\b
+fda_rule:9,FDA Drug Rule
+regex:fda_rule:9,\bMethocarbamol\b
+fda_rule:10,FDA Drug Rule
+regex:fda_rule:10,\banti itch\b
+fda_rule:11,FDA Drug Rule
+regex:fda_rule:11,\bNP Thyroid 120\b
+fda_rule:12,FDA Drug Rule
+regex:fda_rule:12,\bVarenicline\b
+fda_rule:13,FDA Drug Rule
+regex:fda_rule:13,\bRescue Sleep\b
+fda_rule:14,FDA Drug Rule
+regex:fda_rule:14,\bPain Reliever Extra Strength\b
+fda_rule:15,FDA Drug Rule
+regex:fda_rule:15,\bOASIS Tears Lubricant Eye\b
+fda_rule:16,FDA Drug Rule
+regex:fda_rule:16,\bThera Plus Maximum Strength Feminine Anti-Itch\b
+fda_rule:17,FDA Drug Rule
+regex:fda_rule:17,"\bSure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented\b"
+fda_rule:18,FDA Drug Rule
+regex:fda_rule:18,\bBetamethasone Dipropionate\b
+fda_rule:19,FDA Drug Rule
+regex:fda_rule:19,\bLights Povindone Iodine Scrub\b
+fda_rule:20,FDA Drug Rule
+regex:fda_rule:20,\bCalcium Acetate\b
+fda_rule:21,FDA Drug Rule
+regex:fda_rule:21,\bENTRESTO\b

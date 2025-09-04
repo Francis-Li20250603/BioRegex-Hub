@@ -5,68 +5,493 @@
       "label": "Regulatory Data"
     },
     {
-      "id": "rule:1",
-      "label": "HIPAA Breach Rule"
+      "id": "region:FDA",
+      "label": "FDA"
     },
     {
-      "id": "dtype:breach_type",
-      "label": "Breach Type"
+      "id": "fda_rule:1",
+      "label": "FDA Drug Rule"
     },
     {
-      "id": "region:HIPAA",
-      "label": "HIPAA"
+      "id": "regex:fda_rule:1",
+      "label": "\\bSILICEA\\b"
     },
     {
-      "id": "regex:rule:1",
-      "label": "\\b(Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure|Unauthorized\\ Access/Disclosure|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure)\\b"
+      "id": "fda_rule:2",
+      "label": "FDA Drug Rule"
     },
     {
-      "id": "rule:2",
-      "label": "Hospital Rule"
+      "id": "regex:fda_rule:2",
+      "label": "\\bBetadine\\b"
     },
     {
-      "id": "dtype:hospital_name",
-      "label": "Hospital Name"
+      "id": "fda_rule:3",
+      "label": "FDA Drug Rule"
     },
     {
-      "id": "region:CMS",
-      "label": "CMS"
+      "id": "regex:fda_rule:3",
+      "label": "\\bNaproxen\\b"
     },
     {
-      "id": "regex:rule:2",
-      "label": "\\b(SOUTHEAST\\ HEALTH\\ MEDICAL\\ CENTER|MARSHALL\\ MEDICAL\\ CENTERS|NORTH\\ ALABAMA\\ MEDICAL\\ CENTER|MIZELL\\ MEMORIAL\\ HOSPITAL|CRENSHAW\\ COMMUNITY\\ HOSPITAL|ST\\.\\ VINCENT'S\\ EAST|DEKALB\\ REGIONAL\\ MEDICAL\\ CENTER|SHELBY\\ BAPTIST\\ MEDICAL\\ CENTER|CALLAHAN\\ EYE\\ HOSPITAL|HELEN\\ KELLER\\ HOSPITAL|DALE\\ MEDICAL\\ CENTER|FLOYD\\ CHEROKEE\\ MEDICAL\\ CENTER|BAPTIST\\ MEDICAL\\ CENTER\\ SOUTH|JACKSON\\ HOSPITAL\\ \\&\\ CLINIC\\ INC|THE\\ EAST\\ ALABAMA\\ HEALTHCARE\\ AUTHORITY|UNIVERSITY\\ OF\\ ALABAMA\\ HOSPITAL|COMMUNITY\\ HOSPITAL\\ INC|CULLMAN\\ REGIONAL\\ MEDICAL\\ CENTER|ANDALUSIA\\ HEALTH|HUNTSVILLE\\ HOSPITAL)\\b"
+      "id": "fda_rule:4",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:4",
+      "label": "\\bMoisturizing Antibacterial\\b"
+    },
+    {
+      "id": "fda_rule:5",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:5",
+      "label": "\\bQuick Action\\b"
+    },
+    {
+      "id": "fda_rule:6",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:6",
+      "label": "\\bCuprum aceticum Nicotiana\\b"
+    },
+    {
+      "id": "fda_rule:7",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:7",
+      "label": "\\bMekinist\\b"
+    },
+    {
+      "id": "fda_rule:8",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:8",
+      "label": "\\bGlimepiride\\b"
+    },
+    {
+      "id": "fda_rule:9",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:9",
+      "label": "\\bMethocarbamol\\b"
+    },
+    {
+      "id": "fda_rule:10",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:10",
+      "label": "\\banti itch\\b"
+    },
+    {
+      "id": "fda_rule:11",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:11",
+      "label": "\\bNP Thyroid 120\\b"
+    },
+    {
+      "id": "fda_rule:12",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:12",
+      "label": "\\bVarenicline\\b"
+    },
+    {
+      "id": "fda_rule:13",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:13",
+      "label": "\\bRescue Sleep\\b"
+    },
+    {
+      "id": "fda_rule:14",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:14",
+      "label": "\\bPain Reliever Extra Strength\\b"
+    },
+    {
+      "id": "fda_rule:15",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:15",
+      "label": "\\bOASIS Tears Lubricant Eye\\b"
+    },
+    {
+      "id": "fda_rule:16",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:16",
+      "label": "\\bThera Plus Maximum Strength Feminine Anti-Itch\\b"
+    },
+    {
+      "id": "fda_rule:17",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:17",
+      "label": "\\bSure Complete Confidence Antiperspirant Deodorant Aerosol, Unscented\\b"
+    },
+    {
+      "id": "fda_rule:18",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:18",
+      "label": "\\bBetamethasone Dipropionate\\b"
+    },
+    {
+      "id": "fda_rule:19",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:19",
+      "label": "\\bLights Povindone Iodine Scrub\\b"
+    },
+    {
+      "id": "fda_rule:20",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:20",
+      "label": "\\bCalcium Acetate\\b"
+    },
+    {
+      "id": "fda_rule:21",
+      "label": "FDA Drug Rule"
+    },
+    {
+      "id": "regex:fda_rule:21",
+      "label": "\\bENTRESTO\\b"
     }
   ],
   "edges": [
     {
-      "source": "rule:1",
-      "target": "dtype:breach_type",
-      "relation": "TYPED_AS"
+      "source": "DataSource",
+      "target": "fda_rule:1",
+      "relation": "contains"
     },
     {
-      "source": "rule:1",
-      "target": "region:HIPAA",
-      "relation": "BELONGS_TO"
+      "source": "fda_rule:1",
+      "target": "regex:fda_rule:1",
+      "relation": "uses"
     },
     {
-      "source": "rule:1",
-      "target": "regex:rule:1",
-      "relation": "USES_REGEX"
+      "source": "fda_rule:1",
+      "target": "region:FDA",
+      "relation": "applies_to"
     },
     {
-      "source": "rule:2",
-      "target": "dtype:hospital_name",
-      "relation": "TYPED_AS"
+      "source": "DataSource",
+      "target": "fda_rule:2",
+      "relation": "contains"
     },
     {
-      "source": "rule:2",
-      "target": "region:CMS",
-      "relation": "BELONGS_TO"
+      "source": "fda_rule:2",
+      "target": "regex:fda_rule:2",
+      "relation": "uses"
     },
     {
-      "source": "rule:2",
-      "target": "regex:rule:2",
-      "relation": "USES_REGEX"
+      "source": "fda_rule:2",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:3",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:3",
+      "target": "regex:fda_rule:3",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:3",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:4",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:4",
+      "target": "regex:fda_rule:4",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:4",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:5",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:5",
+      "target": "regex:fda_rule:5",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:5",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:6",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:6",
+      "target": "regex:fda_rule:6",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:6",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:7",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:7",
+      "target": "regex:fda_rule:7",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:7",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:8",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:8",
+      "target": "regex:fda_rule:8",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:8",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:9",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:9",
+      "target": "regex:fda_rule:9",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:9",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:10",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:10",
+      "target": "regex:fda_rule:10",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:10",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:11",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:11",
+      "target": "regex:fda_rule:11",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:11",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:12",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:12",
+      "target": "regex:fda_rule:12",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:12",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:13",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:13",
+      "target": "regex:fda_rule:13",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:13",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:14",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:14",
+      "target": "regex:fda_rule:14",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:14",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:15",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:15",
+      "target": "regex:fda_rule:15",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:15",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:16",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:16",
+      "target": "regex:fda_rule:16",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:16",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:17",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:17",
+      "target": "regex:fda_rule:17",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:17",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:18",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:18",
+      "target": "regex:fda_rule:18",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:18",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:19",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:19",
+      "target": "regex:fda_rule:19",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:19",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:20",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:20",
+      "target": "regex:fda_rule:20",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:20",
+      "target": "region:FDA",
+      "relation": "applies_to"
+    },
+    {
+      "source": "DataSource",
+      "target": "fda_rule:21",
+      "relation": "contains"
+    },
+    {
+      "source": "fda_rule:21",
+      "target": "regex:fda_rule:21",
+      "relation": "uses"
+    },
+    {
+      "source": "fda_rule:21",
+      "target": "region:FDA",
+      "relation": "applies_to"
     }
   ]
 }
