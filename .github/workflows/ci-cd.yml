@@ -35,6 +35,8 @@ jobs:
     steps:
       - name: 拉取代码
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 安装Python环境
         uses: actions/setup-python@v5
@@ -85,14 +87,31 @@ jobs:
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
         run: pytest -v tests/ --cov=app
 
+      # -----------------------------
+      # NEW: 导出知识图谱并提交到仓库
+      # -----------------------------
+      - name: 导出知识图谱
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+          KG_OUT_DIR: ./bioregex_kg
+        run: python -m scripts.export_kg
+
+      - name: 提交知识图谱到仓库
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update knowledge graph"
+          file_pattern: backend/bioregex_kg/*
+          branch: main
+      # -----------------------------
+
   build-images: 
     needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-  # 添加权限配置
     permissions:
-      packages: write  # 允许推送包
-      contents: read   # 允许拉取代码（已有的 checkout 步骤需要）
+      packages: write
+      contents: read
     steps:
       - name: 拉取代码
         uses: actions/checkout@v4
@@ -120,3 +139,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
