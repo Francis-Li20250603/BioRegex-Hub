@@ -1,17 +1,26 @@
 # backend/scripts/crawlers/crawl_ema_efsa.py
 import requests, os
+from bs4 import BeautifulSoup
+import urllib.parse
 
 os.makedirs("data", exist_ok=True)
 EMA_OUT = os.path.join("data", "ema_human_medicines.xlsx")
 EFSA_OUT = os.path.join("data", "efsa_openfoodtox.xlsx")
 
 def crawl_ema():
-    url = "https://www.ema.europa.eu/en/documents/other/human-medicines-authorised.xlsx"
-    r = requests.get(url)
+    landing = "https://www.ema.europa.eu/en/medicines/download-medicine-data"
+    r = requests.get(landing)
     r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    link = soup.find("a", href=lambda href: href and href.endswith("xlsx"))
+    if not link:
+        raise ValueError("Could not find EMA download link on landing page")
+    url = urllib.parse.urljoin(landing, link["href"])
+    resp = requests.get(url)
+    resp.raise_for_status()
     with open(EMA_OUT, "wb") as f:
-        f.write(r.content)
-    print(f"[EMA] Saved medicines dataset to {EMA_OUT}")
+        f.write(resp.content)
+    print(f"[EMA] Saved medicines dataset from {url} to {EMA_OUT}")
 
 def crawl_efsa():
     url = "https://zenodo.org/record/4274656/files/OpenFoodTox_v2.xlsx?download=1"
@@ -24,4 +33,5 @@ def crawl_efsa():
 if __name__ == "__main__":
     crawl_ema()
     crawl_efsa()
+
 
