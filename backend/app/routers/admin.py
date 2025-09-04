@@ -59,4 +59,4 @@ def get_pending_submissions(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_admin)
 ):
-return crud.get_submissions(db, status="pending")
+    return crud.get_submissions(db, status="pending")
