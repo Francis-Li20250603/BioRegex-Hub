@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest  # 完全云端执行
+    permissions:
+      contents: write       # 允许 GitHub Actions 推送更改
     services:
       postgres:
         image: postgres:15-alpine
