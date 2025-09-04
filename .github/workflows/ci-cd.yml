@@ -1,18 +1,19 @@
-name: 云端构建与测试流程
+name: CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:15-alpine
+        image: postgres:14
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: test_db
         ports:
@@ -24,11 +25,10 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
@@ -37,36 +37,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pandas openpyxl
 
-      # ✅ Run tests first
+      # ✅ Make sure DB tables exist before tests
+      - name: Create DB tables
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+        run: |
+          python -c "from app.database import engine; from sqlmodel import SQLModel; SQLModel.metadata.create_all(engine)"
+
       - name: Run tests
         working-directory: backend
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
           SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
         run: pytest -v tests/ --cov=app
-
-      # ✅ Build Knowledge Graph
-      - name: Export Knowledge Graph
-        working-directory: backend
-        run: |
-          rm -rf bioregex_kg
-          mkdir -p bioregex_kg
-          python -m scripts.export_kg
-
-      # ✅ Verify KG files exist
-      - name: Check KG output
-        run: |
-          test -f backend/bioregex_kg/nodes.csv || (echo "❌ nodes.csv 未生成" && exit 1)
-          test -f backend/bioregex_kg/edges.csv || (echo "❌ edges.csv 未生成" && exit 1)
-          test -f backend/bioregex_kg/graph.json || (echo "❌ graph.json 未生成" && exit 1)
-
-      # ✅ Commit Knowledge Graph
-      - name: Commit KG output
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update knowledge graph"
-          file_pattern: backend/bioregex_kg/*
-          branch: main
 
