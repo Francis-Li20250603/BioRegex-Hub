@@ -6,7 +6,6 @@ EMA_OUT = os.path.join("data", "ema_human_medicines.xlsx")
 EFSA_OUT = os.path.join("data", "efsa_openfoodtox.xlsx")
 
 def crawl_ema():
-    # Stable EMA dataset: human medicines authorised
     url = "https://www.ema.europa.eu/en/documents/other/human-medicines-authorised.xlsx"
     r = requests.get(url)
     r.raise_for_status()
@@ -15,7 +14,6 @@ def crawl_ema():
     print(f"[EMA] Saved medicines dataset to {EMA_OUT}")
 
 def crawl_efsa():
-    # Stable EFSA dataset hosted on Zenodo
     url = "https://zenodo.org/record/4274656/files/OpenFoodTox_v2.xlsx?download=1"
     r = requests.get(url)
     r.raise_for_status()
@@ -26,3 +24,4 @@ def crawl_efsa():
 if __name__ == "__main__":
     crawl_ema()
     crawl_efsa()
+
