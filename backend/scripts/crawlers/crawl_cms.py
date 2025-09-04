@@ -1,4 +1,5 @@
 # backend/scripts/crawlers/crawl_cms.py
+
 import requests
 import os
 
@@ -22,5 +23,4 @@ def crawl_cms():
 
 if __name__ == "__main__":
     crawl_cms()
-
 
