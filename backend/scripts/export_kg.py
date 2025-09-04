@@ -1,147 +1,148 @@
+# backend/scripts/export_kg.py
+
 import os
-import csv
+import re
 import json
 import pandas as pd
 
-# --- Directories ---
-SCRIPT_DIR = os.path.dirname(__file__)          # backend/scripts
-REPO_ROOT = os.path.dirname(SCRIPT_DIR)         # backend/
-DATA_DIR = os.path.join(REPO_ROOT, "data")      # backend/data
-OUT_DIR = os.path.join(REPO_ROOT, "bioregex_kg") # backend/bioregex_kg
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
+
+DATA_DIR = os.path.join(REPO_ROOT, "backend", "data")
+OUT_DIR = os.path.join(REPO_ROOT, "backend", "bioregex_kg")
+
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# --- Files ---
-FDA_FILE = os.path.join(DATA_DIR, "fda_drugs.csv")
-EMA_FILE = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
-CMS_FILE = os.path.join(DATA_DIR, "cms_hospitals.csv")
-HIPAA_FILE = os.path.join(DATA_DIR, "hipaa_breaches.csv")
+# ---------------------------
+# Helpers
+# ---------------------------
 
-# --- Output ---
-NODES_FILE = os.path.join(OUT_DIR, "nodes.csv")
-EDGES_FILE = os.path.join(OUT_DIR, "edges.csv")
-GRAPH_FILE = os.path.join(OUT_DIR, "graph.json")
+def make_regex(term: str) -> str:
+    """
+    Create a safe regex pattern for a term.
+    Escapes special chars and enforces case-insensitive whole word matching.
+    """
+    term = term.strip()
+    if not term:
+        return None
+    safe = re.escape(term)
+    return rf"(?i)\b{safe}\b"
 
+def write_csv(path, rows, header):
+    pd.DataFrame(rows, columns=header).to_csv(path, index=False)
 
-def safe_regex(term: str) -> str:
-    """Escape a term into a safe regex fragment."""
-    return r"\b" + str(term).replace("(", r"\(").replace(")", r"\)") + r"\b"
+# ---------------------------
+# Data parsers
+# ---------------------------
 
+def parse_fda_terms(csv_file):
+    if not os.path.exists(csv_file):
+        print(f"[WARN] FDA file missing")
+        return []
+    try:
+        df = pd.read_csv(csv_file)
+    except Exception as e:
+        print(f"[WARN] Failed to read FDA file: {e}")
+        return []
 
-def build_nodes_edges():
+    col = next((c for c in df.columns if "generic_name" in c.lower() or "substance_name" in c.lower()), None)
+    if not col:
+        print(f"[WARN] No usable column in FDA file")
+        return []
+
+    return df[col].dropna().astype(str).unique().tolist()
+
+def parse_ema_terms(xlsx_file):
+    if not os.path.exists(xlsx_file):
+        print(f"[WARN] EMA file not found: {xlsx_file}")
+        return []
+
+    try:
+        df = pd.read_excel(xlsx_file, sheet_name="Medicine")
+    except Exception as e:
+        print(f"[WARN] Could not read EMA Excel file: {e}")
+        return []
+
+    col_candidates = ["Medicine", "Name of medicine"]
+    col = next((c for c in col_candidates if c in df.columns), None)
+
+    if not col:
+        print(f"[WARN] No usable column in EMA file")
+        return []
+
+    return df[col].dropna().astype(str).unique().tolist()
+
+def parse_cms_terms(csv_file):
+    if not os.path.exists(csv_file):
+        print(f"[WARN] CMS file missing")
+        return []
+    try:
+        df = pd.read_csv(csv_file)
+    except Exception as e:
+        print(f"[WARN] Failed to read CMS file: {e}")
+        return []
+
+    col = next((c for c in df.columns if "hospital" in c.lower()), None)
+    if not col:
+        print(f"[WARN] No usable column in CMS file")
+        return []
+
+    return df[col].dropna().astype(str).unique().tolist()
+
+def parse_hipaa_terms(csv_file):
+    if not os.path.exists(csv_file):
+        print(f"[WARN] HIPAA file missing")
+        return []
+    try:
+        df = pd.read_csv(csv_file)
+    except Exception as e:
+        print(f"[WARN] Failed to read HIPAA file: {e}")
+        return []
+
+    col = next((c for c in df.columns if "breach" in c.lower()), None)
+    if not col:
+        print(f"[WARN] No usable column in HIPAA file")
+        return []
+
+    return df[col].dropna().astype(str).unique().tolist()
+
+# ---------------------------
+# Build KG
+# ---------------------------
+
+def build_kg():
+    sources = {
+        "fda_drug_names": parse_fda_terms(os.path.join(DATA_DIR, "fda_drugs.csv")),
+        "ema_medicine_names": parse_ema_terms(os.path.join(DATA_DIR, "ema_human_medicines.xlsx")),
+        "cms_hospital_names": parse_cms_terms(os.path.join(DATA_DIR, "cms_hospitals.csv")),
+        "hipaa_breach_types": parse_hipaa_terms(os.path.join(DATA_DIR, "hipaa_breaches.csv")),
+    }
+
     nodes, edges = [], []
 
-    # --- FDA ---
-    if os.path.exists(FDA_FILE):
-        df = pd.read_csv(FDA_FILE)
-        if "brand_name" in df.columns:
-            for i, name in enumerate(df["brand_name"].dropna().unique()[:200]):
-                node_id = f"fda_rule:{i+1}"
-                regex_id = f"regex:fda_rule:{i+1}"
-                nodes.extend([
-                    {"id": node_id, "label": f"FDA Drug Rule {i+1}"},
-                    {"id": regex_id, "label": safe_regex(name)},
-                    {"id": "region:FDA", "label": "FDA"},
-                ])
-                edges.extend([
-                    {"source": "DataSource", "target": node_id, "relation": "contains"},
-                    {"source": node_id, "target": regex_id, "relation": "uses"},
-                    {"source": node_id, "target": "region:FDA", "relation": "applies_to"},
-                ])
-    else:
-        print(f"[WARN] FDA file missing: {FDA_FILE}")
+    for src, terms in sources.items():
+        if not terms:
+            print(f"[WARN] No terms for {src}; no regex nodes created.")
+            continue
 
-    # --- EMA ---
-    if os.path.exists(EMA_FILE):
-        df = pd.read_excel(EMA_FILE)
-        col = None
-        for candidate in ["name", "Medicine Name", "INN"]:
-            if candidate in df.columns:
-                col = candidate
-                break
-        if col:
-            for i, name in enumerate(df[col].dropna().unique()[:200]):
-                node_id = f"ema_rule:{i+1}"
-                regex_id = f"regex:ema_rule:{i+1}"
-                nodes.extend([
-                    {"id": node_id, "label": f"EMA Medicine Rule {i+1}"},
-                    {"id": regex_id, "label": safe_regex(name)},
-                    {"id": "region:EMA", "label": "EMA"},
-                ])
-                edges.extend([
-                    {"source": "DataSource", "target": node_id, "relation": "contains"},
-                    {"source": node_id, "target": regex_id, "relation": "uses"},
-                    {"source": node_id, "target": "region:EMA", "relation": "applies_to"},
-                ])
-        else:
-            print("[WARN] No usable column in EMA file")
-    else:
-        print(f"[WARN] EMA file missing: {EMA_FILE}")
+        for t in terms:
+            regex = make_regex(t)
+            if not regex:
+                continue
+            node_id = f"{src}:{t}"
+            nodes.append({"id": node_id, "label": t, "source": src, "regex": regex})
+            edges.append({"source": src, "target": node_id, "relation": "HAS_TERM"})
 
-    # --- CMS ---
-    if os.path.exists(CMS_FILE):
-        df = pd.read_csv(CMS_FILE, low_memory=False)
-        if "Facility Name" in df.columns:
-            for i, hosp in enumerate(df["Facility Name"].dropna().unique()[:200]):
-                node_id = f"cms_rule:{i+1}"
-                regex_id = f"regex:cms_rule:{i+1}"
-                nodes.extend([
-                    {"id": node_id, "label": f"CMS Hospital Rule {i+1}"},
-                    {"id": regex_id, "label": safe_regex(hosp)},
-                    {"id": "region:CMS", "label": "CMS"},
-                ])
-                edges.extend([
-                    {"source": "DataSource", "target": node_id, "relation": "contains"},
-                    {"source": node_id, "target": regex_id, "relation": "uses"},
-                    {"source": node_id, "target": "region:CMS", "relation": "applies_to"},
-                ])
-        else:
-            print("[WARN] Column 'Facility Name' not found in CMS file")
-    else:
-        print(f"[WARN] CMS file missing: {CMS_FILE}")
+    # Write CSVs
+    write_csv(os.path.join(OUT_DIR, "nodes.csv"), nodes, ["id", "label", "source", "regex"])
+    write_csv(os.path.join(OUT_DIR, "edges.csv"), edges, ["source", "target", "relation"])
 
-    # --- HIPAA ---
-    if os.path.exists(HIPAA_FILE):
-        df = pd.read_csv(HIPAA_FILE)
-        if "Name of Covered Entity" in df.columns:
-            for i, entity in enumerate(df["Name of Covered Entity"].dropna().unique()[:200]):
-                node_id = f"hipaa_rule:{i+1}"
-                regex_id = f"regex:hipaa_rule:{i+1}"
-                nodes.extend([
-                    {"id": node_id, "label": f"HIPAA Entity Rule {i+1}"},
-                    {"id": regex_id, "label": safe_regex(entity)},
-                    {"id": "region:HIPAA", "label": "HIPAA"},
-                ])
-                edges.extend([
-                    {"source": "DataSource", "target": node_id, "relation": "contains"},
-                    {"source": node_id, "target": regex_id, "relation": "uses"},
-                    {"source": node_id, "target": "region:HIPAA", "relation": "applies_to"},
-                ])
-        else:
-            print("[WARN] Column 'Name of Covered Entity' not found in HIPAA file")
-    else:
-        print(f"[WARN] HIPAA file missing: {HIPAA_FILE}")
+    # JSON export
+    graph = {"nodes": nodes, "edges": edges}
+    with open(os.path.join(OUT_DIR, "graph.json"), "w") as f:
+        json.dump(graph, f, indent=2)
 
-    return nodes, edges
-
-
-def main():
-    nodes, edges = build_nodes_edges()
-
-    with open(NODES_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["id", "label"])
-        writer.writeheader()
-        writer.writerows(nodes)
-
-    with open(EDGES_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
-        writer.writeheader()
-        writer.writerows(edges)
-
-    with open(GRAPH_FILE, "w", encoding="utf-8") as f:
-        json.dump({"nodes": nodes, "edges": edges}, f, indent=2)
-
-    print(f"[DONE] Wrote {NODES_FILE}, {EDGES_FILE}, {GRAPH_FILE}")
-
+    print(f"[DONE] Wrote {os.path.join(OUT_DIR, 'nodes.csv')}, {os.path.join(OUT_DIR, 'edges.csv')}, {os.path.join(OUT_DIR, 'graph.json')}")
 
 if __name__ == "__main__":
-    main()
+    build_kg()
