@@ -1,64 +1,123 @@
-name: CI & Build KG
+# backend/scripts/export_kg.py
+import os
+import csv
+import re
+import pandas as pd
+import json
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - "backend/data/**"
-      - "backend/scripts/export_kg.py"
-      - ".github/workflows/ci-cd.yml"
+DATA_DIR = "backend/data"
+KG_DIR = "backend/bioregex_kg"
+os.makedirs(KG_DIR, exist_ok=True)
 
-permissions:
-  contents: write  # needed by auto-commit action
+nodes_file = os.path.join(KG_DIR, "nodes.csv")
+edges_file = os.path.join(KG_DIR, "edges.csv")
+graph_file = os.path.join(KG_DIR, "graph.json")
 
-jobs:
-  test-and-build-kg:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
+nodes = []
+edges = []
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+def add_node(node_id, label):
+    nodes.append({"id": node_id, "label": label})
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+def add_edge(source, target, relation):
+    edges.append({"source": source, "target": target, "relation": relation})
 
-      - name: Install deps for tests + KG
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt || true
-          pip install pandas openpyxl pytest pytest-cov
+def make_regex(term: str):
+    """Escape term into regex with word boundaries."""
+    term = str(term).strip()
+    if not term:
+        return None
+    return r"\b" + re.escape(term) + r"\b"
 
-      # Optional: keep your API tests
-      - name: Run tests
-        run: |
-          pytest -v tests/ --cov=app || true
+# FDA
+fda_file = os.path.join(DATA_DIR, "fda_drugs.csv")
+if os.path.exists(fda_file):
+    df = pd.read_csv(fda_file)
+    if "brand_name" in df.columns:
+        for i, row in df.iterrows():
+            regex = make_regex(row["brand_name"])
+            if regex:
+                rule_id = f"fda_rule:{i+1}"
+                regex_id = f"regex:fda_rule:{i+1}"
+                add_node(rule_id, f"FDA Rule {i+1}")
+                add_node(regex_id, regex)
+                add_edge("DataSource", rule_id, "contains")
+                add_edge(rule_id, regex_id, "uses")
+                add_edge(rule_id, "region:FDA", "applies_to")
 
-      - name: Build knowledge graph
-        run: |
-          python scripts/export_kg.py
+# EMA
+ema_file = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
+if os.path.exists(ema_file):
+    df = pd.read_excel(ema_file)
+    # Look for any column with "name" in it
+    col = next((c for c in df.columns if "name" in c.lower()), None)
+    if col:
+        for i, row in df.iterrows():
+            regex = make_regex(row[col])
+            if regex:
+                rule_id = f"ema_rule:{i+1}"
+                regex_id = f"regex:ema_rule:{i+1}"
+                add_node(rule_id, f"EMA Rule {i+1}")
+                add_node(regex_id, regex)
+                add_edge("DataSource", rule_id, "contains")
+                add_edge(rule_id, regex_id, "uses")
+                add_edge(rule_id, "region:EMA", "applies_to")
 
-      - name: Verify KG artifacts
-        run: |
-          ls -la bioregex_kg
-          test -f bioregex_kg/nodes.csv
-          test -f bioregex_kg/edges.csv
-          test -f bioregex_kg/graph.json
+# CMS
+cms_file = os.path.join(DATA_DIR, "cms_hospitals.csv")
+if os.path.exists(cms_file):
+    df = pd.read_csv(cms_file)
+    if "hospital_name" in df.columns:
+        for i, row in df.iterrows():
+            regex = make_regex(row["hospital_name"])
+            if regex:
+                rule_id = f"cms_rule:{i+1}"
+                regex_id = f"regex:cms_rule:{i+1}"
+                add_node(rule_id, f"CMS Rule {i+1}")
+                add_node(regex_id, regex)
+                add_edge("DataSource", rule_id, "contains")
+                add_edge(rule_id, regex_id, "uses")
+                add_edge(rule_id, "region:CMS", "applies_to")
 
-      - name: Commit KG artifacts
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          repository: .
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          commit_author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          commit_message: "chore(kg): rebuild knowledge graph from data"
-          file_pattern: backend/bioregex_kg/*
-          branch: ${{ github.ref_name }}
+# HIPAA
+hipaa_file = os.path.join(DATA_DIR, "hipaa_breaches.csv")
+if os.path.exists(hipaa_file):
+    df = pd.read_csv(hipaa_file)
+    # Column appears as "Breach Submission Type"
+    col = next((c for c in df.columns if "breach" in c.lower()), None)
+    if col:
+        for i, row in df.iterrows():
+            regex = make_regex(row[col])
+            if regex:
+                rule_id = f"hipaa_rule:{i+1}"
+                regex_id = f"regex:hipaa_rule:{i+1}"
+                add_node(rule_id, f"HIPAA Rule {i+1}")
+                add_node(regex_id, regex)
+                add_edge("DataSource", rule_id, "contains")
+                add_edge(rule_id, regex_id, "uses")
+                add_edge(rule_id, "region:HIPAA", "applies_to")
+
+# Base nodes
+add_node("DataSource", "Regulatory Data")
+add_node("region:FDA", "FDA")
+add_node("region:EMA", "EMA")
+add_node("region:CMS", "CMS")
+add_node("region:HIPAA", "HIPAA")
+
+# Write CSVs
+with open(nodes_file, "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["id", "label"])
+    writer.writeheader()
+    writer.writerows(nodes)
+
+with open(edges_file, "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
+    writer.writeheader()
+    writer.writerows(edges)
+
+# Write JSON graph
+graph = {"nodes": nodes, "edges": edges}
+with open(graph_file, "w", encoding="utf-8") as f:
+    json.dump(graph, f, indent=2)
+
+print(f"[DONE] Wrote {nodes_file}, {edges_file}, {graph_file}")
