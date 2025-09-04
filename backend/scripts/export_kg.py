@@ -2,7 +2,7 @@
 import os
 import json
 import uuid
-import hashlib
+import shutil
 from typing import Dict, Any, List, Optional
 
 import pandas as pd
@@ -11,6 +11,10 @@ import pandas as pd
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA_DIR = os.path.join(REPO_ROOT, "data")
 KG_DIR = os.path.join(REPO_ROOT, "bioregex_kg")
+
+# Always wipe the KG folder before rebuilding
+if os.path.exists(KG_DIR):
+    shutil.rmtree(KG_DIR)
 os.makedirs(KG_DIR, exist_ok=True)
 
 NODES_CSV = os.path.join(KG_DIR, "nodes.csv")
@@ -19,10 +23,7 @@ GRAPH_JSON = os.path.join(KG_DIR, "graph.json")
 
 # --- Helpers -------------------------------------------------
 def uuid5_for(*parts: str) -> str:
-    """
-    Deterministic UUIDv5 from a tuple of strings.
-    Use a fixed namespace so IDs are stable across runs.
-    """
+    """Deterministic UUIDv5 from strings."""
     base = "||".join([p if p is not None else "" for p in parts])
     return str(uuid.uuid5(uuid.NAMESPACE_URL, base))
 
@@ -31,7 +32,6 @@ def safe_label(row: Dict[str, Any], fallbacks: List[str], default_prefix: str) -
         v = row.get(k)
         if v and isinstance(v, str) and v.strip():
             return v.strip()
-    # Fallback to first non-empty value in row
     for v in row.values():
         if isinstance(v, str) and v.strip():
             return v.strip()
@@ -42,7 +42,6 @@ def load_csv(path: str) -> Optional[pd.DataFrame]:
         try:
             return pd.read_csv(path)
         except Exception:
-            # Try with ISO-8859-1 as a fallback
             return pd.read_csv(path, encoding="ISO-8859-1")
     return None
 
@@ -57,7 +56,6 @@ def load_xlsx(path: str) -> Optional[pd.DataFrame]:
 def rows_to_nodes(rows: List[Dict[str, Any]], type_name: str, source_key: str) -> List[Dict[str, Any]]:
     nodes = []
     for r in rows:
-        # robust label detection
         label = safe_label(
             r,
             fallbacks=[
@@ -69,14 +67,11 @@ def rows_to_nodes(rows: List[Dict[str, Any]], type_name: str, source_key: str) -
             ],
             default_prefix=type_name
         )
-
-        # stable id: based on type + source + label (+ a few key fields if present)
         id_basis = [type_name, source_key, label]
         for key in ("application_number", "product_ndc", "ndc", "id", "ID", "eudract_number"):
             if r.get(key):
                 id_basis.append(str(r.get(key)))
         node_id = uuid5_for(*id_basis)
-
         nodes.append({
             "id": node_id,
             "label": label,
@@ -89,8 +84,10 @@ def rows_to_nodes(rows: List[Dict[str, Any]], type_name: str, source_key: str) -
 def df_to_rows(df: pd.DataFrame) -> List[Dict[str, Any]]:
     if df is None or df.empty:
         return []
-    # Convert NaNs to None and everything to python objects
-    return [ {k: (None if pd.isna(v) else v) for k, v in row.items()} for row in df.to_dict(orient="records") ]
+    return [
+        {k: (None if pd.isna(v) else v) for k, v in row.items()}
+        for row in df.to_dict(orient="records")
+    ]
 
 # --- Source “root” nodes ------------------------------------
 SOURCE_ROOTS = [
@@ -111,47 +108,38 @@ def main():
     src_ids = {n["label"]: n["id"] for n in SOURCE_ROOTS}
 
     # FDA
-    fda_csv = os.path.join(DATA_DIR, "fda_drugs.csv")
-    fda_df = load_csv(fda_csv)
-    fda_rows = df_to_rows(fda_df)
-    fda_nodes = rows_to_nodes(fda_rows, "Drug", "FDA")
+    fda_df = load_csv(os.path.join(DATA_DIR, "fda_drugs.csv"))
+    fda_nodes = rows_to_nodes(df_to_rows(fda_df), "Drug", "FDA")
     nodes.extend(fda_nodes)
     edges.extend([{"source": src_ids["FDA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in fda_nodes])
 
     # HIPAA
-    hipaa_csv = os.path.join(DATA_DIR, "hipaa_breaches.csv")
-    hipaa_df = load_csv(hipaa_csv)
-    hipaa_rows = df_to_rows(hipaa_df)
-    hipaa_nodes = rows_to_nodes(hipaa_rows, "Breach", "HIPAA")
+    hipaa_df = load_csv(os.path.join(DATA_DIR, "hipaa_breaches.csv"))
+    hipaa_nodes = rows_to_nodes(df_to_rows(hipaa_df), "Breach", "HIPAA")
     nodes.extend(hipaa_nodes)
     edges.extend([{"source": src_ids["HIPAA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in hipaa_nodes])
 
     # CMS
-    cms_csv = os.path.join(DATA_DIR, "cms_hospitals.csv")
-    cms_df = load_csv(cms_csv)
-    cms_rows = df_to_rows(cms_df)
-    cms_nodes = rows_to_nodes(cms_rows, "Provider", "CMS")
+    cms_df = load_csv(os.path.join(DATA_DIR, "cms_hospitals.csv"))
+    cms_nodes = rows_to_nodes(df_to_rows(cms_df), "Provider", "CMS")
     nodes.extend(cms_nodes)
     edges.extend([{"source": src_ids["CMS"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in cms_nodes])
 
     # EMA
-    ema_xlsx = os.path.join(DATA_DIR, "ema_human_medicines.xlsx")
-    ema_df = load_xlsx(ema_xlsx)
-    ema_rows = df_to_rows(ema_df)
-    ema_nodes = rows_to_nodes(ema_rows, "Medicine", "EMA")
+    ema_df = load_xlsx(os.path.join(DATA_DIR, "ema_human_medicines.xlsx"))
+    ema_nodes = rows_to_nodes(df_to_rows(ema_df), "Medicine", "EMA")
     nodes.extend(ema_nodes)
     edges.extend([{"source": src_ids["EMA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in ema_nodes])
 
-    # EFSA (optional — only if you later store it)
+    # EFSA
     efsa_xlsx = os.path.join(DATA_DIR, "efsa_openfoodtox.xlsx")
     if os.path.exists(efsa_xlsx):
         efsa_df = load_xlsx(efsa_xlsx)
-        efsa_rows = df_to_rows(efsa_df)
-        efsa_nodes = rows_to_nodes(efsa_rows, "Substance", "EFSA")
+        efsa_nodes = rows_to_nodes(df_to_rows(efsa_df), "Substance", "EFSA")
         nodes.extend(efsa_nodes)
         edges.extend([{"source": src_ids["EFSA"], "target": n["id"], "type": "CONTAINS_RECORD"} for n in efsa_nodes])
 
-    # Deduplicate nodes by id (if any overlap)
+    # Deduplicate
     seen = set()
     unique_nodes = []
     for n in nodes:
@@ -159,11 +147,9 @@ def main():
             unique_nodes.append(n)
             seen.add(n["id"])
 
-    # Write CSVs
+    # Write outputs
     pd.DataFrame(unique_nodes).to_csv(NODES_CSV, index=False)
     pd.DataFrame(edges).to_csv(EDGES_CSV, index=False)
-
-    # Write JSON
     with open(GRAPH_JSON, "w", encoding="utf-8") as f:
         json.dump({"nodes": unique_nodes, "edges": edges}, f, ensure_ascii=False, indent=2)
 
@@ -171,3 +157,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
