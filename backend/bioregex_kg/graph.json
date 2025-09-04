@@ -3,7 +3,39 @@
     {
       "id": "DataSource",
       "label": "Regulatory Data"
+    },
+    {
+      "id": "rule:1",
+      "label": "HIPAA Breach Rule"
+    },
+    {
+      "id": "dtype:breach_type",
+      "label": "Breach Type"
+    },
+    {
+      "id": "region:HIPAA",
+      "label": "HIPAA"
+    },
+    {
+      "id": "regex:rule:1",
+      "label": "\\b(Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure|Unauthorized\\ Access/Disclosure|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Hacking/IT\\ Incident|Unauthorized\\ Access/Disclosure)\\b"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "rule:1",
+      "target": "dtype:breach_type",
+      "relation": "TYPED_AS"
+    },
+    {
+      "source": "rule:1",
+      "target": "region:HIPAA",
+      "relation": "BELONGS_TO"
+    },
+    {
+      "source": "rule:1",
+      "target": "regex:rule:1",
+      "relation": "USES_REGEX"
+    }
+  ]
 }

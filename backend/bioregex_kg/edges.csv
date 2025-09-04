@@ -1,1 +1,4 @@
 source,target,relation
+rule:1,dtype:breach_type,TYPED_AS
+rule:1,region:HIPAA,BELONGS_TO
+rule:1,regex:rule:1,USES_REGEX

@@ -1,2 +1,6 @@
 id,label
 DataSource,Regulatory Data
+rule:1,HIPAA Breach Rule
+dtype:breach_type,Breach Type
+region:HIPAA,HIPAA
+regex:rule:1,\b(Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure|Unauthorized\ Access/Disclosure|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Hacking/IT\ Incident|Unauthorized\ Access/Disclosure)\b
