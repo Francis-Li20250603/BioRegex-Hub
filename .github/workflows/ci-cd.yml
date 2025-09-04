@@ -88,20 +88,21 @@ jobs:
       # === 确保知识图谱目录存在并清理 ===
       - name: 清理并创建知识图谱目录
         run: |
-          if [ -d "backend/bioregex_kg" ]; then
-            echo "🧹 清理旧的 bioregex_kg 目录"
-            rm -rf backend/bioregex_kg
-          fi
+          rm -rf backend/bioregex_kg
           mkdir -p backend/bioregex_kg
 
       # === 检查数据文件是否存在 ===
       - name: 检查数据文件
         run: |
           if [ ! -d "backend/data" ]; then
-            echo "❌ 数据文件目录 backend/data 不存在！"
+            echo "❌ backend/data 不存在"
             exit 1
           fi
-          echo "✅ backend/data 目录存在："
+          if [ -z "$(ls -A backend/data)" ]; then
+            echo "❌ backend/data 中没有文件"
+            exit 1
+          fi
+          echo "✅ backend/data 目录内容："
           ls -lh backend/data
 
       # === 导出知识图谱 ===
@@ -109,10 +110,20 @@ jobs:
         working-directory: backend
         run: python -m scripts.export_kg
 
-      - name: 查看生成的知识图谱文件
+      # === 验证输出文件 ===
+      - name: 验证知识图谱输出
         run: |
-          echo "📂 知识图谱文件列表："
-          ls -lh backend/bioregex_kg || true
+          if [ ! -f "backend/bioregex_kg/nodes.csv" ]; then
+            echo "❌ nodes.csv 未生成"; exit 1
+          fi
+          if [ ! -f "backend/bioregex_kg/edges.csv" ]; then
+            echo "❌ edges.csv 未生成"; exit 1
+          fi
+          if [ ! -f "backend/bioregex_kg/graph.json" ]; then
+            echo "❌ graph.json 未生成"; exit 1
+          fi
+          echo "✅ 知识图谱文件生成成功"
+          ls -lh backend/bioregex_kg
           head -n 20 backend/bioregex_kg/nodes.csv || true
           head -n 20 backend/bioregex_kg/edges.csv || true
 
@@ -150,6 +161,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
 
 
 
