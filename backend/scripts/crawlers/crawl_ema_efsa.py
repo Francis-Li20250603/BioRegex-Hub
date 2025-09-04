@@ -7,7 +7,7 @@ EFSA_OUT = os.path.join("data", "efsa_openfoodtox.xlsx")
 
 def crawl_ema():
     # Stable EMA dataset: human medicines authorised
-    url = "https://www.ema.europa.eu/documents/dataset/human-medicines-authorised.xlsx"
+    url = "https://www.ema.europa.eu/en/documents/other/human-medicines-authorised.xlsx"
     r = requests.get(url)
     r.raise_for_status()
     with open(EMA_OUT, "wb") as f:
