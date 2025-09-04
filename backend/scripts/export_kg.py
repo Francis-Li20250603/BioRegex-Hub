@@ -15,112 +15,123 @@ GRAPH_FILE = os.path.join(OUTPUT_DIR, "graph.json")
 
 
 def build_regex_from_values(values, max_samples=20):
-    """
-    Create a simple regex that matches any of the given values.
-    Used for demo purposes (in production, more advanced NLP/regex generation needed).
-    """
-    cleaned = [re.escape(v.strip()) for v in values if v and len(v.strip()) > 1]
+    """Make a regex from sample values."""
+    cleaned = [re.escape(v.strip()) for v in values if v and len(v.strip()) > 2]
     if not cleaned:
         return None
-    sample = cleaned[:max_samples]
-    return r"\b(" + "|".join(sample) + r")\b"
+    return r"\b(" + "|".join(cleaned[:max_samples]) + r")\b"
+
+
+def read_csv_column(file_path, possible_columns):
+    """Try to extract values from one of the possible column names."""
+    if not os.path.exists(file_path):
+        return []
+
+    with open(file_path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        headers = [h.lower() for h in reader.fieldnames]
+
+        # Find matching column
+        match = None
+        for candidate in possible_columns:
+            if candidate.lower() in headers:
+                match = candidate
+                break
+
+        if not match:
+            print(f"[WARN] {file_path}: No matching column found in {headers}")
+            return []
+
+        return [row.get(match, "").strip() for row in reader if row.get(match)]
 
 
 def export_knowledge_graph():
-    nodes = []
-    edges = []
-
-    # === Core node types ===
+    nodes, edges = [], []
     nodes.append({"id": "DataSource", "label": "Regulatory Data"})
 
-    # === Regex rule index ===
     rule_counter = 1
 
-    # === FDA dataset: drug names ===
-    fda_file = os.path.join(DATA_DIR, "fda_drugs.csv")
-    if os.path.exists(fda_file):
-        with open(fda_file, newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            drug_names = [row.get("drug_name") or row.get("Drug Name") for row in reader if row.get("drug_name") or row.get("Drug Name")]
-            regex_pattern = build_regex_from_values(drug_names)
-            if regex_pattern:
-                rule_id = f"rule:{rule_counter}"
-                rule_counter += 1
-                nodes.append({"id": rule_id, "label": "Drug Name Rule"})
-                nodes.append({"id": "dtype:drug_name", "label": "Drug Name"})
-                nodes.append({"id": "region:FDA", "label": "FDA"})
-                nodes.append({"id": f"regex:{rule_id}", "label": regex_pattern})
+    # === FDA ===
+    fda_values = read_csv_column(
+        os.path.join(DATA_DIR, "fda_drugs.csv"),
+        ["drug_name", "Drug Name", "Product Name"]
+    )
+    if fda_values:
+        regex = build_regex_from_values(fda_values)
+        if regex:
+            rule_id = f"rule:{rule_counter}"; rule_counter += 1
+            nodes += [
+                {"id": rule_id, "label": "Drug Name Rule"},
+                {"id": "dtype:drug_name", "label": "Drug Name"},
+                {"id": "region:FDA", "label": "FDA"},
+                {"id": f"regex:{rule_id}", "label": regex}
+            ]
+            edges += [
+                {"source": rule_id, "target": "dtype:drug_name", "relation": "TYPED_AS"},
+                {"source": rule_id, "target": "region:FDA", "relation": "BELONGS_TO"},
+                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
+            ]
 
-                edges.append({"source": rule_id, "target": "dtype:drug_name", "relation": "TYPED_AS"})
-                edges.append({"source": rule_id, "target": "region:FDA", "relation": "BELONGS_TO"})
-                edges.append({"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"})
+    # === HIPAA ===
+    hipaa_values = read_csv_column(
+        os.path.join(DATA_DIR, "hipaa_breaches.csv"),
+        ["breach_type", "Type of Breach", "Type"]
+    )
+    if hipaa_values:
+        regex = build_regex_from_values(hipaa_values)
+        if regex:
+            rule_id = f"rule:{rule_counter}"; rule_counter += 1
+            nodes += [
+                {"id": rule_id, "label": "HIPAA Breach Rule"},
+                {"id": "dtype:breach_type", "label": "Breach Type"},
+                {"id": "region:HIPAA", "label": "HIPAA"},
+                {"id": f"regex:{rule_id}", "label": regex}
+            ]
+            edges += [
+                {"source": rule_id, "target": "dtype:breach_type", "relation": "TYPED_AS"},
+                {"source": rule_id, "target": "region:HIPAA", "relation": "BELONGS_TO"},
+                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
+            ]
 
-    # === HIPAA dataset: breach types ===
-    hipaa_file = os.path.join(DATA_DIR, "hipaa_breaches.csv")
-    if os.path.exists(hipaa_file):
-        with open(hipaa_file, newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            breach_types = [row.get("breach_type") or row.get("Type") for row in reader if row.get("breach_type") or row.get("Type")]
-            regex_pattern = build_regex_from_values(breach_types)
-            if regex_pattern:
-                rule_id = f"rule:{rule_counter}"
-                rule_counter += 1
-                nodes.append({"id": rule_id, "label": "Breach Type Rule"})
-                nodes.append({"id": "dtype:breach_type", "label": "Breach Type"})
-                nodes.append({"id": "region:HIPAA", "label": "HIPAA"})
-                nodes.append({"id": f"regex:{rule_id}", "label": regex_pattern})
+    # === CMS ===
+    cms_values = read_csv_column(
+        os.path.join(DATA_DIR, "cms_hospitals.csv"),
+        ["hospital_name", "Facility Name", "Hospital Name"]
+    )
+    if cms_values:
+        regex = build_regex_from_values(cms_values)
+        if regex:
+            rule_id = f"rule:{rule_counter}"; rule_counter += 1
+            nodes += [
+                {"id": rule_id, "label": "Hospital Rule"},
+                {"id": "dtype:hospital_name", "label": "Hospital Name"},
+                {"id": "region:CMS", "label": "CMS"},
+                {"id": f"regex:{rule_id}", "label": regex}
+            ]
+            edges += [
+                {"source": rule_id, "target": "dtype:hospital_name", "relation": "TYPED_AS"},
+                {"source": rule_id, "target": "region:CMS", "relation": "BELONGS_TO"},
+                {"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"}
+            ]
 
-                edges.append({"source": rule_id, "target": "dtype:breach_type", "relation": "TYPED_AS"})
-                edges.append({"source": rule_id, "target": "region:HIPAA", "relation": "BELONGS_TO"})
-                edges.append({"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"})
+    # === Deduplicate ===
+    nodes = list({n["id"]: n for n in nodes}.values())
 
-    # === CMS dataset: hospital names ===
-    cms_file = os.path.join(DATA_DIR, "cms_hospitals.csv")
-    if os.path.exists(cms_file):
-        with open(cms_file, newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            hospital_names = [row.get("hospital_name") or row.get("Hospital Name") for row in reader if row.get("hospital_name") or row.get("Hospital Name")]
-            regex_pattern = build_regex_from_values(hospital_names)
-            if regex_pattern:
-                rule_id = f"rule:{rule_counter}"
-                rule_counter += 1
-                nodes.append({"id": rule_id, "label": "Hospital Name Rule"})
-                nodes.append({"id": "dtype:hospital_name", "label": "Hospital Name"})
-                nodes.append({"id": "region:CMS", "label": "CMS"})
-                nodes.append({"id": f"regex:{rule_id}", "label": regex_pattern})
-
-                edges.append({"source": rule_id, "target": "dtype:hospital_name", "relation": "TYPED_AS"})
-                edges.append({"source": rule_id, "target": "region:CMS", "relation": "BELONGS_TO"})
-                edges.append({"source": rule_id, "target": f"regex:{rule_id}", "relation": "USES_REGEX"})
-
-    # === Deduplicate nodes ===
-    unique_nodes = {n["id"]: n for n in nodes}
-    nodes = list(unique_nodes.values())
-
-    # === Write CSVs ===
+    # Write files
     with open(NODES_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "label"])
-        writer.writeheader()
-        writer.writerows(nodes)
+        writer.writeheader(); writer.writerows(nodes)
 
     with open(EDGES_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["source", "target", "relation"])
-        writer.writeheader()
-        writer.writerows(edges)
+        writer.writeheader(); writer.writerows(edges)
 
-    # === Write JSON ===
-    graph = {"nodes": nodes, "edges": edges}
     with open(GRAPH_FILE, "w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2)
+        json.dump({"nodes": nodes, "edges": edges}, f, indent=2)
 
-    print(f"[KG Export] ✅ Wrote {len(nodes)} nodes and {len(edges)} edges")
-    print(f"[KG Export] ✅ Files saved in {OUTPUT_DIR}")
+    print(f"[KG Export] ✅ {len(nodes)} nodes, {len(edges)} edges")
 
 
 if __name__ == "__main__":
     export_knowledge_graph()
-
-
-
-
 
