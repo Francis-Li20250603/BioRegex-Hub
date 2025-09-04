@@ -35,10 +35,6 @@ jobs:
         working-directory: backend
         run: python -m scripts.crawlers.crawl_fda
 
-      - name: 抓取HIPAA数据
-        working-directory: backend
-        run: python -m scripts.crawlers.crawl_hipaa
-
       - name: 抓取CMS数据
         working-directory: backend
         run: python -m scripts.crawlers.crawl_cms
