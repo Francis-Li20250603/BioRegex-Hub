@@ -1,0 +1,6 @@
+id,label
+fda_drugs,fda_drugs.csv
+hipaa_breaches,hipaa_breaches.csv
+cms_hospitals,cms_hospitals.csv
+ema_human_medicines,ema_human_medicines.xlsx
+DataSource,Regulatory Data

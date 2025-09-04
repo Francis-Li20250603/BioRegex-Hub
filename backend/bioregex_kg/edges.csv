@@ -1,0 +1,5 @@
+source,target,relation
+DataSource,fda_drugs,contains
+DataSource,hipaa_breaches,contains
+DataSource,cms_hospitals,contains
+DataSource,ema_human_medicines,contains
