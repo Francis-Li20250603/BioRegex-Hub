@@ -35,10 +35,6 @@ jobs:
         working-directory: backend
         run: python -m scripts.crawlers.crawl_fda
 
-      - name: 抓取CMS数据
-        working-directory: backend
-        run: python -m scripts.crawlers.crawl_cms
-
       - name: 抓取EMA/EFSA数据
         working-directory: backend
         run: python -m scripts.crawlers.crawl_ema_efsa
